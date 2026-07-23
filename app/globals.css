@@ -30,6 +30,11 @@
   --color-deep: #05081a;
   --color-deep-2: #0a1240;
 
+  /* Premium palette (from brand reference) */
+  --color-deepest: #0d0f14; /* deep background */
+  --color-panel: #141720;   /* dark accent — cards / panels */
+  --color-brightblue: #3d7eff; /* bright accent blue */
+
   --color-line: rgba(7, 11, 26, 0.09);
   --color-line-strong: rgba(7, 11, 26, 0.16);
 

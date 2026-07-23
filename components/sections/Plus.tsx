@@ -86,8 +86,7 @@ function DashboardMock() {
         {/* Barra finestra */}
         <div className="flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <Logo variant="light" className="h-3.5 w-auto" />
-            <span className="text-sm font-medium text-white/50">· Plus</span>
+            <Logo variant="plus" className="h-4 w-auto" />
           </div>
           <div className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-white/10" />

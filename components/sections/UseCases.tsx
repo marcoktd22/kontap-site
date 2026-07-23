@@ -34,10 +34,16 @@ export function UseCases() {
           {items.map((d, i) => (
             <span
               key={`${d.name}-${i}`}
-              className="inline-flex items-center gap-2.5 text-secondary/80"
+              className="inline-flex items-center gap-2.5"
             >
-              <BrandIcon name={d.icon} className="h-6 w-6" />
-              <span className="text-base font-medium tracking-tight">
+              <BrandIcon name={d.icon} className="h-6 w-6 text-[#3d7eff]" />
+              <span
+                className="bg-clip-text text-lg font-bold tracking-tight text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(120deg, #141720 0%, #3d7eff 100%)",
+                }}
+              >
                 {d.name}
               </span>
             </span>

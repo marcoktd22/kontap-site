@@ -11,12 +11,15 @@ export function Logo({
   variant = "dark",
 }: {
   className?: string;
-  variant?: "dark" | "light";
+  /** "dark" black wordmark · "light" white wordmark · "plus" white kontap+ lockup */
+  variant?: "dark" | "light" | "plus";
 }) {
   const src =
-    variant === "light"
-      ? "/brand/kontap-wordmark-light.svg"
-      : "/brand/kontap-wordmark-dark.svg";
+    variant === "plus"
+      ? "/brand/kontap-plus-light.svg"
+      : variant === "light"
+        ? "/brand/kontap-wordmark-light.svg"
+        : "/brand/kontap-wordmark-dark.svg";
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img

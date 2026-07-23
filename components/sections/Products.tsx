@@ -57,7 +57,7 @@ export function Products() {
           </Reveal>
 
           {/* Selettore */}
-          <div className="order-2 flex flex-col gap-3">
+          <div className="order-2 flex flex-col gap-4">
             {products.map((p, i) => {
               const selected = i === active;
               return (
@@ -69,8 +69,8 @@ export function Products() {
                     className={cn(
                       "group relative w-full overflow-hidden rounded-3xl p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7",
                       selected
-                        ? "bg-white ring-1 ring-[color:rgba(46,123,255,0.55)] shadow-[0_20px_50px_-24px_rgba(46,123,255,0.55)]"
-                        : "bg-surface ring-hairline hover:bg-white"
+                        ? "scale-[1.02] bg-[linear-gradient(135deg,#e7f0ff_0%,#f5faff_45%,#e4f6ff_100%)] ring-1 ring-[color:rgba(46,123,255,0.55)] shadow-[0_26px_60px_-26px_rgba(46,123,255,0.55)]"
+                        : "bg-white ring-hairline shadow-[0_1px_2px_0_rgba(7,11,26,0.05)] hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-28px_rgba(7,11,26,0.35)]"
                     )}
                   >
                     {/* barra celeste quando selezionato */}
