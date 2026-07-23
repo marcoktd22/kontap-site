@@ -5,15 +5,15 @@ import { Container } from "../ui/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
-import { LogoMark } from "../Logo";
+import { Logo } from "../Logo";
 import { products } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 /**
- * Products — the dramatic dark "island" of the site (Solution A).
- * A 3-product selector: choosing a product lights the stage and the active
- * row with Kontap celeste. Product photos live at /public/products/<image>.png
- * (transparent PNG); a branded placeholder shows until they're added.
+ * Prodotti — espositore a 3 prodotti. Sezione chiara con gradienti leggeri.
+ * Selezionando un prodotto la riga e lo stage si illuminano di celeste Kontap.
+ * Le foto vanno in /public/products/<image>.png (PNG trasparente); fino ad
+ * allora appare un placeholder brandizzato.
  */
 export function Products() {
   const [active, setActive] = useState(0);
@@ -22,25 +22,32 @@ export function Products() {
   return (
     <section
       id="products"
-      className="relative scroll-mt-24 overflow-hidden bg-deep py-24 text-white sm:py-32 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
     >
-      {/* Ambient brand glow */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-0 overflow-hidden">
+      {/* Sfondo chiaro con gradienti leggeri */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#eef4ff_55%,#ffffff_100%)]" />
         <div
-          className="absolute left-1/2 top-[-10%] h-[60vh] w-[80vw] -translate-x-1/2 opacity-60 blur-[80px]"
+          className="absolute left-[-8%] top-[10%] h-[46vh] w-[46vh] rounded-full opacity-70 blur-[80px]"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 40%, rgba(10,54,246,0.35) 0%, rgba(5,8,26,0) 70%)",
+              "radial-gradient(circle, rgba(118,223,255,0.35) 0%, rgba(118,223,255,0) 70%)",
+          }}
+        />
+        <div
+          className="absolute right-[-6%] bottom-[6%] h-[42vh] w-[42vh] rounded-full opacity-50 blur-[90px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(10,54,246,0.18) 0%, rgba(10,54,246,0) 70%)",
           }}
         />
       </div>
 
       <Container className="relative">
         <SectionHeader
-          tone="dark"
-          eyebrow="Products"
-          title="One line-up. One platform."
-          description="Kontap is a multi-product NFC company — the Google Review plate is only the start. Pick a product to see it come to life; every tap flows into Kontap Plus."
+          eyebrow="Prodotti"
+          title="Una linea. Una piattaforma."
+          description="Kontap è un'azienda NFC multi-prodotto — la targa per le recensioni Google è solo l'inizio. Scegli un prodotto per vederlo in azione; ogni tap confluisce in Kontap Plus."
         />
 
         <div className="mt-16 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
@@ -53,7 +60,7 @@ export function Products() {
             />
           </Reveal>
 
-          {/* Selector */}
+          {/* Selettore */}
           <div className="order-2 flex flex-col gap-3">
             {products.map((p, i) => {
               const selected = i === active;
@@ -66,16 +73,16 @@ export function Products() {
                     className={cn(
                       "group relative w-full overflow-hidden rounded-3xl p-6 text-left transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7",
                       selected
-                        ? "bg-white/[0.06] ring-1 ring-[color:rgba(118,223,255,0.55)] shadow-[0_0_50px_-12px_rgba(118,223,255,0.45)]"
-                        : "bg-white/[0.02] ring-hairline-invert hover:bg-white/[0.04]"
+                        ? "bg-white ring-1 ring-[color:rgba(46,123,255,0.55)] shadow-[0_20px_50px_-24px_rgba(46,123,255,0.55)]"
+                        : "bg-surface ring-hairline hover:bg-white"
                     )}
                   >
-                    {/* celeste edge light when selected */}
+                    {/* barra celeste quando selezionato */}
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "pointer-events-none absolute left-0 top-1/2 h-2/3 w-[3px] -translate-y-1/2 rounded-full bg-celeste transition-opacity duration-500",
-                        selected ? "opacity-100 shadow-[0_0_18px_2px_rgba(118,223,255,0.8)]" : "opacity-0"
+                        "pointer-events-none absolute left-0 top-1/2 h-2/3 w-[3px] -translate-y-1/2 rounded-full bg-[linear-gradient(180deg,#4FC3FF,#0A36F6)] transition-opacity duration-500",
+                        selected ? "opacity-100" : "opacity-0"
                       )}
                     />
                     <div className="flex items-start justify-between gap-4">
@@ -83,12 +90,12 @@ export function Products() {
                         <p
                           className={cn(
                             "text-xs font-medium uppercase tracking-[0.16em] transition-colors duration-300",
-                            selected ? "text-celeste" : "text-white/40"
+                            selected ? "text-primary" : "text-muted"
                           )}
                         >
                           {p.tagline}
                         </p>
-                        <h3 className="mt-1.5 text-xl font-medium text-white">
+                        <h3 className="mt-1.5 text-xl font-medium text-ink">
                           {p.name}
                         </h3>
                       </div>
@@ -96,15 +103,15 @@ export function Products() {
                         className={cn(
                           "mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300",
                           selected
-                            ? "bg-celeste/15 text-celeste"
-                            : "text-white/30 group-hover:text-white/60"
+                            ? "bg-primary/10 text-primary"
+                            : "text-muted group-hover:text-ink"
                         )}
                       >
                         <Icon name="arrow" className="h-4 w-4" />
                       </span>
                     </div>
 
-                    {/* Expanding detail for the selected product */}
+                    {/* Dettaglio espandibile per il prodotto selezionato */}
                     <div
                       className={cn(
                         "grid transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
@@ -112,14 +119,14 @@ export function Products() {
                       )}
                     >
                       <div className="overflow-hidden">
-                        <p className="max-w-md text-pretty text-[0.95rem] leading-relaxed text-white/60">
+                        <p className="max-w-md text-pretty text-[0.95rem] leading-relaxed text-secondary">
                           {p.description}
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {p.specs.map((s) => (
                             <span
                               key={s}
-                              className="rounded-full bg-white/[0.06] px-3 py-1 text-[0.7rem] font-medium text-white/70 ring-hairline-invert"
+                              className="rounded-full bg-surface-2 px-3 py-1 text-[0.7rem] font-medium text-secondary ring-hairline"
                             >
                               {s}
                             </span>
@@ -132,8 +139,8 @@ export function Products() {
               );
             })}
 
-            <p className="mt-2 pl-1 text-sm text-white/40">
-              …plus stands, stickers, wristbands and bespoke smart NFC products.
+            <p className="mt-2 pl-1 text-sm text-muted">
+              …e poi espositori, adesivi, braccialetti e prodotti NFC su misura.
             </p>
           </div>
         </div>
@@ -143,28 +150,28 @@ export function Products() {
 }
 
 function ProductStage({ image, name }: { image: string; name: string }) {
-  // The branded placeholder is the default. If a real photo exists at
-  // /products/<image>.png it fades in on load (onError is unreliable for
-  // SSR'd images, so we reveal on successful load instead).
+  // Il placeholder brandizzato è il default. Se esiste una foto reale in
+  // /products/<image>.png viene rivelata al caricamento (onError è inaffidabile
+  // per immagini SSR, quindi mostriamo al load riuscito).
   const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
-      {/* Celeste halo */}
+      {/* Alone celeste soft */}
       <div
         aria-hidden="true"
         className="absolute inset-0 rounded-full opacity-90"
         style={{
           background:
-            "radial-gradient(circle at 50% 50%, rgba(118,223,255,0.28) 0%, rgba(10,54,246,0.14) 34%, rgba(5,8,26,0) 66%)",
+            "radial-gradient(circle at 50% 50%, rgba(118,223,255,0.30) 0%, rgba(46,123,255,0.12) 36%, rgba(255,255,255,0) 66%)",
         }}
       />
-      {/* Pulsing rings */}
+      {/* Anelli pulsanti */}
       {[0, 1].map((i) => (
         <span
           key={i}
           aria-hidden="true"
-          className="absolute h-56 w-56 rounded-full ring-1 ring-celeste/25"
+          className="absolute h-56 w-56 rounded-full ring-1 ring-[color:rgba(46,123,255,0.25)]"
           style={{
             animation: "kontap-pulse-ring 3.4s ease-out infinite",
             animationDelay: `${i * 1.7}s`,
@@ -172,31 +179,31 @@ function ProductStage({ image, name }: { image: string; name: string }) {
         />
       ))}
 
-      {/* Branded placeholder (shown until a real photo loads) */}
+      {/* Placeholder brandizzato — gradiente celeste (mostrato finché non carica la foto) */}
       <div
         className={cn(
-          "relative z-10 flex h-52 w-52 flex-col items-center justify-center gap-3 rounded-[2rem] ring-hairline-invert transition-opacity duration-500",
+          "relative z-10 flex h-52 w-52 flex-col items-center justify-center gap-4 rounded-[2rem] ring-hairline transition-opacity duration-500",
           loaded ? "opacity-0" : "opacity-100"
         )}
         style={{
-          background: "linear-gradient(150deg, #12205e 0%, #0a1240 60%, #05081a 100%)",
-          boxShadow: "0 1px 0 0 rgba(255,255,255,0.08) inset, 0 40px 80px -40px rgba(0,0,0,0.9)",
+          background: "linear-gradient(150deg, #d8f2ff 0%, #a9d4ff 55%, #7db0ff 100%)",
+          boxShadow: "0 1px 0 0 rgba(255,255,255,0.6) inset, 0 30px 70px -34px rgba(46,123,255,0.5)",
         }}
       >
-        <LogoMark className="h-12 w-12 text-white/85" />
-        <p className="px-4 text-center text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white/45">
+        <Logo variant="dark" className="h-5 w-auto opacity-90" />
+        <p className="px-4 text-center text-[0.7rem] font-medium uppercase tracking-[0.18em] text-primary/70">
           {name}
         </p>
       </div>
 
-      {/* Real product photo, revealed on load */}
+      {/* Foto reale del prodotto, rivelata al caricamento */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/products/${image}.png`}
         alt=""
         onLoad={() => setLoaded(true)}
         className={cn(
-          "absolute inset-0 z-20 m-auto max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.55)] transition-opacity duration-500",
+          "absolute inset-0 z-20 m-auto max-h-[80%] max-w-[80%] object-contain drop-shadow-[0_30px_60px_rgba(7,11,26,0.25)] transition-opacity duration-500",
           loaded ? "opacity-100" : "opacity-0"
         )}
       />

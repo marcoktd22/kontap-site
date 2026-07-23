@@ -9,9 +9,9 @@ export function HowItWorks() {
     <Section id="how">
       <Container>
         <SectionHeader
-          eyebrow="How it works"
-          title="From tap to result in three steps"
-          description="No integrations, no learning curve. Kontap works the moment it leaves the box."
+          eyebrow="Come funziona"
+          title="Dal tap al risultato in tre passi"
+          description="Nessuna integrazione, nessuna curva di apprendimento. Kontap funziona dal momento in cui esce dalla scatola."
         />
 
         <div className="relative mt-16">

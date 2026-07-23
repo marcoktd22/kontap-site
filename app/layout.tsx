@@ -8,34 +8,36 @@ const SITE_URL = "https://kontap.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Kontap — Turn one tap into a digital experience",
+    default: "Kontap — Un tap che fa crescere la tua attività",
     template: "%s · Kontap",
   },
   description:
-    "Kontap builds premium NFC hardware and the Plus platform — AI review analysis, automated reports and analytics — for local businesses. One tap turns a physical interaction into a digital experience.",
+    "Kontap crea hardware NFC premium e la piattaforma Plus — analisi delle recensioni con l'AI, report automatici e statistiche — per le attività locali. Un tap trasforma un'interazione fisica in un'esperienza digitale.",
   keywords: [
     "NFC",
-    "NFC business cards",
-    "Google review NFC plate",
-    "Apple Wallet card",
-    "NFC pet tag",
-    "smart NFC products",
+    "targa recensioni Google",
+    "biglietto da visita NFC",
+    "carta Apple Wallet",
+    "prodotti NFC smart",
+    "recensioni Google",
+    "Puglia",
     "Kontap",
   ],
   authors: [{ name: "Kontap" }],
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "Kontap — Turn one tap into a digital experience",
+    locale: "it_IT",
+    title: "Kontap — Un tap che fa crescere la tua attività",
     description:
-      "Premium NFC hardware and software. One tap connects the physical and the digital.",
+      "Hardware NFC premium e la piattaforma Plus. Un tap collega il fisico e il digitale.",
     siteName: "Kontap",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kontap — Turn one tap into a digital experience",
+    title: "Kontap — Un tap che fa crescere la tua attività",
     description:
-      "Premium NFC hardware and software. One tap connects the physical and the digital.",
+      "Hardware NFC premium e la piattaforma Plus. Un tap collega il fisico e il digitale.",
   },
 };
 
@@ -49,7 +51,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang="it"
       className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >

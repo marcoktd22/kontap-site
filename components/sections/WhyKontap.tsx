@@ -14,9 +14,9 @@ export function WhyKontap() {
       <GlowBackdrop variant="soft" />
       <Container>
         <SectionHeader
-          eyebrow="Why Kontap"
-          title="Hardware people trust. Software that scales."
-          description="Kontap is engineered end to end — premium physical products and the platform behind them — so every tap feels effortless and every interaction counts."
+          eyebrow="Perché Kontap"
+          title="Hardware di cui fidarti. Software che cresce con te."
+          description="Kontap è progettato dall'inizio alla fine — prodotti fisici premium e la piattaforma che li fa parlare — così ogni tap è semplice e ogni interazione conta."
         />
 
         <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">

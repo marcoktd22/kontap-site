@@ -4,13 +4,13 @@ import { Eyebrow } from "../ui/Eyebrow";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
-import { LogoMark } from "../Logo";
+import { Logo } from "../Logo";
 
 const bullets = [
-  "AI review analysis — sentiment, themes and what to fix next",
-  "Automated reports delivered to your inbox",
-  "Real-time tap analytics: traffic, timing and location",
-  "One dashboard across every Kontap product",
+  "Analisi recensioni con AI — sentiment, temi e cosa migliorare",
+  "Report automatici direttamente nella tua email",
+  "Statistiche in tempo reale: traffico, orari e posizione",
+  "Un'unica dashboard per tutti i prodotti Kontap",
 ];
 
 export function Plus() {
@@ -18,23 +18,22 @@ export function Plus() {
     <Section id="plus" className="overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
-          {/* Copy */}
+          {/* Testo */}
           <div>
             <Reveal>
-              <Eyebrow>Subscription · Kontap Plus</Eyebrow>
+              <Eyebrow>Abbonamento · Kontap Plus</Eyebrow>
             </Reveal>
             <Reveal index={1}>
               <h2 className="mt-6 text-balance text-4xl font-semibold sm:text-5xl">
-                <span className="text-gradient">Every tap becomes </span>
-                <span className="text-gradient-accent">intelligence.</span>
+                <span className="text-gradient">Ogni tap diventa </span>
+                <span className="text-gradient-accent">intelligenza.</span>
               </h2>
             </Reveal>
             <Reveal index={2}>
               <p className="mt-6 max-w-lg text-pretty text-lg leading-relaxed text-muted">
-                Plus is the subscription behind the hardware — shared
-                infrastructure across every product. AI-powered review analysis,
-                automated reports and analytics that tell you exactly what to do
-                next.
+                Plus è l’abbonamento dietro l’hardware — infrastruttura condivisa
+                su ogni prodotto. Analisi delle recensioni con l’AI, report
+                automatici e statistiche che ti dicono esattamente cosa fare dopo.
               </p>
             </Reveal>
 
@@ -54,14 +53,14 @@ export function Plus() {
             <Reveal index={2}>
               <div className="mt-10">
                 <Button href="#cta" size="lg">
-                  Join the waitlist
+                  Entra nella waitlist
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </div>
             </Reveal>
           </div>
 
-          {/* Dashboard mock */}
+          {/* Mock dashboard */}
           <Reveal index={1}>
             <DashboardMock />
           </Reveal>
@@ -73,22 +72,22 @@ export function Plus() {
 
 function DashboardMock() {
   const stats = [
-    { label: "Taps today", value: "2,841", delta: "+18%" },
-    { label: "Conversion", value: "63%", delta: "+6%" },
-    { label: "New reviews", value: "126", delta: "+24%" },
+    { label: "Tap oggi", value: "2.841", delta: "+18%" },
+    { label: "Conversione", value: "63%", delta: "+6%" },
+    { label: "Nuove recensioni", value: "126", delta: "+24%" },
   ];
 
   return (
     <div className="relative">
-      {/* Ambient glow */}
+      {/* Bagliore ambientale */}
       <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/15 blur-3xl" />
 
       <div className="overflow-hidden rounded-3xl bg-deep text-white ring-hairline-invert shadow-[0_40px_90px_-40px_rgba(7,11,26,0.6)]">
-        {/* Window bar */}
+        {/* Barra finestra */}
         <div className="flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5">
           <div className="flex items-center gap-2">
-            <LogoMark className="h-4 w-4 text-white/80" />
-            <span className="text-sm font-medium text-white">Kontap Plus</span>
+            <Logo variant="light" className="h-3.5 w-auto" />
+            <span className="text-sm font-medium text-white/50">· Plus</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
@@ -98,7 +97,7 @@ function DashboardMock() {
         </div>
 
         <div className="p-5">
-          {/* Stat tiles */}
+          {/* Statistiche */}
           <div className="grid grid-cols-3 gap-3">
             {stats.map((s) => (
               <div key={s.label} className="rounded-2xl bg-white/[0.03] p-3.5 ring-hairline-invert">
@@ -111,10 +110,10 @@ function DashboardMock() {
             ))}
           </div>
 
-          {/* Chart */}
+          {/* Grafico */}
           <div className="mt-3 rounded-2xl bg-white/[0.02] p-4 ring-hairline-invert">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white">Taps · last 30 days</p>
+              <p className="text-sm font-medium text-white">Tap · ultimi 30 giorni</p>
               <span className="rounded-full bg-primary/20 px-2.5 py-1 text-[0.65rem] font-medium text-celeste">
                 Live
               </span>
@@ -122,15 +121,16 @@ function DashboardMock() {
             <Sparkline />
           </div>
 
-          {/* AI insight */}
+          {/* Insight AI */}
           <div className="mt-3 flex items-start gap-3 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent p-4 ring-hairline-invert">
             <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-celeste/15 text-celeste">
               <Icon name="signal" className="h-4 w-4" />
             </span>
             <p className="text-[0.8rem] leading-relaxed text-white/70">
-              <span className="font-medium text-white">AI insight · </span>
-              Taps peak at 7–9pm on weekends. Move your review plate nearer the
-              exit to capture 20% more scans.
+              <span className="font-medium text-white">Insight AI · </span>
+              I tap raggiungono il picco tra le 19 e le 21 nel weekend. Sposta la
+              targa recensioni vicino all’uscita per catturare il 20% di
+              scansioni in più.
             </p>
           </div>
         </div>
@@ -140,7 +140,7 @@ function DashboardMock() {
 }
 
 function Sparkline() {
-  // Smooth area chart, brand-tinted. Static SVG — decorative.
+  // Area chart morbido, tinta brand. SVG statico — decorativo.
   return (
     <svg viewBox="0 0 320 88" className="mt-3 w-full" fill="none" aria-hidden="true">
       <defs>

@@ -1,12 +1,12 @@
 /**
- * Single source of truth for site copy and structured content.
- * Sections read from here so layout stays declarative and easy to edit.
+ * Fonte unica per i testi e i contenuti strutturati del sito.
+ * Le sezioni leggono da qui, così il layout resta dichiarativo e facile da modificare.
  */
 
-/** Global site config — edit these in one place. */
+/** Configurazione globale del sito — da modificare in un solo punto. */
 export const site = {
-  /** WhatsApp contact. Put the real number in international format, digits
-   *  only (no +, spaces or dashes), e.g. "393401234567". */
+  /** Contatto WhatsApp. Inserisci il numero reale in formato internazionale,
+   *  solo cifre (senza +, spazi o trattini), es. "393401234567". */
   whatsapp: {
     number: "393000000000",
     message: "Ciao Kontap, vorrei informazioni sui prodotti.",
@@ -15,24 +15,38 @@ export const site = {
 
 export const nav = {
   links: [
-    { label: "Products", href: "#products" },
-    { label: "How it works", href: "#how" },
+    { label: "Prodotti", href: "#products" },
+    { label: "Come funziona", href: "#how" },
     { label: "Plus", href: "#plus" },
     { label: "FAQ", href: "#faq" },
   ],
-  cta: { label: "Get started", href: "#cta" },
+  cta: { label: "Inizia ora", href: "#cta" },
 } as const;
 
-export const useCases = [
-  "Restaurants",
-  "Bars & cafés",
-  "Shops",
-  "Salons",
-  "Bakeries",
-  "Pizzerias",
-  "Gelaterie",
-  "Local services",
-] as const;
+/** Destinazioni che un tap può aprire — scorrono nel nastro sotto l'hero. */
+export type Destination = {
+  name: string;
+  icon:
+    | "google"
+    | "tripadvisor"
+    | "instagram"
+    | "facebook"
+    | "whatsapp"
+    | "trustpilot"
+    | "tiktok"
+    | "youtube";
+};
+
+export const destinations: Destination[] = [
+  { name: "Google", icon: "google" },
+  { name: "TripAdvisor", icon: "tripadvisor" },
+  { name: "Instagram", icon: "instagram" },
+  { name: "Facebook", icon: "facebook" },
+  { name: "WhatsApp", icon: "whatsapp" },
+  { name: "Trustpilot", icon: "trustpilot" },
+  { name: "TikTok", icon: "tiktok" },
+  { name: "YouTube", icon: "youtube" },
+];
 
 export type Feature = {
   title: string;
@@ -44,34 +58,34 @@ export type Feature = {
 
 export const whyFeatures: Feature[] = [
   {
-    title: "No app. No friction.",
+    title: "Niente app. Nessun ostacolo.",
     description:
-      "Every Kontap product works with the phone your customer already has. A tap opens the experience instantly — nothing to download, nothing to explain.",
+      "Ogni prodotto Kontap funziona con lo smartphone che il cliente ha già. Un tap apre l'esperienza all'istante — niente da scaricare, niente da spiegare.",
     span: "wide",
     icon: "signal",
   },
   {
-    title: "One platform, every product",
+    title: "Una piattaforma, tutti i prodotti",
     description:
-      "Plus is shared infrastructure. The same dashboard, analytics and AI power the review plate, the business card and everything you add next.",
+      "Plus è l'infrastruttura condivisa. Un'unica dashboard, le stesse statistiche e la stessa AI per la targa recensioni, il biglietto da visita e tutto ciò che aggiungi.",
     icon: "layers",
   },
   {
-    title: "Engineered to last",
+    title: "Costruito per durare",
     description:
-      "Waterproof, scratch-resistant materials and industrial-grade chips rated for hundreds of thousands of taps.",
+      "Materiali impermeabili e resistenti ai graffi, chip di livello industriale testati per centinaia di migliaia di tap.",
     icon: "shield",
   },
   {
-    title: "Reprogrammable for life",
+    title: "Riprogrammabile per sempre",
     description:
-      "Point a tag at a new destination whenever your business changes. The hardware you buy once keeps earning.",
+      "Cambia la destinazione di un tag ogni volta che la tua attività cambia. L'hardware lo compri una volta e continua a lavorare per te.",
     icon: "refresh",
   },
   {
-    title: "Built for local business",
+    title: "Pensato per le attività locali",
     description:
-      "Made for restaurants, bars and shops in Puglia and beyond — live in under two minutes, insight from day one.",
+      "Fatto per ristoranti, bar e negozi in Puglia e non solo — attivo in meno di due minuti, dati utili dal primo giorno.",
     icon: "bolt",
   },
 ];
@@ -85,21 +99,21 @@ export type Step = {
 export const steps: Step[] = [
   {
     number: "01",
-    title: "Choose your product",
+    title: "Scegli il tuo prodotto",
     description:
-      "Start with the Google Review plate on your counter, add NFC cards for the team, an Apple Wallet pass for regulars — one line-up, one platform.",
+      "Parti dalla targa per le recensioni Google sul bancone, aggiungi i biglietti NFC per il team, un pass Apple Wallet per i clienti abituali — una sola linea, un'unica piattaforma.",
   },
   {
     number: "02",
-    title: "Link it in seconds",
+    title: "Collegalo in pochi secondi",
     description:
-      "Tap to program the destination: a review page, a profile, a wallet pass or any URL. Change it anytime from your dashboard.",
+      "Tocca per impostare la destinazione: una pagina recensioni, un profilo, un pass wallet o qualsiasi URL. La cambi quando vuoi dalla dashboard.",
   },
   {
     number: "03",
-    title: "Tap, connect, measure",
+    title: "Tocca, connetti, misura",
     description:
-      "Your customer taps their phone and the experience opens instantly — while every interaction flows into Kontap Plus as analytics.",
+      "Il cliente avvicina il telefono e l'esperienza si apre all'istante — mentre ogni interazione entra in Kontap Plus come statistica.",
   },
 ];
 
@@ -107,39 +121,39 @@ export type Product = {
   name: string;
   tagline: string;
   description: string;
-  /** slug used for the product image at /products/<image>.png */
+  /** slug usato per l'immagine prodotto in /products/<image>.png */
   image: string;
-  /** short spec chips shown under the description */
+  /** brevi chip di specifica mostrate sotto la descrizione */
   specs: string[];
 };
 
-/** The 3-product display. Photos are dropped in at /public/products/<image>.png
- *  (transparent PNG, long edge ≥ 2000px). A branded placeholder renders until
- *  the real photo is added. */
+/** L'espositore a 3 prodotti. Le foto vanno in /public/products/<image>.png
+ *  (PNG trasparente, lato lungo ≥ 2000px). Fino ad allora appare un
+ *  placeholder brandizzato. */
 export const products: Product[] = [
   {
-    name: "Google Review Plate",
-    tagline: "The entry product",
+    name: "Targa Recensioni Google",
+    tagline: "Il prodotto d'ingresso",
     description:
-      "A premium counter plate that sends happy customers straight to your Google review page with one tap. The fastest way to grow your rating.",
+      "Una targa premium da bancone che porta i clienti soddisfatti direttamente alla tua pagina recensioni Google con un solo tap. Il modo più veloce per far crescere la tua reputazione.",
     image: "review-plate",
-    specs: ["Counter-top", "Reprogrammable", "Waterproof"],
+    specs: ["Da bancone", "Riprogrammabile", "Impermeabile"],
   },
   {
-    name: "NFC Business Card",
-    tagline: "Your profile in a tap",
+    name: "Biglietto da Visita NFC",
+    tagline: "Il tuo profilo in un tap",
     description:
-      "Share contact, socials and links instantly. Metal and premium finishes, one card for the whole team — every tap tracked in Plus.",
+      "Condividi contatti, social e link all'istante. Finiture in metallo e premium, un solo biglietto per tutto il team — e ogni tap tracciato in Plus.",
     image: "business-card",
-    specs: ["Metal finish", "Contact + socials", "Team-ready"],
+    specs: ["Finitura metallo", "Contatti + social", "Pronto per il team"],
   },
   {
-    name: "Apple Wallet Card",
-    tagline: "Live in the wallet",
+    name: "Carta Apple Wallet",
+    tagline: "Vive nel wallet",
     description:
-      "A dynamic pass that updates in real time and never leaves your customer's phone. Loyalty, offers and reminders, always one swipe away.",
+      "Un pass dinamico che si aggiorna in tempo reale e non lascia mai il telefono del cliente. Fedeltà, offerte e promemoria, sempre a portata di swipe.",
     image: "wallet-card",
-    specs: ["Apple Wallet", "Real-time", "Loyalty & offers"],
+    specs: ["Apple Wallet", "Tempo reale", "Fedeltà e offerte"],
   },
 ];
 
@@ -150,64 +164,64 @@ export type Faq = {
 
 export const faqs: Faq[] = [
   {
-    question: "Do my customers need an app to use Kontap?",
+    question: "I miei clienti hanno bisogno di un'app per usare Kontap?",
     answer:
-      "No. NFC is built into every modern iPhone and Android. Your customer simply holds their phone near the Kontap product and the experience opens in their browser — nothing to install.",
+      "No. L'NFC è integrato in ogni iPhone e Android moderno. Il cliente avvicina semplicemente il telefono al prodotto Kontap e l'esperienza si apre nel browser — niente da installare.",
   },
   {
-    question: "Is Kontap only for Google reviews?",
+    question: "Kontap serve solo per le recensioni Google?",
     answer:
-      "Not at all. The Google Review plate is our entry product, but Kontap is a multi-product NFC company. The same tap can open a business card, an Apple Wallet pass, a menu, a payment link and more — all managed from one platform.",
+      "No. La targa recensioni Google è il nostro prodotto d'ingresso, ma Kontap è un'azienda NFC multi-prodotto. Lo stesso tap può aprire un biglietto da visita, un pass Apple Wallet, un menù, un link di pagamento e altro — tutto gestito da un'unica piattaforma.",
   },
   {
-    question: "What is Kontap Plus?",
+    question: "Cos'è Kontap Plus?",
     answer:
-      "Plus is our SaaS subscription — shared infrastructure across every Kontap product. It turns each tap into analytics (traffic, timing, location and conversion), adds AI-powered review analysis and sends automated reports so you always know what's working.",
+      "Plus è il nostro abbonamento SaaS — infrastruttura condivisa su ogni prodotto Kontap. Trasforma ogni tap in statistiche (traffico, orari, posizione e conversioni), aggiunge l'analisi delle recensioni con l'AI e invia report automatici, così sai sempre cosa funziona.",
   },
   {
-    question: "Can I change where a Kontap product points after I buy it?",
+    question: "Posso cambiare la destinazione di un prodotto dopo l'acquisto?",
     answer:
-      "Yes. Every Kontap product is reprogrammable. Update the destination — a review link, profile, wallet pass or URL — as many times as you like from your dashboard.",
+      "Sì. Ogni prodotto Kontap è riprogrammabile. Aggiorna la destinazione — un link recensioni, un profilo, un pass wallet o un URL — tutte le volte che vuoi dalla tua dashboard.",
   },
   {
-    question: "How durable is the hardware?",
+    question: "Quanto è resistente l'hardware?",
     answer:
-      "Kontap products use waterproof, scratch-resistant materials and industrial-grade NFC chips rated for hundreds of thousands of taps, so they hold up on a busy counter or in a pocket.",
+      "I prodotti Kontap usano materiali impermeabili e resistenti ai graffi e chip NFC di livello industriale testati per centinaia di migliaia di tap: reggono su un bancone affollato o in tasca.",
   },
   {
-    question: "Do you ship in Italy?",
+    question: "Spedite in Italia?",
     answer:
-      "Yes. Kontap is based in Puglia and ships across Italy — with worldwide shipping available. Options and timelines are shown at checkout based on your destination.",
+      "Sì. Kontap ha sede in Puglia e spedisce in tutta Italia — con spedizione mondiale disponibile. Opzioni e tempi sono mostrati al checkout in base alla destinazione.",
   },
 ];
 
 export const footer = {
   columns: [
     {
-      title: "Products",
+      title: "Prodotti",
       links: [
-        { label: "Google Review Plate", href: "#products" },
-        { label: "NFC Business Card", href: "#products" },
-        { label: "Apple Wallet Card", href: "#products" },
-        { label: "Smart NFC Products", href: "#products" },
+        { label: "Targa Recensioni Google", href: "#products" },
+        { label: "Biglietto da Visita NFC", href: "#products" },
+        { label: "Carta Apple Wallet", href: "#products" },
+        { label: "Prodotti NFC Smart", href: "#products" },
       ],
     },
     {
-      title: "Platform",
+      title: "Piattaforma",
       links: [
-        { label: "How it works", href: "#how" },
+        { label: "Come funziona", href: "#how" },
         { label: "Kontap Plus", href: "#plus" },
-        { label: "Use cases", href: "#usecases" },
+        { label: "Casi d'uso", href: "#usecases" },
         { label: "FAQ", href: "#faq" },
       ],
     },
     {
-      title: "Company",
+      title: "Azienda",
       links: [
-        { label: "About", href: "#" },
-        { label: "Contact", href: "#cta" },
+        { label: "Chi siamo", href: "#" },
+        { label: "Contatti", href: "#cta" },
         { label: "Privacy", href: "#" },
-        { label: "Terms", href: "#" },
+        { label: "Termini", href: "#" },
       ],
     },
   ],
