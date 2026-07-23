@@ -6,7 +6,7 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Logo } from "../Logo";
-import { products } from "@/lib/content";
+import { products, type Product } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 /**
@@ -53,11 +53,7 @@ export function Products() {
         <div className="mt-16 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14">
           {/* Stage */}
           <Reveal className="order-1">
-            <ProductStage
-              key={product.image}
-              image={product.image}
-              name={product.name}
-            />
+            <ProductStage key={product.image} product={product} />
           </Reveal>
 
           {/* Selettore */}
@@ -149,37 +145,22 @@ export function Products() {
   );
 }
 
-function ProductStage({ image, name }: { image: string; name: string }) {
-  // Il placeholder brandizzato è il default. Se esiste una foto reale in
-  // /products/<image>.png viene rivelata al caricamento (onError è inaffidabile
-  // per immagini SSR, quindi mostriamo al load riuscito).
-  const [loaded, setLoaded] = useState(false);
+function ProductStage({ product }: { product: Product }) {
+  if (product.back) {
+    return <FlipCard product={product} />;
+  }
+  return <SingleStage product={product} />;
+}
 
+/** Prodotto singolo (es. targa): immagine su alone celeste. */
+function SingleStage({ product }: { product: Product }) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <div className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
-      {/* Alone celeste soft */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 rounded-full opacity-90"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 50%, rgba(118,223,255,0.30) 0%, rgba(46,123,255,0.12) 36%, rgba(255,255,255,0) 66%)",
-        }}
-      />
-      {/* Anelli pulsanti */}
-      {[0, 1].map((i) => (
-        <span
-          key={i}
-          aria-hidden="true"
-          className="absolute h-56 w-56 rounded-full ring-1 ring-[color:rgba(46,123,255,0.25)]"
-          style={{
-            animation: "kontap-pulse-ring 3.4s ease-out infinite",
-            animationDelay: `${i * 1.7}s`,
-          }}
-        />
-      ))}
+      <Halo />
+      <PulseRings />
 
-      {/* Placeholder brandizzato — gradiente celeste (mostrato finché non carica la foto) */}
+      {/* Placeholder brandizzato finché non carica la foto */}
       <div
         className={cn(
           "relative z-10 flex h-52 w-52 flex-col items-center justify-center gap-4 rounded-[2rem] ring-hairline transition-opacity duration-500",
@@ -192,21 +173,95 @@ function ProductStage({ image, name }: { image: string; name: string }) {
       >
         <Logo variant="dark" className="h-5 w-auto opacity-90" />
         <p className="px-4 text-center text-[0.7rem] font-medium uppercase tracking-[0.18em] text-primary/70">
-          {name}
+          {product.name}
         </p>
       </div>
 
-      {/* Foto reale del prodotto, rivelata al caricamento */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`/products/${image}.png`}
-        alt=""
+        src={`/products/${product.image}.png`}
+        alt={product.name}
         onLoad={() => setLoaded(true)}
         className={cn(
-          "absolute inset-0 z-20 m-auto max-h-[80%] max-w-[80%] object-contain drop-shadow-[0_30px_60px_rgba(7,11,26,0.25)] transition-opacity duration-500",
+          "absolute inset-0 z-20 m-auto max-h-[82%] max-w-[82%] object-contain drop-shadow-[0_30px_60px_rgba(7,11,26,0.25)] transition-opacity duration-500",
           loaded ? "opacity-100" : "opacity-0"
         )}
       />
     </div>
+  );
+}
+
+/** Biglietto NFC: si gira al click mostrando il retro. */
+function FlipCard({ product }: { product: Product }) {
+  const [flipped, setFlipped] = useState(false);
+  return (
+    <div className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
+      <Halo />
+      <div className="relative z-10 w-full max-w-sm">
+        <button
+          type="button"
+          onClick={() => setFlipped((f) => !f)}
+          aria-label={flipped ? "Mostra il fronte del biglietto" : "Gira il biglietto e mostra il retro"}
+          className="group block w-full rounded-2xl [perspective:1600px] focus-visible:outline-none"
+        >
+          <div
+            className="relative aspect-[1.586/1] w-full transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] [transform-style:preserve-3d]"
+            style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+          >
+            {/* Fronte */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/products/${product.image}.png`}
+              alt={`${product.name} — fronte`}
+              className="absolute inset-0 h-full w-full rounded-2xl object-cover shadow-[0_30px_70px_-24px_rgba(7,11,26,0.55)] ring-1 ring-black/5 [backface-visibility:hidden] [transform:translateZ(0)]"
+            />
+            {/* Retro */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/products/${product.back}.png`}
+              alt={`${product.name} — retro`}
+              className="absolute inset-0 h-full w-full rounded-2xl object-cover shadow-[0_30px_70px_-24px_rgba(7,11,26,0.55)] ring-1 ring-black/5 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+            />
+          </div>
+        </button>
+
+        {/* Suggerimento */}
+        <div className="mt-5 flex items-center justify-center gap-2 text-sm text-muted">
+          <Icon name="refresh" className="h-4 w-4" />
+          <span>{flipped ? "Clicca per il fronte" : "Clicca per girarlo"}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Halo() {
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 rounded-full opacity-90"
+      style={{
+        background:
+          "radial-gradient(circle at 50% 50%, rgba(118,223,255,0.30) 0%, rgba(46,123,255,0.12) 36%, rgba(255,255,255,0) 66%)",
+      }}
+    />
+  );
+}
+
+function PulseRings() {
+  return (
+    <>
+      {[0, 1].map((i) => (
+        <span
+          key={i}
+          aria-hidden="true"
+          className="absolute h-56 w-56 rounded-full ring-1 ring-[color:rgba(46,123,255,0.25)]"
+          style={{
+            animation: "kontap-pulse-ring 3.4s ease-out infinite",
+            animationDelay: `${i * 1.7}s`,
+          }}
+        />
+      ))}
+    </>
   );
 }

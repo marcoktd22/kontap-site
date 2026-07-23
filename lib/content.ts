@@ -123,6 +123,11 @@ export type Product = {
   description: string;
   /** slug usato per l'immagine prodotto in /products/<image>.png */
   image: string;
+  /** slug del retro in /products/<back>.png: se presente, il prodotto si
+   *  gira al click mostrando il retro */
+  back?: string;
+  /** proporzione dello stage: "card" per il biglietto, "square" per il resto */
+  ratio?: "card" | "square";
   /** brevi chip di specifica mostrate sotto la descrizione */
   specs: string[];
 };
@@ -145,6 +150,8 @@ export const products: Product[] = [
     description:
       "Condividi contatti, social e link all'istante. Finiture in metallo e premium, un solo biglietto per tutto il team — e ogni tap tracciato in Plus.",
     image: "business-card",
+    back: "business-card-back",
+    ratio: "card",
     specs: ["Finitura metallo", "Contatti + social", "Pronto per il team"],
   },
   {
