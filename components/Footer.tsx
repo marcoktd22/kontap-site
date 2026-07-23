@@ -12,9 +12,9 @@ export function Footer() {
               <Logo className="h-7 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              Premium NFC hardware and the Plus platform — turning physical
-              interactions into digital experiences, one tap at a time. Made in
-              Puglia.
+              Hardware NFC premium e la piattaforma Plus — trasformiamo le
+              interazioni fisiche in esperienze digitali, un tap alla volta. Made
+              in Puglia.
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-[color:var(--color-line)] pt-8 sm:flex-row sm:items-center">
           <p className="text-sm text-muted">
-            © {new Date().getFullYear()} Kontap. All rights reserved.
+            © {new Date().getFullYear()} Kontap. Tutti i diritti riservati.
           </p>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted/70">
             kontap.com

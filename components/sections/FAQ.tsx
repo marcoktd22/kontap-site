@@ -17,8 +17,8 @@ export function FAQ() {
       <Container className="max-w-3xl">
         <SectionHeader
           eyebrow="FAQ"
-          title="Questions, answered"
-          description="Everything you need to know about Kontap hardware and the platform behind it."
+          title="Domande, risposte"
+          description="Tutto quello che devi sapere sull'hardware Kontap e sulla piattaforma che lo fa funzionare."
         />
 
         <div className="mt-14 flex flex-col gap-3">

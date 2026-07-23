@@ -1,19 +1,20 @@
 import { Container } from "../ui/Container";
-import { useCases } from "@/lib/content";
+import { BrandIcon } from "../BrandIcon";
+import { destinations } from "@/lib/content";
 
 export function UseCases() {
-  // Duplicate for a seamless marquee loop
-  const items = [...useCases, ...useCases];
+  // Duplicato per un loop continuo del nastro
+  const items = [...destinations, ...destinations];
 
   return (
     <section
       id="usecases"
-      aria-label="Industries using Kontap"
+      aria-label="Destinazioni che un tap può aprire"
       className="relative scroll-mt-24 border-y border-[color:var(--color-line)] py-12"
     >
       <Container>
         <p className="text-center text-xs font-medium uppercase tracking-[0.22em] text-muted">
-          One platform, every counter and pocket in Puglia
+          Un tap. Qualsiasi destinazione.
         </p>
       </Container>
 
@@ -27,16 +28,18 @@ export function UseCases() {
         }}
       >
         <div
-          className="flex w-max items-center gap-4"
+          className="flex w-max items-center gap-12 sm:gap-16"
           style={{ animation: "kontap-marquee 34s linear infinite" }}
         >
-          {items.map((label, i) => (
+          {items.map((d, i) => (
             <span
-              key={`${label}-${i}`}
-              className="inline-flex items-center gap-2.5 rounded-full bg-surface px-5 py-2.5 text-sm text-secondary ring-hairline"
+              key={`${d.name}-${i}`}
+              className="inline-flex items-center gap-2.5 text-secondary/80"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              {label}
+              <BrandIcon name={d.icon} className="h-6 w-6" />
+              <span className="text-base font-medium tracking-tight">
+                {d.name}
+              </span>
             </span>
           ))}
         </div>
