@@ -17,14 +17,14 @@ export function Hero() {
       {/* Ghost wordmark for depth */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-[42%] -z-10 -translate-x-1/2 -translate-y-1/2 select-none text-[24vw] font-semibold leading-none tracking-tighter text-white/[0.02] sm:text-[20vw]"
+        className="pointer-events-none absolute left-1/2 top-[42%] -z-10 -translate-x-1/2 -translate-y-1/2 select-none text-[24vw] font-semibold leading-none tracking-tighter text-ink/[0.03] sm:text-[20vw]"
       >
         kontap
       </span>
 
       <Container className="relative flex flex-col items-center text-center">
         <Reveal>
-          <Eyebrow>NFC Technology</Eyebrow>
+          <Eyebrow>NFC Technology · Made in Puglia</Eyebrow>
         </Reveal>
 
         <Reveal index={1}>
@@ -36,9 +36,9 @@ export function Hero() {
 
         <Reveal index={2}>
           <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted sm:text-xl">
-            Kontap turns physical interactions into digital experiences. Premium
-            NFC hardware — one tap away from a review, a profile, a wallet pass
-            or your next customer.
+            Kontap builds premium NFC hardware for local businesses — starting
+            with the Google Review plate — all powered by Plus, one platform for
+            analytics, AI review analysis and automated reports.
           </p>
         </Reveal>
 

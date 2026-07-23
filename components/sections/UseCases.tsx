@@ -13,7 +13,7 @@ export function UseCases() {
     >
       <Container>
         <p className="text-center text-xs font-medium uppercase tracking-[0.22em] text-muted">
-          One platform, every counter and pocket
+          One platform, every counter and pocket in Puglia
         </p>
       </Container>
 
@@ -33,7 +33,7 @@ export function UseCases() {
           {items.map((label, i) => (
             <span
               key={`${label}-${i}`}
-              className="inline-flex items-center gap-2.5 rounded-full bg-white/[0.03] px-5 py-2.5 text-sm text-secondary ring-hairline"
+              className="inline-flex items-center gap-2.5 rounded-full bg-surface px-5 py-2.5 text-sm text-secondary ring-hairline"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               {label}

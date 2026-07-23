@@ -8,18 +8,19 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-5">
           <div className="col-span-2 md:col-span-2">
-            <a href="#top" className="text-xl" aria-label="Kontap home">
-              <Logo />
+            <a href="#top" className="inline-block" aria-label="Kontap home">
+              <Logo className="h-7 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              Transforming physical interactions into digital experiences — with
-              a simple tap.
+              Premium NFC hardware and the Plus platform — turning physical
+              interactions into digital experiences, one tap at a time. Made in
+              Puglia.
             </p>
           </div>
 
           {footer.columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-sm font-medium text-white">{col.title}</h3>
+              <h3 className="text-sm font-medium text-ink">{col.title}</h3>
               <ul className="mt-4 flex flex-col gap-3">
                 {col.links.map((link) => (
                   <li key={link.label}>

@@ -7,21 +7,21 @@ import { Icon } from "../ui/Icon";
 import { LogoMark } from "../Logo";
 
 const bullets = [
-  "Real-time tap analytics — traffic, timing and location",
-  "AI insights that recommend what to change next",
-  "Conversion tracking from tap to action",
-  "Every product, managed from one dashboard",
+  "AI review analysis — sentiment, themes and what to fix next",
+  "Automated reports delivered to your inbox",
+  "Real-time tap analytics: traffic, timing and location",
+  "One dashboard across every Kontap product",
 ];
 
-export function KontapOS() {
+export function Plus() {
   return (
-    <Section id="os" className="overflow-hidden">
+    <Section id="plus" className="overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
           {/* Copy */}
           <div>
             <Reveal>
-              <Eyebrow>Coming soon · Kontap OS</Eyebrow>
+              <Eyebrow>Subscription · Kontap Plus</Eyebrow>
             </Reveal>
             <Reveal index={1}>
               <h2 className="mt-6 text-balance text-4xl font-semibold sm:text-5xl">
@@ -31,16 +31,17 @@ export function KontapOS() {
             </Reveal>
             <Reveal index={2}>
               <p className="mt-6 max-w-lg text-pretty text-lg leading-relaxed text-muted">
-                Kontap OS is the platform behind the hardware — an analytics
-                dashboard that turns physical taps into insight, with AI that
-                tells you what to do about it.
+                Plus is the subscription behind the hardware — shared
+                infrastructure across every product. AI-powered review analysis,
+                automated reports and analytics that tell you exactly what to do
+                next.
               </p>
             </Reveal>
 
             <ul className="mt-8 flex flex-col gap-4">
               {bullets.map((b, i) => (
                 <Reveal as="li" key={b} index={i} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-accent ring-1 ring-[color:var(--color-line-strong)]">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-[color:var(--color-line-strong)]">
                     <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2} />
                   </span>
                   <span className="text-[0.95rem] leading-relaxed text-secondary">
@@ -52,7 +53,7 @@ export function KontapOS() {
 
             <Reveal index={2}>
               <div className="mt-10">
-                <Button href="#cta" variant="secondary" size="lg">
+                <Button href="#cta" size="lg">
                   Join the waitlist
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
@@ -80,14 +81,14 @@ function DashboardMock() {
   return (
     <div className="relative">
       {/* Ambient glow */}
-      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/10 blur-3xl" />
+      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/15 blur-3xl" />
 
-      <div className="overflow-hidden rounded-3xl bg-surface/70 ring-hairline backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_40px_90px_-40px_rgba(0,0,0,0.9)]">
+      <div className="overflow-hidden rounded-3xl bg-deep text-white ring-hairline-invert shadow-[0_40px_90px_-40px_rgba(7,11,26,0.6)]">
         {/* Window bar */}
-        <div className="flex items-center justify-between border-b border-[color:var(--color-line)] px-5 py-3.5">
+        <div className="flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5">
           <div className="flex items-center gap-2">
             <LogoMark className="h-4 w-4 text-white/80" />
-            <span className="text-sm font-medium text-white">Kontap OS</span>
+            <span className="text-sm font-medium text-white">Kontap Plus</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
@@ -100,21 +101,21 @@ function DashboardMock() {
           {/* Stat tiles */}
           <div className="grid grid-cols-3 gap-3">
             {stats.map((s) => (
-              <div key={s.label} className="rounded-2xl bg-white/[0.03] p-3.5 ring-hairline">
-                <p className="text-[0.65rem] uppercase tracking-wider text-muted">
+              <div key={s.label} className="rounded-2xl bg-white/[0.03] p-3.5 ring-hairline-invert">
+                <p className="text-[0.65rem] uppercase tracking-wider text-white/50">
                   {s.label}
                 </p>
                 <p className="mt-1.5 text-xl font-semibold text-white">{s.value}</p>
-                <p className="mt-1 text-[0.65rem] font-medium text-accent">{s.delta}</p>
+                <p className="mt-1 text-[0.65rem] font-medium text-celeste">{s.delta}</p>
               </div>
             ))}
           </div>
 
           {/* Chart */}
-          <div className="mt-3 rounded-2xl bg-white/[0.02] p-4 ring-hairline">
+          <div className="mt-3 rounded-2xl bg-white/[0.02] p-4 ring-hairline-invert">
             <div className="flex items-center justify-between">
               <p className="text-sm font-medium text-white">Taps · last 30 days</p>
-              <span className="rounded-full bg-primary/15 px-2.5 py-1 text-[0.65rem] font-medium text-accent">
+              <span className="rounded-full bg-primary/20 px-2.5 py-1 text-[0.65rem] font-medium text-celeste">
                 Live
               </span>
             </div>
@@ -122,11 +123,11 @@ function DashboardMock() {
           </div>
 
           {/* AI insight */}
-          <div className="mt-3 flex items-start gap-3 rounded-2xl bg-gradient-to-br from-primary/15 to-transparent p-4 ring-hairline">
-            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
+          <div className="mt-3 flex items-start gap-3 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent p-4 ring-hairline-invert">
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-celeste/15 text-celeste">
               <Icon name="signal" className="h-4 w-4" />
             </span>
-            <p className="text-[0.8rem] leading-relaxed text-secondary">
+            <p className="text-[0.8rem] leading-relaxed text-white/70">
               <span className="font-medium text-white">AI insight · </span>
               Taps peak at 7–9pm on weekends. Move your review plate nearer the
               exit to capture 20% more scans.
@@ -143,22 +144,22 @@ function Sparkline() {
   return (
     <svg viewBox="0 0 320 88" className="mt-3 w-full" fill="none" aria-hidden="true">
       <defs>
-        <linearGradient id="os-fill" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="plus-fill" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#0A36F6" stopOpacity="0.45" />
           <stop offset="100%" stopColor="#0A36F6" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id="os-stroke" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id="plus-stroke" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#0A36F6" />
           <stop offset="100%" stopColor="#76DFFF" />
         </linearGradient>
       </defs>
       <path
         d="M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16 L320 88 L0 88 Z"
-        fill="url(#os-fill)"
+        fill="url(#plus-fill)"
       />
       <path
         d="M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16"
-        stroke="url(#os-stroke)"
+        stroke="url(#plus-stroke)"
         strokeWidth="2.2"
         strokeLinecap="round"
       />

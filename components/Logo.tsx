@@ -2,8 +2,9 @@ import { cn } from "@/lib/cn";
 
 /**
  * Kontap aperture mark — the brand's radial "tap" symbol used in place of
- * the "o". Drawn with currentColor so it inherits white on dark surfaces
- * and black on light ones (matching the two supplied logo variants).
+ * the "o". Faithful vector of the supplied logo mark, drawn with
+ * currentColor so it inherits the surrounding text colour (black on light
+ * surfaces, white on dark ones). Used for small inline / decorative marks.
  */
 export function LogoMark({
   className,
@@ -39,31 +40,27 @@ export function LogoMark({
 }
 
 /**
- * Full wordmark: k + aperture mark + ntap.
- * The wordmark is set in the site typeface so the logo and headings read as
- * one type system; the aperture mark carries the brand recognition.
+ * Official Kontap wordmark (real supplied SVG). Two colour variants:
+ * `variant="dark"` renders the black wordmark for light backgrounds,
+ * `variant="light"` renders the white wordmark for dark backgrounds.
  */
 export function Logo({
   className,
-  markClassName,
+  variant = "dark",
 }: {
   className?: string;
-  markClassName?: string;
+  variant?: "dark" | "light";
 }) {
+  const src =
+    variant === "light"
+      ? "/brand/kontap-wordmark-light.svg"
+      : "/brand/kontap-wordmark-dark.svg";
   return (
-    <span
-      className={cn(
-        "inline-flex select-none items-center font-semibold tracking-tight text-white",
-        className
-      )}
-    >
-      <span aria-hidden="true">k</span>
-      <LogoMark
-        className={cn("mx-[0.01em] h-[0.82em] w-[0.82em]", markClassName)}
-        title=""
-      />
-      <span aria-hidden="true">ntap</span>
-      <span className="sr-only">Kontap</span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt="Kontap"
+      className={cn("block h-7 w-auto select-none", className)}
+    />
   );
 }
