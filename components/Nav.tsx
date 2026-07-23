@@ -30,14 +30,14 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
       <nav
         className={cn(
-          "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-3 py-2 pl-5 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
+          "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-3 py-2 pl-5 ring-hairline-invert backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
           scrolled || open
-            ? "bg-white/80 shadow-[0_8px_40px_-16px_rgba(7,11,26,0.25)] ring-hairline backdrop-blur-xl"
-            : "bg-transparent"
+            ? "bg-[linear-gradient(120deg,rgba(10,54,246,0.95)_0%,rgba(46,123,255,0.92)_55%,rgba(79,195,255,0.92)_120%)] shadow-[0_12px_36px_-14px_rgba(10,54,246,0.6)]"
+            : "bg-[linear-gradient(120deg,rgba(10,54,246,0.82)_0%,rgba(46,123,255,0.8)_55%,rgba(79,195,255,0.8)_120%)]"
         )}
       >
         <a href="#top" className="shrink-0" aria-label="Kontap home">
-          <Logo className="h-6 w-auto" />
+          <Logo variant="light" className="h-6 w-auto" />
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
@@ -45,7 +45,7 @@ export function Nav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="rounded-full px-4 py-2 text-sm text-secondary transition-colors duration-200 hover:bg-ink/[0.04] hover:text-ink"
+                className="rounded-full px-4 py-2 text-sm text-white/85 transition-colors duration-200 hover:bg-white/15 hover:text-white"
               >
                 {link.label}
               </a>
@@ -54,18 +54,19 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <span className="hidden sm:inline-flex">
-            <Button href={nav.cta.href} size="sm">
-              {nav.cta.label}
-              <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </Button>
-          </span>
+          <a
+            href={nav.cta.href}
+            className="group hidden h-9 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-medium text-primary shadow-[0_6px_20px_-8px_rgba(7,11,26,0.4)] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:bg-white/95 sm:inline-flex"
+          >
+            {nav.cta.label}
+            <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-ink ring-hairline transition-colors hover:bg-ink/[0.05] md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-white ring-hairline-invert transition-colors hover:bg-white/15 md:hidden"
           >
             <div className="relative h-4 w-5">
               <span
