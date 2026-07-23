@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s · Kontap",
   },
   description:
-    "Kontap builds premium NFC hardware and software that turn physical interactions into digital experiences. Review plates, NFC cards, Apple Wallet passes, pet tags and the upcoming Kontap OS analytics platform.",
+    "Kontap builds premium NFC hardware and the Plus platform — AI review analysis, automated reports and analytics — for local businesses. One tap turns a physical interaction into a digital experience.",
   keywords: [
     "NFC",
     "NFC business cards",
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#00051B",
-  colorScheme: "dark",
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

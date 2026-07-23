@@ -28,10 +28,10 @@ export function WhyKontap() {
             >
               <Card interactive className="h-full">
                 <div className="flex h-full flex-col">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-accent ring-1 ring-[color:var(--color-line-strong)]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-[color:var(--color-line-strong)]">
                     <Icon name={feature.icon} />
                   </span>
-                  <h3 className="mt-6 text-xl font-medium text-white">
+                  <h3 className="mt-6 text-xl font-medium text-ink">
                     {feature.title}
                   </h3>
                   <p className="mt-3 text-pretty text-[0.95rem] leading-relaxed text-muted">

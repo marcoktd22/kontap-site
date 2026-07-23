@@ -3,11 +3,21 @@
  * Sections read from here so layout stays declarative and easy to edit.
  */
 
+/** Global site config — edit these in one place. */
+export const site = {
+  /** WhatsApp contact. Put the real number in international format, digits
+   *  only (no +, spaces or dashes), e.g. "393401234567". */
+  whatsapp: {
+    number: "393000000000",
+    message: "Ciao Kontap, vorrei informazioni sui prodotti.",
+  },
+} as const;
+
 export const nav = {
   links: [
     { label: "Products", href: "#products" },
     { label: "How it works", href: "#how" },
-    { label: "Kontap OS", href: "#os" },
+    { label: "Plus", href: "#plus" },
     { label: "FAQ", href: "#faq" },
   ],
   cta: { label: "Get started", href: "#cta" },
@@ -15,13 +25,13 @@ export const nav = {
 
 export const useCases = [
   "Restaurants",
-  "Clinics",
-  "Creators",
-  "Agencies",
-  "Retail",
-  "Real estate",
-  "Events",
-  "Studios",
+  "Bars & cafés",
+  "Shops",
+  "Salons",
+  "Bakeries",
+  "Pizzerias",
+  "Gelaterie",
+  "Local services",
 ] as const;
 
 export type Feature = {
@@ -41,10 +51,10 @@ export const whyFeatures: Feature[] = [
     icon: "signal",
   },
   {
-    title: "Reprogrammable for life",
+    title: "One platform, every product",
     description:
-      "Point a tag at a new destination whenever your business changes. The hardware you buy once keeps earning.",
-    icon: "refresh",
+      "Plus is shared infrastructure. The same dashboard, analytics and AI power the review plate, the business card and everything you add next.",
+    icon: "layers",
   },
   {
     title: "Engineered to last",
@@ -53,16 +63,16 @@ export const whyFeatures: Feature[] = [
     icon: "shield",
   },
   {
-    title: "Instant to set up",
+    title: "Reprogrammable for life",
     description:
-      "Unbox, tap to configure, place it anywhere. Most customers are live in under two minutes.",
-    icon: "bolt",
+      "Point a tag at a new destination whenever your business changes. The hardware you buy once keeps earning.",
+    icon: "refresh",
   },
   {
-    title: "Analytics-ready",
+    title: "Built for local business",
     description:
-      "Every tap is a signal. Kontap OS turns them into insight — traffic, timing, conversion and location.",
-    icon: "chart",
+      "Made for restaurants, bars and shops in Puglia and beyond — live in under two minutes, insight from day one.",
+    icon: "bolt",
   },
 ];
 
@@ -77,19 +87,19 @@ export const steps: Step[] = [
     number: "01",
     title: "Choose your product",
     description:
-      "Pick the Kontap hardware that fits — a review plate for the counter, a card for your pocket, a tag for a collar.",
+      "Start with the Google Review plate on your counter, add NFC cards for the team, an Apple Wallet pass for regulars — one line-up, one platform.",
   },
   {
     number: "02",
     title: "Link it in seconds",
     description:
-      "Tap to program the destination: a review page, a profile, a wallet pass, a URL. Change it anytime.",
+      "Tap to program the destination: a review page, a profile, a wallet pass or any URL. Change it anytime from your dashboard.",
   },
   {
     number: "03",
-    title: "Tap to connect",
+    title: "Tap, connect, measure",
     description:
-      "Your customer taps their phone. The experience opens instantly — and every interaction flows into your dashboard.",
+      "Your customer taps their phone and the experience opens instantly — while every interaction flows into Kontap Plus as analytics.",
   },
 ];
 
@@ -97,47 +107,39 @@ export type Product = {
   name: string;
   tagline: string;
   description: string;
-  badge?: string;
-  visual: "review" | "card" | "wallet" | "pettag" | "smart" | "os";
-  span?: "wide" | "default";
+  /** slug used for the product image at /products/<image>.png */
+  image: string;
+  /** short spec chips shown under the description */
+  specs: string[];
 };
 
+/** The 3-product display. Photos are dropped in at /public/products/<image>.png
+ *  (transparent PNG, long edge ≥ 2000px). A branded placeholder renders until
+ *  the real photo is added. */
 export const products: Product[] = [
   {
     name: "Google Review Plate",
-    tagline: "More reviews, on autopilot",
+    tagline: "The entry product",
     description:
-      "A premium counter plate that sends happy customers straight to your review page with one tap.",
-    visual: "review",
-    span: "wide",
+      "A premium counter plate that sends happy customers straight to your Google review page with one tap. The fastest way to grow your rating.",
+    image: "review-plate",
+    specs: ["Counter-top", "Reprogrammable", "Waterproof"],
   },
   {
     name: "NFC Business Card",
-    tagline: "Your whole profile in a tap",
+    tagline: "Your profile in a tap",
     description:
-      "Share contact, socials and links instantly. Metal and premium finishes available.",
-    visual: "card",
+      "Share contact, socials and links instantly. Metal and premium finishes, one card for the whole team — every tap tracked in Plus.",
+    image: "business-card",
+    specs: ["Metal finish", "Contact + socials", "Team-ready"],
   },
   {
     name: "Apple Wallet Card",
     tagline: "Live in the wallet",
     description:
-      "A dynamic pass that updates in real time and never leaves your customer's phone.",
-    visual: "wallet",
-  },
-  {
-    name: "Pet Tag",
-    tagline: "Bring them home faster",
-    description:
-      "A durable tag that shows your contact details and location the moment someone taps it.",
-    visual: "pettag",
-  },
-  {
-    name: "Smart NFC Products",
-    tagline: "A tap for everything",
-    description:
-      "Stands, stickers, wristbands and bespoke hardware — engineered for any surface or use case.",
-    visual: "smart",
+      "A dynamic pass that updates in real time and never leaves your customer's phone. Loyalty, offers and reminders, always one swipe away.",
+    image: "wallet-card",
+    specs: ["Apple Wallet", "Real-time", "Loyalty & offers"],
   },
 ];
 
@@ -153,29 +155,29 @@ export const faqs: Faq[] = [
       "No. NFC is built into every modern iPhone and Android. Your customer simply holds their phone near the Kontap product and the experience opens in their browser — nothing to install.",
   },
   {
+    question: "Is Kontap only for Google reviews?",
+    answer:
+      "Not at all. The Google Review plate is our entry product, but Kontap is a multi-product NFC company. The same tap can open a business card, an Apple Wallet pass, a menu, a payment link and more — all managed from one platform.",
+  },
+  {
+    question: "What is Kontap Plus?",
+    answer:
+      "Plus is our SaaS subscription — shared infrastructure across every Kontap product. It turns each tap into analytics (traffic, timing, location and conversion), adds AI-powered review analysis and sends automated reports so you always know what's working.",
+  },
+  {
     question: "Can I change where a Kontap product points after I buy it?",
     answer:
       "Yes. Every Kontap product is reprogrammable. Update the destination — a review link, profile, wallet pass or URL — as many times as you like from your dashboard.",
   },
   {
-    question: "Is Kontap only for Google reviews?",
-    answer:
-      "Not at all. Reviews are one popular use case, but Kontap is a technology platform. The same tap can open a business card, an Apple Wallet pass, a menu, a payment link, a pet's profile and more.",
-  },
-  {
     question: "How durable is the hardware?",
     answer:
-      "Kontap products use waterproof, scratch-resistant materials and industrial-grade NFC chips rated for hundreds of thousands of taps, so they hold up on a counter, in a pocket or on a collar.",
+      "Kontap products use waterproof, scratch-resistant materials and industrial-grade NFC chips rated for hundreds of thousands of taps, so they hold up on a busy counter or in a pocket.",
   },
   {
-    question: "What is Kontap OS?",
+    question: "Do you ship in Italy?",
     answer:
-      "Kontap OS is our upcoming software platform. It turns every tap into analytics — traffic, timing, location and conversion — with AI insights that help you understand and grow engagement. Join the waitlist to get early access.",
-  },
-  {
-    question: "Do you ship internationally?",
-    answer:
-      "Yes. Kontap ships worldwide. Shipping options and timelines are shown at checkout based on your destination.",
+      "Yes. Kontap is based in Puglia and ships across Italy — with worldwide shipping available. Options and timelines are shown at checkout based on your destination.",
   },
 ];
 
@@ -187,7 +189,6 @@ export const footer = {
         { label: "Google Review Plate", href: "#products" },
         { label: "NFC Business Card", href: "#products" },
         { label: "Apple Wallet Card", href: "#products" },
-        { label: "Pet Tag", href: "#products" },
         { label: "Smart NFC Products", href: "#products" },
       ],
     },
@@ -195,7 +196,7 @@ export const footer = {
       title: "Platform",
       links: [
         { label: "How it works", href: "#how" },
-        { label: "Kontap OS", href: "#os" },
+        { label: "Kontap Plus", href: "#plus" },
         { label: "Use cases", href: "#usecases" },
         { label: "FAQ", href: "#faq" },
       ],

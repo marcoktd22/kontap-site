@@ -1,8 +1,9 @@
 import { cn } from "@/lib/cn";
 
 /**
- * Ambient lighting layer. Renders the brand radial gradient as soft glow
- * behind a section — light, never a loud background. Always decorative.
+ * Ambient lighting layer. Soft brand-tinted gradients that add depth without
+ * noise. `hero`/`soft` are tuned for LIGHT surfaces; `cta` is a saturated
+ * radial for DARK island sections.
  */
 export function GlowBackdrop({
   className,
@@ -21,39 +22,47 @@ export function GlowBackdrop({
     >
       {variant === "hero" && (
         <>
-          {/* Primary brand radial — matches the supplied gradient recipe */}
+          {/* Soft brand wash, upper area */}
           <div
-            className="absolute left-1/2 top-[-10%] h-[80vh] w-[120vw] -translate-x-1/2 opacity-70 blur-[10px]"
+            className="absolute left-1/2 top-[-18%] h-[70vh] w-[90vw] -translate-x-1/2 opacity-70 blur-[40px]"
             style={{
               background:
-                "radial-gradient(ellipse at 28% 55%, #0A36F6 0%, #001580 42%, rgba(0,5,27,0) 72%)",
+                "radial-gradient(ellipse at 50% 40%, rgba(10,54,246,0.14) 0%, rgba(63,183,255,0.10) 38%, rgba(255,255,255,0) 70%)",
             }}
           />
-          {/* Accent cool highlight, upper right */}
+          {/* Celeste highlight, upper right */}
           <div
-            className="absolute right-[-10%] top-[-20%] h-[50vh] w-[50vh] rounded-full opacity-30 blur-[80px]"
+            className="absolute right-[-6%] top-[-8%] h-[42vh] w-[42vh] rounded-full opacity-60 blur-[80px]"
             style={{
               background:
-                "radial-gradient(circle, rgba(118,223,255,0.5) 0%, rgba(118,223,255,0) 70%)",
+                "radial-gradient(circle, rgba(118,223,255,0.35) 0%, rgba(118,223,255,0) 70%)",
+            }}
+          />
+          {/* Blue highlight, lower left */}
+          <div
+            className="absolute left-[-8%] bottom-[-15%] h-[40vh] w-[40vh] rounded-full opacity-40 blur-[90px]"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(10,54,246,0.18) 0%, rgba(10,54,246,0) 70%)",
             }}
           />
         </>
       )}
       {variant === "cta" && (
         <div
-          className="absolute left-1/2 top-1/2 h-[120%] w-[130%] -translate-x-1/2 -translate-y-1/2 opacity-80"
+          className="absolute left-1/2 top-1/2 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2 opacity-90"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 60%, #0A36F6 0%, #001580 40%, rgba(0,5,27,0) 70%)",
+              "radial-gradient(ellipse at 50% 55%, #1747ff 0%, #0a1f9c 38%, #05081a 74%)",
           }}
         />
       )}
       {variant === "soft" && (
         <div
-          className="absolute left-1/2 top-0 h-[60vh] w-[80vw] -translate-x-1/2 opacity-40 blur-[40px]"
+          className="absolute left-1/2 top-0 h-[55vh] w-[70vw] -translate-x-1/2 opacity-60 blur-[50px]"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 40%, rgba(10,54,246,0.35) 0%, rgba(0,5,27,0) 70%)",
+              "radial-gradient(ellipse at 50% 40%, rgba(63,183,255,0.12) 0%, rgba(10,54,246,0.08) 40%, rgba(255,255,255,0) 72%)",
           }}
         />
       )}

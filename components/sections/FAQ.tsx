@@ -31,7 +31,7 @@ export function FAQ() {
                 <div
                   className={cn(
                     "overflow-hidden rounded-2xl ring-hairline transition-colors duration-300",
-                    isOpen ? "bg-surface/60" : "bg-white/[0.02] hover:bg-white/[0.04]"
+                    isOpen ? "bg-surface" : "bg-surface/50 hover:bg-surface"
                   )}
                 >
                   <h3>
@@ -43,13 +43,13 @@ export function FAQ() {
                       onClick={() => setOpen(isOpen ? null : i)}
                       className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                     >
-                      <span className="text-[1.05rem] font-medium text-white">
+                      <span className="text-[1.05rem] font-medium text-ink">
                         {faq.question}
                       </span>
                       <span
                         className={cn(
                           "flex h-8 w-8 shrink-0 items-center justify-center rounded-full ring-hairline transition-all duration-300",
-                          isOpen ? "rotate-180 bg-primary/20 text-accent" : "text-muted"
+                          isOpen ? "rotate-180 bg-primary/10 text-primary" : "text-muted"
                         )}
                       >
                         <Icon

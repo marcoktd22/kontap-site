@@ -7,12 +7,15 @@ export function SectionHeader({
   title,
   description,
   align = "center",
+  tone = "light",
   className,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "center" | "left";
+  /** "light" for light surfaces, "dark" for dark island sections */
+  tone?: "light" | "dark";
   className?: string;
 }) {
   return (
@@ -25,13 +28,14 @@ export function SectionHeader({
     >
       {eyebrow && (
         <Reveal>
-          <Eyebrow>{eyebrow}</Eyebrow>
+          <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
         </Reveal>
       )}
       <Reveal index={1}>
         <h2
           className={cn(
-            "text-gradient text-balance text-4xl font-semibold sm:text-5xl md:text-[3.4rem]",
+            "text-balance text-4xl font-semibold sm:text-5xl md:text-[3.4rem]",
+            tone === "dark" ? "text-gradient-invert" : "text-gradient",
             align === "center" ? "max-w-3xl" : "max-w-2xl"
           )}
         >
@@ -42,7 +46,8 @@ export function SectionHeader({
         <Reveal index={2}>
           <p
             className={cn(
-              "text-pretty text-base leading-relaxed text-muted sm:text-lg",
+              "text-pretty text-base leading-relaxed sm:text-lg",
+              tone === "dark" ? "text-white/60" : "text-muted",
               align === "center" ? "max-w-2xl" : "max-w-xl"
             )}
           >

@@ -5,9 +5,10 @@ import { UseCases } from "@/components/sections/UseCases";
 import { WhyKontap } from "@/components/sections/WhyKontap";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Products } from "@/components/sections/Products";
-import { KontapOS } from "@/components/sections/KontapOS";
+import { Plus } from "@/components/sections/Plus";
 import { CTA } from "@/components/sections/CTA";
 import { FAQ } from "@/components/sections/FAQ";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -19,11 +20,12 @@ export default function Home() {
         <WhyKontap />
         <HowItWorks />
         <Products />
-        <KontapOS />
+        <Plus />
         <CTA />
         <FAQ />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

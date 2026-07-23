@@ -29,10 +29,10 @@ export function HowItWorks() {
             {steps.map((step, i) => (
               <Reveal as="li" key={step.number} index={i} className="relative">
                 <div className="flex flex-col items-center text-center md:items-start md:text-left">
-                  <span className="relative z-10 flex h-[4.3rem] w-[4.3rem] items-center justify-center rounded-2xl bg-surface text-lg font-semibold text-white ring-hairline shadow-[0_0_40px_-12px_rgba(10,54,246,0.6)]">
-                    <span className="font-mono text-sm text-accent">{step.number}</span>
+                  <span className="relative z-10 flex h-[4.3rem] w-[4.3rem] items-center justify-center rounded-2xl bg-surface text-lg font-semibold ring-hairline shadow-[0_18px_40px_-20px_rgba(10,54,246,0.4)]">
+                    <span className="font-mono text-sm text-primary">{step.number}</span>
                   </span>
-                  <h3 className="mt-6 text-xl font-medium text-white">
+                  <h3 className="mt-6 text-xl font-medium text-ink">
                     {step.title}
                   </h3>
                   <p className="mt-3 max-w-xs text-pretty text-[0.95rem] leading-relaxed text-muted">
