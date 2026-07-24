@@ -17,7 +17,7 @@ export const nav = {
   links: [
     { label: "Prodotti", href: "#products" },
     { label: "Come funziona", href: "#how" },
-    { label: "Plus", href: "#plus" },
+    { label: "Kontap+", href: "#plus" },
     { label: "FAQ", href: "#faq" },
   ],
   cta: { label: "Inizia ora", href: "#cta" },
@@ -98,19 +98,19 @@ export type Step = {
 
 export const steps: Step[] = [
   {
-    number: "01",
+    number: "I",
     title: "Scegli il tuo prodotto",
     description:
-      "Parti dalla targa per le recensioni Google sul bancone, aggiungi i biglietti NFC per il team, un pass Apple Wallet per i clienti abituali — una sola linea, un'unica piattaforma.",
+      "Parti dalla targa per le recensioni Google sul bancone, aggiungi i biglietti NFC per il team — una sola linea, un'unica piattaforma.",
   },
   {
-    number: "02",
-    title: "Collegalo in pochi secondi",
+    number: "II",
+    title: "Setup incluso, a costo zero",
     description:
-      "Tocca per impostare la destinazione: una pagina recensioni, un profilo, un pass wallet o qualsiasi URL. La cambi quando vuoi dalla dashboard.",
+      "Il settaggio del dispositivo è compreso nel prezzo: veniamo noi nel tuo locale a montarlo e configurarlo, senza costi aggiuntivi.",
   },
   {
-    number: "03",
+    number: "III",
     title: "Tocca, connetti, misura",
     description:
       "Il cliente avvicina il telefono e l'esperienza si apre all'istante — mentre ogni interazione entra in Kontap Plus come statistica.",
@@ -153,14 +153,6 @@ export const products: Product[] = [
     back: "business-card-back",
     ratio: "card",
     specs: ["Finitura metallo", "Contatti + social", "Pronto per il team"],
-  },
-  {
-    name: "Carta Apple Wallet",
-    tagline: "Vive nel wallet",
-    description:
-      "Un pass dinamico che si aggiorna in tempo reale e non lascia mai il telefono del cliente. Fedeltà, offerte e promemoria, sempre a portata di swipe.",
-    image: "wallet-card",
-    specs: ["Apple Wallet", "Tempo reale", "Fedeltà e offerte"],
   },
 ];
 

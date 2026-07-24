@@ -13,7 +13,7 @@ export function UseCases() {
       className="relative scroll-mt-24 border-y border-[color:var(--color-line)] py-12"
     >
       <Container>
-        <p className="text-center text-sm font-bold uppercase tracking-[0.22em] text-ink">
+        <p className="text-center text-sm font-bold uppercase tracking-[0.22em] text-secondary/80">
           Un tap. Qualsiasi destinazione.
         </p>
       </Container>
