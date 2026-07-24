@@ -8,8 +8,7 @@ import { Icon } from "../ui/Icon";
 import { products, type Product } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
-const SITE_GRADIENT =
-  "linear-gradient(120deg,#0A36F6 0%,#2E7BFF 55%,#4FC3FF 120%)";
+const SITE_GRADIENT = "linear-gradient(135deg,#2453ff 0%,#58c8ff 100%)";
 
 /**
  * Prodotti — espositore interattivo. Le schede alternano sfondo bianco e
@@ -28,12 +27,12 @@ export function Products() {
     >
       {/* Sfondo chiaro con gradienti leggeri */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#eef4ff_55%,#ffffff_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#fcfdff_0%,#eef3ff_55%,#fcfdff_100%)]" />
         <div
           className="absolute left-[-8%] top-[10%] h-[46vh] w-[46vh] rounded-full opacity-70 blur-[80px]"
           style={{
             background:
-              "radial-gradient(circle, rgba(118,223,255,0.35) 0%, rgba(118,223,255,0) 70%)",
+              "radial-gradient(circle, rgba(88,200,255,0.32) 0%, rgba(88,200,255,0) 70%)",
           }}
         />
       </div>
@@ -84,8 +83,8 @@ export function Products() {
                         : "bg-white text-ink ring-hairline",
                       selected
                         ? grad
-                          ? "scale-[1.02] shadow-[0_26px_60px_-24px_rgba(46,123,255,0.6)] ring-1 ring-white/60"
-                          : "scale-[1.02] shadow-[0_26px_60px_-26px_rgba(46,123,255,0.4)] ring-1 ring-[color:rgba(46,123,255,0.55)]"
+                          ? "scale-[1.02] shadow-[0_26px_60px_-24px_rgba(36,83,255,0.6),inset_0_1px_0_0_rgba(255,255,255,0.25)] ring-1 ring-white/60"
+                          : "scale-[1.02] shadow-[0_26px_60px_-26px_rgba(36,83,255,0.38)] ring-1 ring-[color:rgba(36,83,255,0.5)]"
                         : "hover:-translate-y-0.5"
                     )}
                   >
@@ -172,7 +171,7 @@ function ProductStage({ product }: { product: Product }) {
 /** Prodotto singolo (es. targa): immagine su alone celeste, subito visibile. */
 function SingleStage({ product }: { product: Product }) {
   return (
-    <div className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
+    <div className="group relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
       <Halo />
       <PulseRings />
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -181,7 +180,7 @@ function SingleStage({ product }: { product: Product }) {
         alt={product.name}
         loading="eager"
         decoding="async"
-        className="relative z-10 max-h-[86%] max-w-[86%] object-contain drop-shadow-[0_30px_60px_rgba(7,11,26,0.25)]"
+        className="relative z-10 max-h-[86%] max-w-[86%] object-contain drop-shadow-[0_30px_60px_rgba(16,24,40,0.28)] transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform group-hover:scale-[1.04]"
       />
     </div>
   );
@@ -191,14 +190,14 @@ function SingleStage({ product }: { product: Product }) {
 function FlipCard({ product }: { product: Product }) {
   const [flipped, setFlipped] = useState(false);
   return (
-    <div className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
+    <div className="group relative mx-auto flex aspect-square w-full max-w-md items-center justify-center">
       <Halo />
       <div className="relative z-10 w-full max-w-sm">
         <button
           type="button"
           onClick={() => setFlipped((f) => !f)}
           aria-label={flipped ? "Mostra il fronte del biglietto" : "Gira il biglietto e mostra il retro"}
-          className="group block w-full rounded-2xl [perspective:1600px] focus-visible:outline-none"
+          className="block w-full rounded-2xl [perspective:1600px] transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform group-hover:scale-[1.02] focus-visible:outline-none"
         >
           <div
             className="relative aspect-[1.586/1] w-full transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] [transform-style:preserve-3d]"
@@ -239,7 +238,7 @@ function Halo() {
       className="absolute inset-0 rounded-full opacity-90"
       style={{
         background:
-          "radial-gradient(circle at 50% 50%, rgba(118,223,255,0.30) 0%, rgba(46,123,255,0.12) 36%, rgba(255,255,255,0) 66%)",
+          "radial-gradient(circle at 50% 50%, rgba(88,200,255,0.30) 0%, rgba(36,83,255,0.12) 36%, rgba(252,253,255,0) 66%)",
       }}
     />
   );
@@ -252,7 +251,7 @@ function PulseRings() {
         <span
           key={i}
           aria-hidden="true"
-          className="absolute h-56 w-56 rounded-full ring-1 ring-[color:rgba(46,123,255,0.25)]"
+          className="absolute h-56 w-56 rounded-full ring-1 ring-[color:rgba(36,83,255,0.22)]"
           style={{
             animation: "kontap-pulse-ring 3.4s ease-out infinite",
             animationDelay: `${i * 1.7}s`,

@@ -19,9 +19,9 @@ export function Card({
     <Tag
       className={cn(
         "relative overflow-hidden rounded-3xl bg-surface p-8 ring-hairline",
-        "shadow-[0_1px_2px_0_rgba(7,11,26,0.04),0_24px_60px_-38px_rgba(7,11,26,0.25)]",
+        "shadow-[var(--shadow-card)]",
         interactive &&
-          "transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:bg-white hover:shadow-[0_1px_2px_0_rgba(7,11,26,0.06),0_40px_80px_-34px_rgba(10,54,246,0.22)]",
+          "transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:var(--color-line-strong)] hover:shadow-[0_28px_70px_-34px_rgba(36,83,255,0.28)]",
         className
       )}
     >

@@ -17,14 +17,14 @@ export function HowItWorks() {
         <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
           {steps.map((step, i) => (
             <Reveal as="div" key={step.number} index={i} className="h-full">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white/70 p-8 ring-hairline backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1.5 hover:ring-1 hover:ring-[color:rgba(46,123,255,0.45)] hover:shadow-[0_36px_80px_-38px_rgba(46,123,255,0.55)]">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white/70 p-8 ring-hairline backdrop-blur-xl transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(36,83,255,0.45)] hover:shadow-[0_36px_80px_-38px_rgba(36,83,255,0.5)]">
                 {/* Lavata di gradiente al passaggio/tocco */}
                 <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background:
-                      "linear-gradient(150deg, rgba(10,54,246,0.10) 0%, rgba(46,123,255,0.08) 45%, rgba(118,223,255,0.14) 100%)",
+                      "linear-gradient(150deg, rgba(36,83,255,0.09) 0%, rgba(88,200,255,0.13) 100%)",
                   }}
                 />
 
@@ -37,7 +37,7 @@ export function HowItWorks() {
                     >
                       {step.number}
                     </span>
-                    <span className="h-2 w-2 rounded-full bg-[#3d7eff]/40 transition-all duration-500 group-hover:scale-150 group-hover:bg-[#3d7eff]" />
+                    <span className="h-2 w-2 rounded-full bg-celeste/40 transition-all duration-500 group-hover:scale-150 group-hover:bg-celeste" />
                   </div>
 
                   <div className="mt-8 h-px w-full bg-[color:var(--color-line)]" />

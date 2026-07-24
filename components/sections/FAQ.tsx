@@ -30,8 +30,10 @@ export function FAQ() {
               <Reveal key={faq.question} index={i}>
                 <div
                   className={cn(
-                    "overflow-hidden rounded-2xl ring-hairline transition-colors duration-300",
-                    isOpen ? "bg-surface" : "bg-surface/50 hover:bg-surface"
+                    "overflow-hidden rounded-2xl bg-white transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)]",
+                    isOpen
+                      ? "shadow-[0_24px_60px_-34px_rgba(36,83,255,0.45)] ring-1 ring-[color:rgba(36,83,255,0.45)]"
+                      : "shadow-[var(--shadow-card)] ring-hairline hover:-translate-y-0.5 hover:ring-1 hover:ring-[color:var(--color-line-strong)]"
                   )}
                 >
                   <h3>
@@ -43,7 +45,12 @@ export function FAQ() {
                       onClick={() => setOpen(isOpen ? null : i)}
                       className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                     >
-                      <span className="text-[1.05rem] font-medium text-ink">
+                      <span
+                        className={cn(
+                          "text-[1.05rem] font-medium transition-colors duration-200",
+                          isOpen ? "text-primary" : "text-ink"
+                        )}
+                      >
                         {faq.question}
                       </span>
                       <span

@@ -80,11 +80,16 @@ function DashboardMock() {
   return (
     <div className="relative">
       {/* Bagliore ambientale */}
-      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-primary/15 blur-3xl" />
+      <div className="absolute -inset-8 -z-10 rounded-[2.4rem] bg-[radial-gradient(circle_at_50%_35%,rgba(36,83,255,0.35),transparent_70%)] blur-2xl" />
 
-      <div className="overflow-hidden rounded-3xl bg-deep text-white ring-hairline-invert shadow-[0_40px_90px_-40px_rgba(7,11,26,0.6)]">
+      <div className="relative overflow-hidden rounded-3xl bg-[color:var(--color-panel)]/85 text-white shadow-[0_50px_110px_-45px_rgba(9,17,33,0.85),inset_0_1px_0_0_rgba(255,255,255,0.09)] ring-hairline-invert backdrop-blur-2xl">
+        {/* Riflesso vetro in alto */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]"
+        />
         {/* Barra finestra */}
-        <div className="flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5">
+        <div className="relative flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5">
           <div className="flex items-center gap-2">
             <Logo variant="plus" className="h-4 w-auto" />
           </div>
@@ -144,12 +149,12 @@ function Sparkline() {
     <svg viewBox="0 0 320 88" className="mt-3 w-full" fill="none" aria-hidden="true">
       <defs>
         <linearGradient id="plus-fill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0A36F6" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#0A36F6" stopOpacity="0" />
+          <stop offset="0%" stopColor="#2453ff" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#2453ff" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="plus-stroke" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#0A36F6" />
-          <stop offset="100%" stopColor="#76DFFF" />
+          <stop offset="0%" stopColor="#2453ff" />
+          <stop offset="100%" stopColor="#58c8ff" />
         </linearGradient>
       </defs>
       <path
@@ -162,7 +167,7 @@ function Sparkline() {
         strokeWidth="2.2"
         strokeLinecap="round"
       />
-      <circle cx="320" cy="16" r="3.5" fill="#76DFFF" />
+      <circle cx="320" cy="16" r="3.5" fill="#58c8ff" />
     </svg>
   );
 }

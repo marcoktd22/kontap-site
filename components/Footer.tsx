@@ -4,14 +4,19 @@ import { footer } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-[color:var(--color-line)] pb-10 pt-16 sm:pt-20">
+    <footer className="relative pb-12 pt-20 sm:pt-28">
+      {/* Divisore a gradiente soft */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-line-strong),transparent)]"
+      />
       <Container>
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-3 md:grid-cols-5">
           <div className="col-span-2 md:col-span-2">
             <a href="#top" className="inline-block" aria-label="Kontap home">
               <Logo className="h-7 w-auto" />
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondary">
               Hardware NFC premium e la piattaforma Plus — trasformiamo le
               interazioni fisiche in esperienze digitali, un tap alla volta. Made
               in Puglia.
@@ -37,13 +42,19 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-[color:var(--color-line)] pt-8 sm:flex-row sm:items-center">
-          <p className="text-sm text-muted">
-            © {new Date().getFullYear()} Kontap. Tutti i diritti riservati.
-          </p>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted/70">
-            kontap.com
-          </p>
+        <div className="relative mt-16 pt-8 sm:mt-20">
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-line),transparent)]"
+          />
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <p className="text-sm text-muted">
+              © {new Date().getFullYear()} Kontap. Tutti i diritti riservati.
+            </p>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted/70">
+              kontap.com
+            </p>
+          </div>
         </div>
       </Container>
     </footer>

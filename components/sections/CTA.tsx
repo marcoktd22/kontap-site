@@ -8,13 +8,7 @@ export function CTA() {
   return (
     <section id="cta" className="relative scroll-mt-24 px-4 py-16 sm:py-20">
       <Container className="px-0">
-        <div
-          className="relative isolate overflow-hidden rounded-[2.5rem] px-6 py-20 text-center text-white sm:px-12 sm:py-28"
-          style={{
-            background:
-              "linear-gradient(135deg, #0A36F6 0%, #2E7BFF 50%, #4FC3FF 100%)",
-          }}
-        >
+        <div className="bg-brand-gradient relative isolate overflow-hidden rounded-[2.5rem] px-6 py-20 text-center text-white shadow-[0_50px_120px_-50px_rgba(36,83,255,0.7)] sm:px-12 sm:py-28">
           {/* Bagliori soft per profondità */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-0 overflow-hidden">
             <div className="absolute right-[-10%] top-[-30%] h-[60vh] w-[60vh] rounded-full bg-white/20 blur-[80px]" />
