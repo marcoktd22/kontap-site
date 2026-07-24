@@ -17,12 +17,12 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="group fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-full bg-[linear-gradient(120deg,#0A36F6_0%,#2E7BFF_55%,#4FC3FF_120%)] px-4 py-3 text-white shadow-[0_12px_32px_-8px_rgba(46,123,255,0.6)] ring-1 ring-black/5 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:brightness-[1.06] hover:shadow-[0_16px_40px_-8px_rgba(46,123,255,0.7)] sm:bottom-6 sm:right-6"
+      className="group fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-full bg-brand-gradient px-4 py-3 text-white shadow-[0_12px_32px_-8px_rgba(36,83,255,0.6),inset_0_1px_0_0_rgba(255,255,255,0.28)] ring-1 ring-black/5 transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:brightness-[1.04] hover:shadow-[0_16px_40px_-8px_rgba(36,83,255,0.7),inset_0_1px_0_0_rgba(255,255,255,0.32)] sm:bottom-6 sm:right-6"
     >
       {/* Pulsing halo */}
       <span
         aria-hidden="true"
-        className="absolute inset-0 -z-10 rounded-full bg-[#2E7BFF]/50"
+        className="absolute inset-0 -z-10 rounded-full bg-[#58c8ff]/50"
         style={{ animation: "kontap-pulse-ring 2.8s ease-out infinite" }}
       />
       <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="currentColor" aria-hidden="true">
