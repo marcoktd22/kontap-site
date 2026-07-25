@@ -7,7 +7,15 @@ import { BrandBackdrop } from "../BrandBackdrop";
 
 export function HowItWorks() {
   return (
-    <Section id="how" className="overflow-hidden">
+    <Section
+      id="how"
+      className="overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(62% 52% at 50% 0%, rgba(88,200,255,0.16), transparent 60%)," +
+          "linear-gradient(180deg, #eef4ff 0%, #dde9ff 100%)",
+      }}
+    >
       <BrandBackdrop variant="how" />
       <Container className="relative">
         <SectionHeader
@@ -19,38 +27,24 @@ export function HowItWorks() {
         <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
           {steps.map((step, i) => (
             <Reveal as="div" key={step.number} index={i} className="h-full">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-8 shadow-[var(--shadow-card)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.5)] hover:shadow-[0_28px_64px_-38px_rgba(36,83,255,0.35)]">
-                {/* Lavata di gradiente al passaggio/tocco */}
-                <div
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-white p-8 shadow-[0_2px_4px_rgba(16,24,40,0.04),0_28px_60px_-34px_rgba(36,83,255,0.28)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1.5 hover:shadow-[0_36px_80px_-38px_rgba(36,83,255,0.42)] hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)]">
+                {/* Accento a gradiente in alto */}
+                <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "linear-gradient(150deg, rgba(36,83,255,0.09) 0%, rgba(88,200,255,0.13) 100%)",
-                  }}
+                  className="bg-brand-gradient absolute inset-x-0 top-0 h-[3px] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
                 />
 
-                <div className="relative flex h-full flex-col">
-                  {/* Numero romano */}
-                  <div className="flex items-center justify-between">
-                    <span
-                      className="text-gradient-accent font-semibold leading-none tracking-tight"
-                      style={{ fontSize: "3.25rem" }}
-                    >
-                      {step.number}
-                    </span>
-                    <span className="h-2 w-2 rounded-full bg-celeste/40 transition-all duration-500 group-hover:scale-150 group-hover:bg-celeste" />
-                  </div>
+                {/* Numero romano in chip a gradiente — l'ancora visiva */}
+                <span className="bg-brand-gradient flex h-14 w-14 items-center justify-center rounded-2xl text-2xl font-semibold text-white shadow-[0_12px_26px_-10px_rgba(36,83,255,0.6),inset_0_1px_0_0_rgba(255,255,255,0.35)]">
+                  {step.number}
+                </span>
 
-                  <div className="mt-8 h-px w-full bg-[color:var(--color-line)]" />
-
-                  <h3 className="mt-6 text-xl font-semibold text-ink">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-pretty text-[0.95rem] leading-relaxed text-muted">
-                    {step.description}
-                  </p>
-                </div>
+                <h3 className="mt-7 text-xl font-semibold text-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-pretty text-[0.95rem] leading-relaxed text-muted">
+                  {step.description}
+                </p>
               </div>
             </Reveal>
           ))}

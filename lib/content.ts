@@ -154,6 +154,14 @@ export const products: Product[] = [
     ratio: "card",
     specs: ["Finitura metallo", "Contatti + social", "Pronto per il team"],
   },
+  {
+    name: "Carta Apple Wallet",
+    tagline: "Vive nel wallet",
+    description:
+      "Un pass dinamico che si aggiorna in tempo reale e non lascia mai il telefono del cliente. Fedeltà, offerte e promemoria, sempre a portata di swipe.",
+    image: "wallet-card",
+    specs: ["Apple Wallet", "Tempo reale", "Fedeltà e offerte"],
+  },
 ];
 
 export type Faq = {

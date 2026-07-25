@@ -28,7 +28,7 @@ export function SectionHeader({
     >
       {eyebrow && (
         <Reveal>
-          <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
+          <Eyebrow tone={tone} align={align}>{eyebrow}</Eyebrow>
         </Reveal>
       )}
       <Reveal index={1}>

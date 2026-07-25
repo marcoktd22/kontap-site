@@ -9,10 +9,6 @@ import { products, type Product } from "@/lib/content";
 import { BrandBackdrop } from "../BrandBackdrop";
 import { cn } from "@/lib/cn";
 
-/** Soft light gradient for the alternating "gradient" slide — bright, never loud. */
-const SOFT_GRADIENT =
-  "linear-gradient(135deg,#e4eeff 0%,#f3f9ff 55%,#e6f4ff 100%)";
-
 /**
  * Prodotti — il centro emotivo della pagina. Il mockup del prodotto è l'eroe
  * visivo; le schede a destra restano leggere. Selezionando un prodotto lo
@@ -61,22 +57,29 @@ export function Products() {
           <div className="order-2 flex flex-col gap-3.5">
             {products.map((p, i) => {
               const selected = i === active;
-              const grad = i % 2 === 0;
               return (
                 <Reveal key={p.name} index={i}>
                   <button
                     type="button"
                     onClick={() => setActive(i)}
                     aria-pressed={selected}
-                    style={grad ? { backgroundImage: SOFT_GRADIENT } : undefined}
                     className={cn(
-                      "group relative w-full overflow-hidden rounded-3xl p-6 text-left transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7",
-                      grad ? "" : "bg-white",
+                      "group relative w-full overflow-hidden rounded-3xl bg-white p-6 pl-7 text-left text-ink transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7 sm:pl-8",
                       selected
-                        ? "scale-[1.01] shadow-[0_26px_60px_-30px_rgba(36,83,255,0.32)] ring-1 ring-[color:rgba(88,200,255,0.6)]"
-                        : "shadow-[var(--shadow-card)] ring-hairline hover:-translate-y-0.5 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.4)]"
+                        ? "scale-[1.01] shadow-[0_26px_60px_-28px_rgba(36,83,255,0.45)] ring-1 ring-[color:rgba(88,200,255,0.65)]"
+                        : "shadow-[var(--shadow-card)] ring-hairline hover:-translate-y-0.5 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.5)]"
                     )}
                   >
+                    {/* Barra accento a gradiente quando selezionato */}
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "absolute left-0 top-1/2 w-[3px] -translate-y-1/2 rounded-full bg-[linear-gradient(180deg,#2453ff,#58c8ff)] transition-all duration-[250ms]",
+                        selected
+                          ? "h-2/3 opacity-100 shadow-[0_0_18px_2px_rgba(88,200,255,0.6)]"
+                          : "h-1/3 opacity-0"
+                      )}
+                    />
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p
