@@ -3,7 +3,7 @@ import { Button } from "../ui/Button";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
-import { GlowBackdrop } from "../ui/GlowBackdrop";
+import { BrandBackdrop } from "../BrandBackdrop";
 
 export function Hero() {
   return (
@@ -11,15 +11,7 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden pb-24 pt-40 sm:pb-28 sm:pt-44 md:pb-32 md:pt-48"
     >
-      <GlowBackdrop variant="hero" />
-
-      {/* Wordmark fantasma per profondità */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-[46%] -z-10 -translate-x-1/2 -translate-y-1/2 select-none text-[24vw] font-semibold leading-none tracking-tighter text-ink/[0.03] sm:text-[20vw]"
-      >
-        kontap
-      </span>
+      <BrandBackdrop variant="hero" />
 
       <Container className="relative flex flex-col items-center text-center">
         <Reveal>

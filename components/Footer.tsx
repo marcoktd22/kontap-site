@@ -1,10 +1,12 @@
 import { Container } from "./ui/Container";
 import { Logo } from "./Logo";
+import { BrandBackdrop } from "./BrandBackdrop";
 import { footer } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#f8fbff] pb-14 pt-20 sm:pt-32">
+    <footer className="relative overflow-hidden bg-[#f8fbff] pb-14 pt-20 sm:pt-32">
+      <BrandBackdrop variant="footer" />
       {/* Divisore a gradiente soft */}
       <div
         aria-hidden="true"
