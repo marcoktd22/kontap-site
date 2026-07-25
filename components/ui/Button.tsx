@@ -12,9 +12,9 @@ const base =
 const variants: Record<Variant, string> = {
   primary:
     "bg-brand-gradient text-white " +
-    "shadow-[0_10px_30px_-8px_rgba(36,83,255,0.5),inset_0_1px_0_0_rgba(255,255,255,0.28)] " +
-    "hover:-translate-y-0.5 hover:brightness-[1.04] " +
-    "hover:shadow-[0_18px_46px_-8px_rgba(36,83,255,0.62),inset_0_1px_0_0_rgba(255,255,255,0.32)] " +
+    "shadow-[0_8px_22px_-10px_rgba(36,83,255,0.42),inset_0_1px_0_0_rgba(255,255,255,0.28)] " +
+    "hover:-translate-y-0.5 hover:brightness-[1.03] " +
+    "hover:shadow-[0_14px_34px_-10px_rgba(36,83,255,0.5),inset_0_1px_0_0_rgba(255,255,255,0.32)] " +
     "active:translate-y-0",
   secondary:
     "bg-transparent text-ink ring-hairline " +

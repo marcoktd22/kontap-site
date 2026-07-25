@@ -5,6 +5,7 @@ import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Logo } from "../Logo";
+import { BrandBackdrop } from "../BrandBackdrop";
 
 const bullets = [
   "Analisi recensioni con AI — sentiment, temi e cosa migliorare",
@@ -16,7 +17,8 @@ const bullets = [
 export function Plus() {
   return (
     <Section id="plus" className="overflow-hidden">
-      <Container>
+      <BrandBackdrop variant="plus" />
+      <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
           {/* Testo */}
           <div>

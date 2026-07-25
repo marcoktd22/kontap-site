@@ -3,11 +3,13 @@ import { Section } from "../ui/Section";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { steps } from "@/lib/content";
+import { BrandBackdrop } from "../BrandBackdrop";
 
 export function HowItWorks() {
   return (
-    <Section id="how">
-      <Container>
+    <Section id="how" className="overflow-hidden">
+      <BrandBackdrop variant="how" />
+      <Container className="relative">
         <SectionHeader
           eyebrow="Come funziona"
           title="Dal tap al risultato in tre passi"
@@ -17,7 +19,7 @@ export function HowItWorks() {
         <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
           {steps.map((step, i) => (
             <Reveal as="div" key={step.number} index={i} className="h-full">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white/70 p-8 ring-hairline backdrop-blur-xl transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(36,83,255,0.45)] hover:shadow-[0_36px_80px_-38px_rgba(36,83,255,0.5)]">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-8 shadow-[var(--shadow-card)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.5)] hover:shadow-[0_28px_64px_-38px_rgba(36,83,255,0.35)]">
                 {/* Lavata di gradiente al passaggio/tocco */}
                 <div
                   aria-hidden="true"

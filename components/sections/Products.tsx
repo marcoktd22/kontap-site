@@ -6,6 +6,7 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { products, type Product } from "@/lib/content";
+import { BrandBackdrop } from "../BrandBackdrop";
 import { cn } from "@/lib/cn";
 
 /** Soft light gradient for the alternating "gradient" slide — bright, never loud. */
@@ -27,6 +28,8 @@ export function Products() {
       id="products"
       className="bg-light-tech relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
     >
+      <BrandBackdrop variant="products" />
+
       {/* Preload nascosto delle immagini prodotto (caricamento istantaneo) */}
       <div aria-hidden="true" className="hidden">
         {products.map((p) => (
@@ -67,8 +70,8 @@ export function Products() {
                     aria-pressed={selected}
                     style={grad ? { backgroundImage: SOFT_GRADIENT } : undefined}
                     className={cn(
-                      "group relative w-full overflow-hidden rounded-3xl p-6 text-left backdrop-blur-xl transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7",
-                      grad ? "" : "bg-white/70",
+                      "group relative w-full overflow-hidden rounded-3xl p-6 text-left transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7",
+                      grad ? "" : "bg-white",
                       selected
                         ? "scale-[1.01] shadow-[0_26px_60px_-30px_rgba(36,83,255,0.32)] ring-1 ring-[color:rgba(88,200,255,0.6)]"
                         : "shadow-[var(--shadow-card)] ring-hairline hover:-translate-y-0.5 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.4)]"

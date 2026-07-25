@@ -145,8 +145,8 @@
      Depth from light, never from darkness. */
   .bg-light-tech {
     background-image:
-      radial-gradient(70% 55% at 50% 0%, rgba(88, 200, 255, 0.1), transparent 60%),
-      linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
+      radial-gradient(70% 55% at 50% 0%, rgba(88, 200, 255, 0.09), transparent 60%),
+      linear-gradient(180deg, #f9fcff 0%, #eef6ff 100%);
   }
 
   /* Almost-invisible neutral grid (~2%) for light-tech sections */
