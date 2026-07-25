@@ -23,7 +23,7 @@ export function Plus() {
           {/* Testo */}
           <div>
             <Reveal>
-              <Eyebrow>Abbonamento · Kontap Plus</Eyebrow>
+              <Eyebrow align="left">Abbonamento · Kontap Plus</Eyebrow>
             </Reveal>
             <Reveal index={1}>
               <h2 className="mt-6 text-balance text-4xl font-semibold sm:text-5xl">
@@ -91,11 +91,9 @@ function DashboardMock() {
           className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]"
         />
         {/* Barra finestra */}
-        <div className="relative flex items-center justify-between border-b border-white/[0.08] px-5 py-3.5">
-          <div className="flex items-center gap-2">
-            <Logo variant="plus" className="h-4 w-auto" />
-          </div>
-          <div className="flex items-center gap-1.5">
+        <div className="relative flex items-center justify-center border-b border-white/[0.08] px-5 py-3.5">
+          <Logo variant="plus" className="h-4 w-auto" />
+          <div className="absolute right-5 top-1/2 flex -translate-y-1/2 items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
             <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
             <span className="h-2.5 w-2.5 rounded-full bg-white/10" />
