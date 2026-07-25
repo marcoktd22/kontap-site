@@ -4,7 +4,7 @@ import { footer } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="relative pb-12 pt-20 sm:pt-28">
+    <footer className="relative bg-[#f8fbff] pb-14 pt-20 sm:pt-32">
       {/* Divisore a gradiente soft */}
       <div
         aria-hidden="true"
