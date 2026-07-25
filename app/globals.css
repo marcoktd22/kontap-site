@@ -141,25 +141,26 @@
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   }
 
-  /* Dark Tech section background — deep navy + top cyan glow */
-  .bg-dark-tech {
+  /* Light Tech section background — soft white-blue + gentle cyan glow.
+     Depth from light, never from darkness. */
+  .bg-light-tech {
     background-image:
-      radial-gradient(90% 60% at 50% 0%, rgba(88, 200, 255, 0.15), transparent 60%),
-      linear-gradient(180deg, #091121 0%, #050811 100%);
+      radial-gradient(70% 55% at 50% 0%, rgba(88, 200, 255, 0.1), transparent 60%),
+      linear-gradient(180deg, #f8fbff 0%, #edf5ff 100%);
   }
 
-  /* Almost-invisible grid overlay for Dark Tech sections (~3%) */
+  /* Almost-invisible neutral grid (~2%) for light-tech sections */
   .grid-faint::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(16, 24, 40, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 24, 40, 0.028) 1px, transparent 1px);
     background-size: 46px 46px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 28%, #000 35%, transparent 82%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 28%, #000 35%, transparent 82%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 85%);
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 85%);
   }
 }
 
