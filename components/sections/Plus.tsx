@@ -157,17 +157,36 @@ function Sparkline() {
           <stop offset="100%" stopColor="#58c8ff" />
         </linearGradient>
       </defs>
+      <path fill="url(#plus-fill)">
+        <animate
+          attributeName="d"
+          dur="9s"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keyTimes="0;0.33;0.66;1"
+          keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1"
+          values="M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16 L320 88 L0 88 Z;M0 66 C 26 58, 40 48, 66 50 S 108 62, 132 50 S 176 26, 200 34 S 250 56, 276 36 S 308 22, 320 16 L320 88 L0 88 Z;M0 66 C 26 62, 40 42, 66 44 S 108 68, 132 56 S 176 20, 200 28 S 250 62, 276 42 S 308 18, 320 16 L320 88 L0 88 Z;M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16 L320 88 L0 88 Z"
+        />
+      </path>
       <path
-        d="M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16 L320 88 L0 88 Z"
-        fill="url(#plus-fill)"
-      />
-      <path
-        d="M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16"
         stroke="url(#plus-stroke)"
         strokeWidth="2.2"
         strokeLinecap="round"
-      />
-      <circle cx="320" cy="16" r="3.5" fill="#58c8ff" />
+        fill="none"
+      >
+        <animate
+          attributeName="d"
+          dur="9s"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keyTimes="0;0.33;0.66;1"
+          keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1"
+          values="M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16;M0 66 C 26 58, 40 48, 66 50 S 108 62, 132 50 S 176 26, 200 34 S 250 56, 276 36 S 308 22, 320 16;M0 66 C 26 62, 40 42, 66 44 S 108 68, 132 56 S 176 20, 200 28 S 250 62, 276 42 S 308 18, 320 16;M0 66 C 26 60, 40 44, 66 46 S 108 66, 132 54 S 176 22, 200 30 S 250 60, 276 40 S 308 20, 320 16"
+        />
+      </path>
+      <circle cx="320" cy="16" r="3.5" fill="#58c8ff">
+        <animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" values="1;0.55;1" calcMode="spline" keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" />
+      </circle>
     </svg>
   );
 }

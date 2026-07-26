@@ -10,7 +10,7 @@ export function CTA() {
       <Container className="px-0">
         {/* Luminous Wallet-Pass gradient — bright & optimistic, never dark */}
         <div
-          className="relative isolate overflow-hidden rounded-[2.5rem] px-6 py-20 text-center text-white shadow-[0_40px_110px_-56px_rgba(36,83,255,0.5)] sm:px-12 sm:py-28"
+          className="noise-layer relative isolate overflow-hidden rounded-[2.5rem] px-6 py-20 text-center text-white shadow-[0_40px_110px_-56px_rgba(36,83,255,0.55),inset_0_1px_0_0_rgba(255,255,255,0.3)] sm:px-12 sm:py-28"
           style={{
             background:
               "radial-gradient(120% 120% at 15% 0%, #3a7bff 0%, rgba(58,123,255,0) 55%)," +
