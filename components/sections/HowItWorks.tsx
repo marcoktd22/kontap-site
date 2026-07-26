@@ -2,6 +2,7 @@ import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
+import { GradientBadge } from "../ui/GradientBadge";
 import { steps } from "@/lib/content";
 import { BrandBackdrop } from "../BrandBackdrop";
 
@@ -34,10 +35,10 @@ export function HowItWorks() {
                   className="bg-brand-gradient absolute inset-x-0 top-0 h-[3px] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
                 />
 
-                {/* Numero romano in chip a gradiente — l'ancora visiva */}
-                <span className="bg-brand-gradient flex h-14 w-14 items-center justify-center rounded-2xl text-2xl font-semibold text-white shadow-[0_12px_26px_-10px_rgba(36,83,255,0.6),inset_0_1px_0_0_rgba(255,255,255,0.35)]">
-                  {step.number}
-                </span>
+                {/* Numero romano nel badge condiviso — stesso linguaggio delle icone */}
+                <GradientBadge>
+                  <span className="text-xl font-semibold">{step.number}</span>
+                </GradientBadge>
 
                 <h3 className="mt-7 text-xl font-semibold text-ink">
                   {step.title}
