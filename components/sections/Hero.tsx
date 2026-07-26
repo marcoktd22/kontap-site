@@ -3,7 +3,7 @@ import { Button } from "../ui/Button";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
-import { BrandBackdrop } from "../BrandBackdrop";
+import { ImageBackdrop } from "../ImageBackdrop";
 
 export function Hero() {
   return (
@@ -11,7 +11,7 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden pb-24 pt-40 sm:pb-28 sm:pt-44 md:pb-32 md:pt-48"
     >
-      <BrandBackdrop variant="hero" />
+      <ImageBackdrop src="/backgrounds/hero.webp" position="center" />
 
       <Container className="relative flex flex-col items-center text-center">
         <Reveal>

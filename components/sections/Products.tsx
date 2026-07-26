@@ -6,7 +6,7 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { products, type Product } from "@/lib/content";
-import { BrandBackdrop } from "../BrandBackdrop";
+import { ImageBackdrop } from "../ImageBackdrop";
 import { cn } from "@/lib/cn";
 
 /**
@@ -22,9 +22,10 @@ export function Products() {
   return (
     <section
       id="products"
-      className="bg-light-tech relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
+      style={{ backgroundColor: "#eef3ff" }}
     >
-      <BrandBackdrop variant="products" />
+      <ImageBackdrop src="/backgrounds/products.webp" position="center" />
 
       {/* Preload nascosto delle immagini prodotto (caricamento istantaneo) */}
       <div aria-hidden="true" className="hidden">
