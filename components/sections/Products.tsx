@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useState } from "react";
 import { Container } from "../ui/Container";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { products, type Product } from "@/lib/content";
-import { BrandBackdrop } from "../BrandBackdrop";
+import { ImageBackdrop } from "../ImageBackdrop";
 import { cn } from "@/lib/cn";
 
 /**
@@ -22,9 +22,10 @@ export function Products() {
   return (
     <section
       id="products"
-      className="bg-light-tech relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
+      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
+      style={{ backgroundColor: "#eef3ff" }}
     >
-      <BrandBackdrop variant="products" />
+      <ImageBackdrop src="/backgrounds/products.webp" position="center" />
 
       {/* Preload nascosto delle immagini prodotto (caricamento istantaneo) */}
       <div aria-hidden="true" className="hidden">
@@ -66,8 +67,8 @@ export function Products() {
                     className={cn(
                       "group relative w-full overflow-hidden rounded-3xl bg-white p-6 pl-7 text-left text-ink transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:p-7 sm:pl-8",
                       selected
-                        ? "scale-[1.01] shadow-[0_1px_2px_rgba(16,24,40,0.05),0_30px_64px_-28px_rgba(36,83,255,0.4),inset_0_1px_0_0_rgba(255,255,255,0.95)] ring-1 ring-[color:rgba(88,200,255,0.65)]"
-                        : "shadow-[0_1px_2px_rgba(16,24,40,0.04),0_4px_10px_-4px_rgba(16,24,40,0.06),0_24px_50px_-30px_rgba(36,83,255,0.14),inset_0_1px_0_0_rgba(255,255,255,0.9)] ring-hairline hover:-translate-y-0.5 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.5)]"
+                        ? "scale-[1.01] shadow-[0_26px_60px_-28px_rgba(36,83,255,0.45)] ring-1 ring-[color:rgba(88,200,255,0.65)]"
+                        : "shadow-[var(--shadow-card)] ring-hairline hover:-translate-y-0.5 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.5)]"
                     )}
                   >
                     {/* Barra accento a gradiente quando selezionato */}
@@ -143,65 +144,19 @@ function ProductStage({ product }: { product: Product }) {
   return <SingleStage product={product} />;
 }
 
-/** Prodotto singolo (es. targa / wallet): immagine con tilt 3D reattivo al mouse. */
+/** Prodotto singolo (es. targa): immagine su alone soft, subito visibile. */
 function SingleStage({ product }: { product: Product }) {
   return (
-    <div className="relative mx-auto flex aspect-square w-full max-w-lg items-center justify-center">
+    <div className="group relative mx-auto flex aspect-square w-full max-w-lg items-center justify-center">
       <Halo />
-      <TiltImage src={`/products/${product.image}.webp`} alt={product.name} />
-    </div>
-  );
-}
-
-/** Premium hardware tilt — mouse parallax + moving highlight, gentle idle float. */
-function TiltImage({ src, alt }: { src: string; alt: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [t, setT] = useState({ rx: 0, ry: 0, mx: 50, my: 40, active: false });
-
-  const onMove = (e: ReactPointerEvent) => {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;
-    const py = (e.clientY - r.top) / r.height;
-    setT({ rx: (0.5 - py) * 9, ry: (px - 0.5) * 11, mx: px * 100, my: py * 100, active: true });
-  };
-  const onLeave = () => setT({ rx: 0, ry: 0, mx: 50, my: 40, active: false });
-
-  return (
-    <div
-      ref={ref}
-      onPointerMove={onMove}
-      onPointerLeave={onLeave}
-      className="relative z-10 flex h-[92%] w-[92%] items-center justify-center [perspective:1300px]"
-    >
-      <div
-        className={cn(
-          "relative transition-transform duration-300 ease-out [transform-style:preserve-3d]",
-          !t.active && "animate-float-soft"
-        )}
-        style={{ transform: `rotateX(${t.rx}deg) rotateY(${t.ry}deg)` }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={alt}
-          loading="eager"
-          decoding="async"
-          className="max-h-full max-w-full object-contain drop-shadow-[0_44px_74px_rgba(16,24,40,0.3)]"
-          style={{ transform: "translateZ(36px)" }}
-        />
-        {/* Riflesso che segue il mouse */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 transition-opacity duration-300"
-          style={{
-            opacity: t.active ? 1 : 0,
-            background: `radial-gradient(circle at ${t.mx}% ${t.my}%, rgba(255,255,255,0.28), transparent 42%)`,
-            mixBlendMode: "soft-light",
-          }}
-        />
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/products/${product.image}.webp`}
+        alt={product.name}
+        loading="eager"
+        decoding="async"
+        className="relative z-10 max-h-[92%] max-w-[92%] object-contain drop-shadow-[0_40px_70px_rgba(16,24,40,0.22)] transition-transform duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform group-hover:scale-[1.03]"
+      />
     </div>
   );
 }

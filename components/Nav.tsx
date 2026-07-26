@@ -30,10 +30,10 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
       <nav
         className={cn(
-          "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-3 py-2 pl-5 ring-hairline-invert backdrop-blur-2xl backdrop-saturate-150 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
+          "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-3 py-2 pl-5 ring-hairline-invert backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
           scrolled || open
-            ? "bg-[linear-gradient(120deg,rgba(36,83,255,0.88)_0%,rgba(88,200,255,0.85)_120%)] shadow-[0_18px_44px_-18px_rgba(36,83,255,0.5),inset_0_1px_0_0_rgba(255,255,255,0.25)]"
-            : "bg-[linear-gradient(120deg,rgba(36,83,255,0.8)_0%,rgba(88,200,255,0.78)_120%)] shadow-[0_10px_30px_-18px_rgba(36,83,255,0.4)]"
+            ? "bg-[linear-gradient(120deg,rgba(36,83,255,0.95)_0%,rgba(88,200,255,0.92)_120%)] shadow-[0_14px_38px_-14px_rgba(36,83,255,0.6)]"
+            : "bg-[linear-gradient(120deg,rgba(36,83,255,0.82)_0%,rgba(88,200,255,0.8)_120%)]"
         )}
       >
         <a href="#top" className="shrink-0" aria-label="Kontap home">

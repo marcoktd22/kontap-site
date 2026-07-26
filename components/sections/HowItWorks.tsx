@@ -4,20 +4,16 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { GradientBadge } from "../ui/GradientBadge";
 import { steps } from "@/lib/content";
-import { BrandBackdrop } from "../BrandBackdrop";
+import { ImageBackdrop } from "../ImageBackdrop";
 
 export function HowItWorks() {
   return (
     <Section
       id="how"
       className="overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(62% 52% at 50% 0%, rgba(88,200,255,0.16), transparent 60%)," +
-          "linear-gradient(180deg, #eef4ff 0%, #dde9ff 100%)",
-      }}
+      style={{ backgroundColor: "#eaf1ff" }}
     >
-      <BrandBackdrop variant="how" />
+      <ImageBackdrop src="/backgrounds/how.webp" position="center" />
       <Container className="relative">
         <SectionHeader
           eyebrow="Come funziona"
