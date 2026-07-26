@@ -5,14 +5,7 @@ import { footer } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer
-      className="relative overflow-hidden pb-14 pt-20 sm:pt-32"
-      style={{
-        background:
-          "radial-gradient(80% 80% at 50% 0%, rgba(88,200,255,0.08), transparent 60%)," +
-          "linear-gradient(180deg, #e9f0ff 0%, #f3f8ff 55%, #fcfdff 100%)",
-      }}
-    >
+    <footer className="relative overflow-hidden bg-[#f8fbff] pb-14 pt-20 sm:pt-32">
       <BrandBackdrop variant="footer" />
       {/* Divisore a gradiente soft */}
       <div

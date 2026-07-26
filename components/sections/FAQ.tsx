@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeader } from "../ui/SectionHeader";
@@ -14,29 +14,17 @@ export function FAQ() {
 
   return (
     <Section id="faq" className="overflow-hidden">
-      <BrandBackdrop variant="faq" />
+      <BrandBackdrop variant="footer" />
       <Container className="relative">
         <div className="grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-[0.8fr_1.15fr]">
           {/* Colonna sinistra — intestazione */}
-          <div className="relative lg:sticky lg:top-28 lg:self-start">
-            <div
-              aria-hidden="true"
-              className="animate-breathe pointer-events-none absolute -left-12 -top-12 h-72 w-72 rounded-full blur-[70px]"
-              style={
-                {
-                  background: "radial-gradient(circle, rgba(88,200,255,0.3), transparent 70%)",
-                  ["--breathe-o" as string]: 0.7,
-                } as CSSProperties
-              }
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeader
+              align="left"
+              eyebrow="FAQ"
+              title="Domande, risposte"
+              description="Tutto quello che devi sapere sull'hardware Kontap e sulla piattaforma che lo fa funzionare."
             />
-            <div className="relative">
-              <SectionHeader
-                align="left"
-                eyebrow="FAQ"
-                title="Domande, risposte"
-                description="Tutto quello che devi sapere sull'hardware Kontap e sulla piattaforma che lo fa funzionare."
-              />
-            </div>
           </div>
 
           {/* Colonna destra — elenco premium */}
