@@ -51,7 +51,7 @@ export function FAQ() {
                         <span
                           className={cn(
                             "text-lg font-medium leading-snug transition-colors duration-200",
-                            isOpen ? "text-primary" : "text-ink group-hover:text-primary"
+                            isOpen ? "text-gradient-accent" : "text-ink group-hover:text-primary"
                           )}
                         >
                           {faq.question}
