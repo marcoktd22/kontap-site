@@ -8,21 +8,15 @@ import { faqs } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 const TICKER_CLASS =
-  "whitespace-nowrap text-[13px] font-extrabold uppercase leading-none tracking-[0.2em]";
-const TICKER_STYLE = {
-  backgroundImage: "linear-gradient(90deg,#2453ff,#58c8ff)",
-  WebkitBackgroundClip: "text",
-  backgroundClip: "text",
-  color: "transparent",
-} as const;
+  "whitespace-nowrap text-[13px] font-bold uppercase leading-none tracking-[0.2em] text-white";
 
 /**
- * Infinite ticker — a subtle premium branding band framing the FAQ. One long,
- * varied brand sequence (never the same short phrase repeated) that loops only
- * after a long distance. Kontap gradient on the letters, white bar with a 1px
- * gradient hairline. Two identical copies translated by -50% = seamless loop
- * with no visible reset; `reverse` flips the direction so the top and bottom
- * bars scroll in opposite directions. Slow (~44s) — noticed once, not a marquee.
+ * Infinite ticker — a subtle premium branding band framing the FAQ: Kontap
+ * gradient background with white text. One long, varied brand sequence (never
+ * the same short phrase repeated) that loops only after a long distance. Two
+ * identical copies translated by -50% = seamless loop with no visible reset;
+ * `reverse` flips the direction so the top and bottom bars scroll in opposite
+ * directions. Slow (~44s) — noticed once, not a marquee.
  */
 function Ticker({
   text,
@@ -37,12 +31,8 @@ function Ticker({
   return (
     <div
       aria-hidden="true"
-      className="relative h-[46px] w-full overflow-hidden bg-white"
+      className="bg-brand-gradient relative h-[46px] w-full overflow-hidden"
     >
-      <span
-        className="absolute inset-x-0 top-0 z-10 h-px"
-        style={{ background: "linear-gradient(90deg,#2453ff,#58c8ff)" }}
-      />
       <div className="absolute inset-0 flex items-center">
         <div
           className="flex w-max flex-none will-change-transform"
@@ -51,12 +41,8 @@ function Ticker({
             animationDirection: reverse ? "reverse" : "normal",
           }}
         >
-          <span className={TICKER_CLASS} style={TICKER_STYLE}>
-            {line}
-          </span>
-          <span className={TICKER_CLASS} style={TICKER_STYLE}>
-            {line}
-          </span>
+          <span className={TICKER_CLASS}>{line}</span>
+          <span className={TICKER_CLASS}>{line}</span>
         </div>
       </div>
     </div>
@@ -96,10 +82,12 @@ export function FAQ() {
                 <Eyebrow align="left">FAQ</Eyebrow>
               </Reveal>
               <Reveal index={1}>
-                <h2 className="mt-5 text-balance text-5xl font-black leading-[1.02] tracking-[-0.02em] text-[#111827] md:text-[3.5rem]">
-                  Domande,
-                  <br />
-                  risposte
+                <h2 className="mt-5 text-balance text-4xl font-semibold leading-[1.03] sm:text-5xl md:text-[3.25rem]">
+                  <span className="text-gradient">
+                    Domande,
+                    <br />
+                    risposte
+                  </span>
                 </h2>
               </Reveal>
               <Reveal index={2}>
