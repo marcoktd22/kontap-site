@@ -16,7 +16,11 @@ const bullets = [
 
 export function Plus() {
   return (
-    <Section id="plus" className="overflow-hidden">
+    <Section
+      id="plus"
+      className="overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%)" }}
+    >
       <BrandBackdrop variant="plus" />
       <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">

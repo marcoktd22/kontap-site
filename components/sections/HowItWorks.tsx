@@ -4,16 +4,12 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { GradientBadge } from "../ui/GradientBadge";
 import { steps } from "@/lib/content";
-import { ImageBackdrop } from "../ImageBackdrop";
+import { BrandBackdrop } from "../BrandBackdrop";
 
 export function HowItWorks() {
   return (
-    <Section
-      id="how"
-      className="overflow-hidden"
-      style={{ backgroundColor: "#eaf1ff" }}
-    >
-      <ImageBackdrop src="/backgrounds/how.webp" position="center" />
+    <Section id="how" className="overflow-hidden">
+      <BrandBackdrop variant="how" />
       <Container className="relative">
         <SectionHeader
           eyebrow="Come funziona"
