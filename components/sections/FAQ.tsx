@@ -8,16 +8,11 @@ import { faqs } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 const TICKER_CLASS =
-  "whitespace-nowrap text-[13px] font-extrabold uppercase tracking-[0.16em]";
-const TICKER_STYLE = {
-  backgroundImage: "linear-gradient(90deg,#2453ff,#58c8ff)",
-  WebkitBackgroundClip: "text",
-  backgroundClip: "text",
-  color: "transparent",
-} as const;
+  "whitespace-nowrap text-[13px] font-semibold uppercase tracking-[0.16em] text-white";
 
 /**
- * Infinite gradient ticker — a premium band that frames the FAQ. Two identical
+ * Infinite ticker — a premium band that frames the FAQ: Kontap gradient
+ * background with white text (same look as the curve ribbons). Two identical
  * copies translated by -50% give a seamless loop; `reverse` flips the scroll
  * direction so the top and bottom bars move in opposite directions.
  */
@@ -26,12 +21,8 @@ function Ticker({ text, reverse }: { text: string; reverse?: boolean }) {
   return (
     <div
       aria-hidden="true"
-      className="relative h-[46px] w-full overflow-hidden bg-white"
+      className="bg-brand-gradient relative h-[46px] w-full overflow-hidden"
     >
-      <span
-        className="absolute inset-x-0 top-0 z-10 h-px"
-        style={{ background: "linear-gradient(90deg,#2453ff,#58c8ff)" }}
-      />
       <div className="absolute inset-0 flex items-center">
         <div
           className="flex w-max flex-none will-change-transform"
@@ -40,33 +31,31 @@ function Ticker({ text, reverse }: { text: string; reverse?: boolean }) {
             animationDirection: reverse ? "reverse" : "normal",
           }}
         >
-          <span className={TICKER_CLASS} style={TICKER_STYLE}>
-            {line}
-          </span>
-          <span className={TICKER_CLASS} style={TICKER_STYLE}>
-            {line}
-          </span>
+          <span className={TICKER_CLASS}>{line}</span>
+          <span className={TICKER_CLASS}>{line}</span>
         </div>
       </div>
     </div>
   );
 }
 
+const ArrowUpRight = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
+    <path
+      d="M7 17 17 7M9 7h8v8"
+      stroke="currentColor"
+      strokeWidth={2.2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section id="faq" className="relative scroll-mt-24">
-      {/* Gradiente condiviso per le frecce */}
-      <svg width="0" height="0" aria-hidden="true" className="absolute">
-        <defs>
-          <linearGradient id="faq-arrow" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#2453ff" />
-            <stop offset="1" stopColor="#58c8ff" />
-          </linearGradient>
-        </defs>
-      </svg>
-
       {/* Barra superiore — scorre da sinistra a destra */}
       <Ticker text="NFC TECHNOLOGY • TOUCH THE FUTURE • " reverse />
 
@@ -93,8 +82,8 @@ export function FAQ() {
               </Reveal>
             </div>
 
-            {/* Colonna destra — card */}
-            <div className="flex flex-col gap-4">
+            {/* Colonna destra — card (identiche alla versione precedente) */}
+            <div className="flex flex-col gap-3.5">
               {faqs.map((faq, i) => {
                 const isOpen = open === i;
                 const panelId = `faq-panel-${i}`;
@@ -103,10 +92,10 @@ export function FAQ() {
                   <Reveal as="div" key={faq.question} index={Math.min(i, 3)}>
                     <div
                       className={cn(
-                        "group rounded-[22px] border bg-white transition-all duration-[350ms] ease-[cubic-bezier(0.25,1,0.5,1)]",
+                        "group relative rounded-2xl border transition-all duration-[350ms] ease-[cubic-bezier(0.25,1,0.5,1)]",
                         isOpen
-                          ? "border-[color:rgba(88,200,255,0.7)] shadow-[0_16px_40px_-22px_rgba(36,83,255,0.3)]"
-                          : "border-[color:var(--color-line)] shadow-[0_1px_2px_rgba(16,24,40,0.03),0_10px_30px_-24px_rgba(16,24,40,0.2)] hover:-translate-y-0.5 hover:border-[color:rgba(88,200,255,0.6)] hover:shadow-[0_14px_34px_-22px_rgba(36,83,255,0.28)]"
+                          ? "border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#2453ff,#58c8ff)_border-box] shadow-[0_12px_34px_-14px_rgba(36,83,255,0.32)]"
+                          : "border-[color:var(--color-line)] bg-white/80 shadow-[0_1px_2px_rgba(16,24,40,0.03),0_18px_40px_-30px_rgba(36,83,255,0.22)] backdrop-blur-sm hover:-translate-y-0.5 hover:border-transparent hover:[background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#2453ff,#58c8ff)_border-box] hover:shadow-[0_16px_38px_-18px_rgba(36,83,255,0.3)]"
                       )}
                     >
                       <h3>
@@ -116,28 +105,28 @@ export function FAQ() {
                           aria-expanded={isOpen}
                           aria-controls={panelId}
                           onClick={() => setOpen(isOpen ? null : i)}
-                          className="flex w-full items-center justify-between gap-7 px-7 py-7 text-left sm:px-8"
+                          className="flex w-full items-start justify-between gap-6 px-6 py-5 text-left sm:px-7 sm:py-6"
                         >
-                          <span className="text-lg font-semibold leading-snug text-ink">
-                            {faq.question}
-                          </span>
-                          <svg
-                            aria-hidden="true"
-                            viewBox="0 0 24 24"
-                            fill="none"
+                          <span
                             className={cn(
-                              "h-6 w-6 flex-none transition-transform duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)]",
-                              isOpen ? "rotate-0" : "-rotate-90"
+                              "text-lg font-medium leading-snug transition-colors duration-200",
+                              isOpen
+                                ? "text-gradient-accent"
+                                : "text-ink group-hover:text-primary"
                             )}
                           >
-                            <path
-                              d="M6 9l6 6 6-6"
-                              stroke="url(#faq-arrow)"
-                              strokeWidth={2.6}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
+                            {faq.question}
+                          </span>
+                          <span
+                            className={cn(
+                              "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:duration-200",
+                              isOpen
+                                ? "bg-brand-gradient rotate-45 border-transparent text-white shadow-[0_8px_20px_-8px_rgba(36,83,255,0.55)]"
+                                : "border-[color:var(--color-line)] text-muted group-hover:border-[color:rgba(88,200,255,0.6)] group-hover:text-primary"
+                            )}
+                          >
+                            <ArrowUpRight />
+                          </span>
                         </button>
                       </h3>
                       <div
@@ -154,7 +143,7 @@ export function FAQ() {
                         <div className="overflow-hidden">
                           <p
                             className={cn(
-                              "max-w-2xl px-7 pb-7 text-pretty leading-relaxed text-secondary transition-transform duration-[520ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:px-8",
+                              "max-w-2xl px-6 pb-6 pr-12 text-pretty leading-relaxed text-secondary transition-transform duration-[520ms] ease-[cubic-bezier(0.25,1,0.5,1)] sm:px-7 sm:pb-7",
                               isOpen ? "translate-y-0" : "translate-y-1"
                             )}
                           >
