@@ -99,25 +99,26 @@ function Hero() {
   );
 }
 
-function Why() {
+/**
+ * Classic technical background — only the grid (from the section's `grid-faint`
+ * utility) plus a soft, luminous Kontap glow. No symbol, no circles, no
+ * decorative elements: a clean, slightly brighter "glass" surface. Shared by
+ * "Hardware di cui fidarti" and "Una linea. Una piattaforma." so they read as
+ * the same visual family.
+ */
+function GridTech() {
   return (
     <>
-      {/* near-invisible technical grid */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(16,24,40,0.03) 1px, transparent 1px)," +
-            "linear-gradient(90deg, rgba(16,24,40,0.03) 1px, transparent 1px)",
-          backgroundSize: "52px 52px",
-          WebkitMaskImage: "radial-gradient(ellipse 82% 72% at 50% 32%, #000 30%, transparent 82%)",
-          maskImage: "radial-gradient(ellipse 82% 72% at 50% 32%, #000 30%, transparent 82%)",
-        }}
+      {/* broad luminous glow across the top — a touch brighter, more Kontap */}
+      <Light
+        className="left-1/2 top-[-14%] h-[58vh] w-[80vw] max-w-[1120px] -translate-x-1/2"
+        color="rgba(88,200,255,0.20)"
       />
-      <Light className="right-[3%] top-[-8%] h-[46vh] w-[46vh] blur-[6px]" color="rgba(88,200,255,0.13)" />
-      {/* small geometric recalls of the mark, cropped in the corners */}
-      <Mark size={120} color={BLUE} opacity={0.06} className="right-[5%] top-[11%]" />
-      <Mark size={78} color={CYAN} opacity={0.06} className="left-[3%] bottom-[9%]" />
+      {/* soft blue accent for depth */}
+      <Light
+        className="left-[64%] top-[-2%] h-[42vh] w-[42vh] blur-[6px]"
+        color="rgba(36,83,255,0.10)"
+      />
     </>
   );
 }
@@ -162,24 +163,6 @@ function How() {
   );
 }
 
-function Products() {
-  return (
-    <>
-      <div
-        className="absolute left-1/2 top-[-2%] h-[46vh] w-[70vw] -translate-x-1/2 blur-[4px]"
-        style={{ background: "radial-gradient(closest-side, rgba(88,200,255,0.10), transparent)", borderRadius: "50%" }}
-      />
-      {/* a single large mark cropped far off the corner — lets the products breathe */}
-      <Mark
-        size="min(42vw, 560px)"
-        color={BLUE}
-        opacity={0.04}
-        className="-bottom-[20%] -right-[8%]"
-        style={{ transform: "rotate(8deg)" }}
-      />
-    </>
-  );
-}
 
 function Plus() {
   return (
@@ -295,9 +278,9 @@ function Footer() {
 
 const COMPOSITIONS: Record<Variant, () => React.ReactNode> = {
   hero: Hero,
-  why: Why,
+  why: GridTech,
   how: How,
-  products: Products,
+  products: GridTech,
   plus: Plus,
   cta: Cta,
   faq: Faq,

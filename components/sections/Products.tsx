@@ -22,7 +22,7 @@ export function Products() {
   return (
     <section
       id="products"
-      className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
+      className="bg-light-tech grid-faint relative scroll-mt-24 overflow-hidden py-24 sm:py-32 md:py-40"
     >
       <BrandBackdrop variant="products" />
 
