@@ -100,26 +100,17 @@ function Hero() {
 }
 
 /**
- * Classic technical background — only the grid (from the section's `grid-faint`
- * utility) plus a soft, luminous Kontap glow. No symbol, no circles, no
- * decorative elements: a clean, slightly brighter "glass" surface. Shared by
- * "Hardware di cui fidarti" and "Una linea. Una piattaforma." so they read as
- * the same visual family.
+ * Classic technical background (#17 look) — only the grid (from the section's
+ * `grid-faint` utility) plus one soft blue glow. No Kontap symbol, no circles,
+ * no decorative elements. Shared by "Hardware di cui fidarti" and "Una linea.
+ * Una piattaforma." so they read as the same visual family.
  */
 function GridTech() {
   return (
-    <>
-      {/* broad luminous glow across the top — a touch brighter, more Kontap */}
-      <Light
-        className="left-1/2 top-[-14%] h-[58vh] w-[80vw] max-w-[1120px] -translate-x-1/2"
-        color="rgba(88,200,255,0.20)"
-      />
-      {/* soft blue accent for depth */}
-      <Light
-        className="left-[64%] top-[-2%] h-[42vh] w-[42vh] blur-[6px]"
-        color="rgba(36,83,255,0.10)"
-      />
-    </>
+    <Light
+      className="right-[6%] top-[-4%] h-[42vh] w-[42vh] opacity-60 blur-[90px]"
+      color="rgba(36,83,255,0.16)"
+    />
   );
 }
 
