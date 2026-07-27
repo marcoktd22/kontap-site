@@ -12,7 +12,7 @@ export function Footer() {
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-line-strong),transparent)]"
       />
-      <Container>
+      <Container className="relative">
         <div className="grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-3 md:grid-cols-5">
           <div className="col-span-2 md:col-span-2">
             <a href="#top" className="inline-block" aria-label="Kontap home">

@@ -14,7 +14,7 @@ export function FAQ() {
 
   return (
     <Section id="faq" className="overflow-hidden">
-      <BrandBackdrop variant="footer" />
+      <BrandBackdrop variant="faq" />
       <Container className="relative">
         <div className="grid grid-cols-1 gap-x-16 gap-y-12 lg:grid-cols-[0.8fr_1.15fr]">
           {/* Colonna sinistra — intestazione */}
