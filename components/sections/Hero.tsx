@@ -4,12 +4,13 @@ import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { BrandBackdrop } from "../BrandBackdrop";
+import { Plate3D } from "../Plate3D";
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pb-24 pt-40 sm:pb-28 sm:pt-44 md:pb-32 md:pt-48"
+      className="relative overflow-hidden pb-24 pt-28 sm:pb-28 sm:pt-44 md:pb-32 md:pt-48"
     >
       <BrandBackdrop variant="hero" />
 
@@ -25,7 +26,16 @@ export function Hero() {
           </h1>
         </Reveal>
 
+        {/* Il prodotto, subito — targa 3D girevole */}
         <Reveal index={2}>
+          <Plate3D className="mx-auto mt-9 w-[165px] sm:mt-10" />
+          <p className="mt-9 flex items-center justify-center gap-1.5 text-xs font-medium text-muted">
+            <Icon name="refresh" className="h-3.5 w-3.5" />
+            Trascina per ruotarla
+          </p>
+        </Reveal>
+
+        <Reveal index={3}>
           <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted sm:text-xl">
             Kontap crea hardware NFC premium per le attività locali — a partire
             dalla targa per le recensioni Google — tutto gestito da Plus:
@@ -34,7 +44,7 @@ export function Hero() {
           </p>
         </Reveal>
 
-        <Reveal index={3}>
+        <Reveal index={4}>
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
             <Button href="#products" size="lg">
               Scopri i prodotti
