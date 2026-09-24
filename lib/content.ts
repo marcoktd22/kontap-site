@@ -9,44 +9,23 @@ export const site = {
    *  solo cifre (senza +, spazi o trattini), es. "393401234567". */
   whatsapp: {
     number: "393000000000",
-    message: "Ciao Kontap, vorrei informazioni sui prodotti.",
+    message: "Ciao Kontap, vorrei informazioni sulla targa recensioni.",
   },
 } as const;
 
+/** Link wa.me con messaggio precompilato (default: site.whatsapp.message). */
+export function whatsappHref(message: string = site.whatsapp.message) {
+  return `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(message)}`;
+}
+
 export const nav = {
   links: [
-    { label: "Prodotti", href: "#products" },
-    { label: "Come funziona", href: "#how" },
-    { label: "Kontap+", href: "#plus" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Come funziona", href: "/come-funziona" },
+    { label: "Kontap+", href: "/#plus" },
+    { label: "FAQ", href: "/faq" },
   ],
-  cta: { label: "Inizia ora", href: "#cta" },
+  cta: { label: "Inizia ora", href: "/#cta" },
 } as const;
-
-/** Destinazioni che un tap può aprire — scorrono nel nastro sotto l'hero. */
-export type Destination = {
-  name: string;
-  icon:
-    | "google"
-    | "tripadvisor"
-    | "instagram"
-    | "facebook"
-    | "whatsapp"
-    | "trustpilot"
-    | "tiktok"
-    | "youtube";
-};
-
-export const destinations: Destination[] = [
-  { name: "Google", icon: "google" },
-  { name: "TripAdvisor", icon: "tripadvisor" },
-  { name: "Instagram", icon: "instagram" },
-  { name: "Facebook", icon: "facebook" },
-  { name: "WhatsApp", icon: "whatsapp" },
-  { name: "Trustpilot", icon: "trustpilot" },
-  { name: "TikTok", icon: "tiktok" },
-  { name: "YouTube", icon: "youtube" },
-];
 
 export type Feature = {
   title: string;
@@ -60,14 +39,14 @@ export const whyFeatures: Feature[] = [
   {
     title: "Niente app. Nessun ostacolo.",
     description:
-      "Ogni prodotto Kontap funziona con lo smartphone che il cliente ha già. Un tap apre l'esperienza all'istante — niente da scaricare, niente da spiegare.",
+      "La targa Kontap funziona con lo smartphone che il cliente ha già. Un tap apre l'esperienza all'istante — niente da scaricare, niente da spiegare.",
     span: "wide",
     icon: "signal",
   },
   {
-    title: "Una piattaforma, tutti i prodotti",
+    title: "Una dashboard, tutte le tue targhe",
     description:
-      "Plus è l'infrastruttura condivisa. Un'unica dashboard, le stesse statistiche e la stessa AI per la targa recensioni, il biglietto da visita e tutto ciò che aggiungi.",
+      "Con Kontap Plus gestisci ogni targa da un unico posto: statistiche, analisi AI delle recensioni e report, anche se hai più sedi.",
     icon: "layers",
   },
   {
@@ -79,7 +58,7 @@ export const whyFeatures: Feature[] = [
   {
     title: "Riprogrammabile per sempre",
     description:
-      "Cambia la destinazione di un tag ogni volta che la tua attività cambia. L'hardware lo compri una volta e continua a lavorare per te.",
+      "Cambia la destinazione della targa ogni volta che la tua attività cambia. La compri una volta e continua a lavorare per te.",
     icon: "refresh",
   },
   {
@@ -99,9 +78,9 @@ export type Step = {
 export const steps: Step[] = [
   {
     number: "I",
-    title: "Scegli il tuo prodotto",
+    title: "Richiedi la tua targa",
     description:
-      "Parti dalla targa per le recensioni Google sul bancone, aggiungi i biglietti NFC per il team — una sola linea, un'unica piattaforma.",
+      "Scrivici e scegli dove metterla: bancone, cassa, tavoli o ingresso. Ogni targa è collegata alla tua pagina recensioni Google.",
   },
   {
     number: "II",
@@ -117,53 +96,6 @@ export const steps: Step[] = [
   },
 ];
 
-export type Product = {
-  name: string;
-  tagline: string;
-  description: string;
-  /** slug usato per l'immagine prodotto in /products/<image>.png */
-  image: string;
-  /** slug del retro in /products/<back>.png: se presente, il prodotto si
-   *  gira al click mostrando il retro */
-  back?: string;
-  /** proporzione dello stage: "card" per il biglietto, "square" per il resto */
-  ratio?: "card" | "square";
-  /** brevi chip di specifica mostrate sotto la descrizione */
-  specs: string[];
-};
-
-/** L'espositore a 3 prodotti. Le foto vanno in /public/products/<image>.png
- *  (PNG trasparente, lato lungo ≥ 2000px). Fino ad allora appare un
- *  placeholder brandizzato. */
-export const products: Product[] = [
-  {
-    name: "Targa Recensioni Google",
-    tagline: "Il prodotto d'ingresso",
-    description:
-      "Una targa premium da bancone che porta i clienti soddisfatti direttamente alla tua pagina recensioni Google con un solo tap. Il modo più veloce per far crescere la tua reputazione.",
-    image: "review-plate",
-    specs: ["Da bancone", "Riprogrammabile", "Impermeabile"],
-  },
-  {
-    name: "Biglietto da Visita NFC",
-    tagline: "Il tuo profilo in un tap",
-    description:
-      "Condividi contatti, social e link all'istante. Finiture in metallo e premium, un solo biglietto per tutto il team — e ogni tap tracciato in Plus.",
-    image: "business-card",
-    back: "business-card-back",
-    ratio: "card",
-    specs: ["Finitura metallo", "Contatti + social", "Pronto per il team"],
-  },
-  {
-    name: "Carta Apple Wallet",
-    tagline: "Vive nel wallet",
-    description:
-      "Un pass dinamico che si aggiorna in tempo reale e non lascia mai il telefono del cliente. Fedeltà, offerte e promemoria, sempre a portata di swipe.",
-    image: "wallet-card",
-    specs: ["Apple Wallet", "Tempo reale", "Fedeltà e offerte"],
-  },
-];
-
 export type Faq = {
   question: string;
   answer: string;
@@ -173,27 +105,27 @@ export const faqs: Faq[] = [
   {
     question: "I miei clienti hanno bisogno di un'app per usare Kontap?",
     answer:
-      "No. L'NFC è integrato in ogni iPhone e Android moderno. Il cliente avvicina semplicemente il telefono al prodotto Kontap e l'esperienza si apre nel browser — niente da installare.",
+      "No. L'NFC è integrato in ogni iPhone e Android moderno. Il cliente avvicina semplicemente il telefono alla targa e l'esperienza si apre nel browser — niente da installare.",
   },
   {
-    question: "Kontap serve solo per le recensioni Google?",
+    question: "E se il telefono del cliente non ha l'NFC?",
     answer:
-      "No. La targa recensioni Google è il nostro prodotto d'ingresso, ma Kontap è un'azienda NFC multi-prodotto. Lo stesso tap può aprire un biglietto da visita, un pass Apple Wallet, un menù, un link di pagamento e altro — tutto gestito da un'unica piattaforma.",
+      "Nessun problema: su ogni targa c'è anche un QR code. Il cliente lo inquadra con la fotocamera e arriva alla stessa pagina recensioni.",
   },
   {
     question: "Cos'è Kontap Plus?",
     answer:
-      "Plus è il nostro abbonamento SaaS — infrastruttura condivisa su ogni prodotto Kontap. Trasforma ogni tap in statistiche (traffico, orari, posizione e conversioni), aggiunge l'analisi delle recensioni con l'AI e invia report automatici, così sai sempre cosa funziona.",
+      "Plus è il nostro abbonamento: trasforma ogni tap in statistiche (traffico, orari, posizione e conversioni), aggiunge l'analisi delle recensioni con l'AI e invia report automatici, così sai sempre cosa funziona.",
   },
   {
-    question: "Posso cambiare la destinazione di un prodotto dopo l'acquisto?",
+    question: "Posso cambiare la destinazione della targa dopo l'acquisto?",
     answer:
-      "Sì. Ogni prodotto Kontap è riprogrammabile. Aggiorna la destinazione — un link recensioni, un profilo, un pass wallet o un URL — tutte le volte che vuoi dalla tua dashboard.",
+      "Sì. Ogni targa Kontap è riprogrammabile: puoi farla puntare alla pagina recensioni, al menù, a Instagram o a qualsiasi link, tutte le volte che vuoi.",
   },
   {
     question: "Quanto è resistente l'hardware?",
     answer:
-      "I prodotti Kontap usano materiali impermeabili e resistenti ai graffi e chip NFC di livello industriale testati per centinaia di migliaia di tap: reggono su un bancone affollato o in tasca.",
+      "Le targhe Kontap usano materiali impermeabili e resistenti ai graffi e chip NFC di livello industriale testati per centinaia di migliaia di tap: reggono anche sul bancone più affollato.",
   },
   {
     question: "Spedite in Italia?",
@@ -205,30 +137,19 @@ export const faqs: Faq[] = [
 export const footer = {
   columns: [
     {
-      title: "Prodotti",
+      title: "Kontap",
       links: [
-        { label: "Targa Recensioni Google", href: "#products" },
-        { label: "Biglietto da Visita NFC", href: "#products" },
-        { label: "Carta Apple Wallet", href: "#products" },
-        { label: "Prodotti NFC Smart", href: "#products" },
+        { label: "Targa Recensioni Google", href: "/" },
+        { label: "Kontap Plus", href: "/#plus" },
+        { label: "Contatti", href: "/#cta" },
       ],
     },
     {
-      title: "Piattaforma",
+      title: "Scopri",
       links: [
-        { label: "Come funziona", href: "#how" },
-        { label: "Kontap Plus", href: "#plus" },
-        { label: "Casi d'uso", href: "#usecases" },
-        { label: "FAQ", href: "#faq" },
-      ],
-    },
-    {
-      title: "Azienda",
-      links: [
-        { label: "Chi siamo", href: "#" },
-        { label: "Contatti", href: "#cta" },
-        { label: "Privacy", href: "#" },
-        { label: "Termini", href: "#" },
+        { label: "Come funziona", href: "/come-funziona" },
+        { label: "Perché Kontap", href: "/come-funziona#why" },
+        { label: "FAQ", href: "/faq" },
       ],
     },
   ],

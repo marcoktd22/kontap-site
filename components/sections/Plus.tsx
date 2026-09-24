@@ -6,12 +6,13 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Logo } from "../Logo";
 import { BrandBackdrop } from "../BrandBackdrop";
+import { whatsappHref } from "@/lib/content";
 
 const bullets = [
   "Analisi recensioni con AI — sentiment, temi e cosa migliorare",
   "Report automatici direttamente nella tua email",
   "Statistiche in tempo reale: traffico, orari e posizione",
-  "Un'unica dashboard per tutti i prodotti Kontap",
+  "Un'unica dashboard per tutte le tue targhe e sedi",
 ];
 
 export function Plus() {
@@ -37,9 +38,9 @@ export function Plus() {
             </Reveal>
             <Reveal index={2}>
               <p className="mt-6 max-w-lg text-pretty text-lg leading-relaxed text-muted">
-                Plus è l’abbonamento dietro l’hardware — infrastruttura condivisa
-                su ogni prodotto. Analisi delle recensioni con l’AI, report
-                automatici e statistiche che ti dicono esattamente cosa fare dopo.
+                L’abbonamento che dà un cervello alla tua targa: analisi AI delle
+                recensioni, report automatici e statistiche che ti dicono cosa
+                fare dopo.
               </p>
             </Reveal>
 
@@ -58,7 +59,12 @@ export function Plus() {
 
             <Reveal index={2}>
               <div className="mt-10">
-                <Button href="#cta" size="lg">
+                <Button
+                  href={whatsappHref("Ciao Kontap, vorrei entrare nella waitlist di Kontap Plus.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="lg"
+                >
                   Entra nella waitlist
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>

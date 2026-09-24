@@ -73,7 +73,7 @@ export function FAQ() {
         reverse
       />
 
-      <div className="bg-light-tech grid-faint relative overflow-hidden py-24 sm:py-32 md:py-40">
+      <div className="bg-light-tech grid-faint relative overflow-hidden py-16 sm:py-32 md:py-40">
         <Container className="relative">
           <div className="grid grid-cols-1 gap-x-20 gap-y-14 lg:grid-cols-[0.82fr_1.18fr]">
             {/* Colonna sinistra — protagonista */}
@@ -92,8 +92,8 @@ export function FAQ() {
               </Reveal>
               <Reveal index={2}>
                 <p className="mt-6 max-w-xs text-pretty text-lg leading-relaxed text-secondary">
-                  Tutto quello che devi sapere sull&apos;hardware Kontap e sulla
-                  piattaforma che lo fa funzionare.
+                  Tutto quello che devi sapere sulla targa Kontap e su Kontap
+                  Plus.
                 </p>
               </Reveal>
             </div>

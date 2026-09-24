@@ -5,12 +5,13 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { BrandBackdrop } from "../BrandBackdrop";
 import { Plate3D } from "../Plate3D";
+import { whatsappHref } from "@/lib/content";
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pb-24 pt-28 sm:pb-28 sm:pt-44 md:pb-32 md:pt-48"
+      className="relative overflow-hidden pb-16 pt-28 sm:pb-28 sm:pt-44 md:pb-32 md:pt-48"
     >
       <BrandBackdrop variant="hero" />
 
@@ -36,25 +37,28 @@ export function Hero() {
         </Reveal>
 
         <Reveal index={3}>
-          <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted sm:text-xl">
-            Kontap crea hardware NFC premium per le attività locali — a partire
-            dalla targa per le recensioni Google — tutto gestito da Plus:
-            analisi delle recensioni con l’AI, report automatici e statistiche
-            in tempo reale.
+          <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-muted sm:text-xl">
+            La targa NFC che porta i tuoi clienti a lasciarti una recensione
+            Google con un solo tap. Niente app, niente attese.
           </p>
         </Reveal>
 
         <Reveal index={4}>
-          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-            <Button href="#products" size="lg">
-              Scopri i prodotti
+          <div className="mt-9 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+            <Button
+              href={whatsappHref("Ciao Kontap, vorrei richiedere la targa recensioni.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+            >
+              Richiedi la tua targa
               <Icon
                 name="arrow"
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               />
             </Button>
-            <Button href="#how" size="lg" variant="secondary">
-              Guarda come funziona
+            <Button href="/come-funziona" size="lg" variant="secondary">
+              Come funziona
             </Button>
           </div>
         </Reveal>
