@@ -1,32 +1,50 @@
 import { Container } from "../ui/Container";
-import { Section } from "../ui/Section";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
+import { CheckBadge } from "../ui/CheckBadge";
 import { Logo } from "../Logo";
-import { BrandBackdrop } from "../BrandBackdrop";
+import { BrandBackdrop, PlusNetwork } from "../BrandBackdrop";
+import { PlusHorizon } from "../PlusHorizon";
+import { ScaleToFit } from "../ScaleToFit";
 import { whatsappHref } from "@/lib/content";
 
-const bullets = [
-  "Analisi recensioni con AI — sentiment, temi e cosa migliorare",
-  "Report automatici direttamente nella tua email",
-  "Statistiche in tempo reale: traffico, orari e posizione",
-  "Un'unica dashboard per tutte le tue targhe e sedi",
+/** Servizi Plus, dal più interessante al meno. */
+const services = [
+  "AI-Powered Optimization",
+  "Analisi Competitor Di Settore",
+  "Ottimizzazione SEO, GEO e AEO",
+  "Reports del Tuo Business",
 ];
+
+/** Colore d'apertura della sezione: la cupola e il fondo partono da qui. */
+const PLUS_TOP = "#dfe9ff";
+/** Il fondo parte appena sotto la cupola di PlusHorizon (altezza 64/96/120px). */
+const HORIZON_TOP = "top-[62px] sm:top-[94px] lg:top-[118px]";
 
 export function Plus() {
   return (
-    <Section
-      id="plus"
-      className="overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%)" }}
-    >
-      <BrandBackdrop variant="plus" />
+    <section id="plus" className="relative scroll-mt-24 pb-20 pt-28 sm:pb-32 sm:pt-40 md:pb-40 md:pt-48">
+      {/* Transizione premium dalla Hero: orizzonte di luce */}
+      <PlusHorizon fill={PLUS_TOP} />
+
+      {/* Fondo della sezione, sotto la cupola */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden ${HORIZON_TOP}`}
+        style={{
+          background: `linear-gradient(180deg, ${PLUS_TOP} 0%, #edf3ff 38%, #f6f9ff 100%)`,
+        }}
+      >
+        {/* Rete "intelligenza" — composizione desktop */}
+        <BrandBackdrop variant="plus" className="hidden lg:block" />
+      </div>
+
       <Container className="relative">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
-          {/* Testo */}
-          <div>
+        <div className="grid grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] gap-x-4 gap-y-10 [grid-template-areas:'head_head'_'list_dash'_'cta_cta'] sm:gap-x-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-16 lg:gap-y-10 lg:[grid-template-areas:'head_dash'_'list_dash'_'cta_dash']">
+          {/* Titolo */}
+          <div className="min-w-0 [grid-area:head]">
             <Reveal>
               <Eyebrow align="left">Abbonamento · Kontap Plus</Eyebrow>
             </Reveal>
@@ -37,48 +55,57 @@ export function Plus() {
               </h2>
             </Reveal>
             <Reveal index={2}>
-              <p className="mt-6 max-w-lg text-pretty text-lg leading-relaxed text-muted">
-                L’abbonamento che dà un cervello alla tua targa: analisi AI delle
-                recensioni, report automatici e statistiche che ti dicono cosa
-                fare dopo.
+              <p className="mt-5 max-w-lg text-pretty text-base leading-relaxed text-muted sm:mt-6 sm:text-lg">
+                L’abbonamento che fa lavorare la tua attività anche online:
+                l’intelligenza artificiale analizza, ottimizza e ti dice cosa fare
+                dopo.
               </p>
-            </Reveal>
-
-            <ul className="mt-8 flex flex-col gap-4">
-              {bullets.map((b, i) => (
-                <Reveal as="li" key={b} index={i} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-[color:var(--color-line-strong)]">
-                    <Icon name="check" className="h-3.5 w-3.5" strokeWidth={2} />
-                  </span>
-                  <span className="text-[0.95rem] leading-relaxed text-secondary">
-                    {b}
-                  </span>
-                </Reveal>
-              ))}
-            </ul>
-
-            <Reveal index={2}>
-              <div className="mt-10">
-                <Button
-                  href={whatsappHref("Ciao Kontap, vorrei entrare nella waitlist di Kontap Plus.")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="lg"
-                >
-                  Entra nella waitlist
-                  <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </div>
             </Reveal>
           </div>
 
-          {/* Mock dashboard */}
-          <Reveal index={1}>
-            <DashboardMock />
+          {/* Mobile: stessa impostazione del desktop, sotto lo stesso sfondo */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none relative -mx-6 -my-10 [grid-column:1/-1] [grid-row:2] sm:-mx-8 lg:hidden"
+          >
+            <PlusNetwork viewBox="520 70 760 660" glowId="plus-hub-glow-m" />
+          </div>
+
+          {/* Servizi */}
+          <ul className="relative flex flex-col justify-center gap-5 [grid-area:list] sm:gap-6 lg:justify-start">
+            {services.map((s, i) => (
+              <Reveal as="li" key={s} index={i} className="flex items-center gap-2.5 sm:gap-4">
+                <CheckBadge className="h-[22px] w-[23px] sm:h-8 sm:w-[33px]" />
+                <span className="text-[0.84rem] font-medium leading-snug text-ink sm:text-xl">
+                  {s}
+                </span>
+              </Reveal>
+            ))}
+          </ul>
+
+          {/* Grafico */}
+          <Reveal index={1} className="relative self-center [grid-area:dash]">
+            <ScaleToFit width={440}>
+              <DashboardMock />
+            </ScaleToFit>
+          </Reveal>
+
+          {/* CTA */}
+          <Reveal index={2} className="[grid-area:cta]">
+            <Button
+              href={whatsappHref("Ciao Kontap, vorrei entrare nella waitlist di Kontap Plus.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
+              Entra nella waitlist
+              <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
           </Reveal>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }
 

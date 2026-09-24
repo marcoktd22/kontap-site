@@ -11,11 +11,12 @@ export function KontapMark({
   className,
   style,
   title,
+  ...svgProps
 }: {
   className?: string;
   style?: React.CSSProperties;
   title?: string;
-}) {
+} & Omit<React.SVGProps<SVGSVGElement>, "className" | "style" | "ref">) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -24,6 +25,7 @@ export function KontapMark({
       aria-hidden={title ? undefined : true}
       className={cn("block", className)}
       style={style}
+      {...svgProps}
     >
       {title ? <title>{title}</title> : null}
       <path d="M56.15 3.91A46.5 46.5 0 0 0 4.26 41.61L20.49 44.58A30.0 30.0 0 0 1 53.97 20.26Z" />

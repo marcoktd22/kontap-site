@@ -155,14 +155,30 @@ function How() {
 }
 
 
-function Plus() {
+/**
+ * Costellazione "intelligenza" di Kontap Plus — rete di nodi con l'hub (il
+ * marchio) al centro. `viewBox` permette di inquadrarla diversamente (es. su
+ * mobile dietro al grafico) senza cambiarne il disegno.
+ */
+export function PlusNetwork({
+  viewBox = "0 0 1440 820",
+  className,
+  glowId = "plus-hub-glow",
+}: {
+  viewBox?: string;
+  className?: string;
+  glowId?: string;
+}) {
   return (
     <>
       {/* data / intelligence constellation — hub sits behind the dashboard,
           connections radiate out into the open space (Stripe-Radar, not Tron) */}
       <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox="0 0 1440 820"
+        className={cn(
+          "absolute inset-0 h-full w-full [&_ellipse]:[vector-effect:non-scaling-stroke] [&_line]:[vector-effect:non-scaling-stroke] [&_path]:[vector-effect:non-scaling-stroke]",
+          className
+        )}
+        viewBox={viewBox}
         preserveAspectRatio="xMidYMid slice"
         fill="none"
         aria-hidden="true"
@@ -225,14 +241,22 @@ function Plus() {
           <circle cx="450" cy="655" r="3" />
           <circle cx="670" cy="600" r="3" />
         </g>
+        {/* the intelligence hub = the mark, glowing at the centre of the graph */}
+        <defs>
+          <radialGradient id={glowId}>
+            <stop offset="0%" stopColor="rgba(88,200,255,0.28)" />
+            <stop offset="100%" stopColor="rgba(88,200,255,0)" />
+          </radialGradient>
+        </defs>
+        <circle cx="1040" cy="392" r="78" fill={`url(#${glowId})`} />
+        <KontapMark x={1005} y={357} width={70} height={70} style={{ color: BLUE, opacity: 0.9 }} />
       </svg>
-      {/* the intelligence hub = the mark, glowing at the centre of the graph */}
-      <div className="absolute left-[72.2%] top-[47.8%] h-[70px] w-[70px] -translate-x-1/2 -translate-y-1/2">
-        <div className="absolute inset-[-60%] rounded-full" style={{ background: "radial-gradient(circle, rgba(88,200,255,0.28), transparent 70%)" }} />
-        <KontapMark className="relative h-full w-full" style={{ color: BLUE, opacity: 0.9 }} />
-      </div>
     </>
   );
+}
+
+function Plus() {
+  return <PlusNetwork />;
 }
 
 function Cta() {
