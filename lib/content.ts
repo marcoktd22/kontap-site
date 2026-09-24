@@ -8,7 +8,7 @@ export const site = {
   /** Contatto WhatsApp. Inserisci il numero reale in formato internazionale,
    *  solo cifre (senza +, spazi o trattini), es. "393401234567". */
   whatsapp: {
-    number: "393000000000",
+    number: "393510484959",
     message: "Ciao Kontap, vorrei informazioni sulla targa recensioni.",
   },
 } as const;

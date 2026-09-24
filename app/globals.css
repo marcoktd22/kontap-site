@@ -190,6 +190,11 @@
   }
 }
 
+@keyframes kontap-horizon-pulse {
+  0% { stroke-dashoffset: 0.07; }
+  62%, 100% { stroke-dashoffset: -1; }
+}
+
 @keyframes kontap-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
