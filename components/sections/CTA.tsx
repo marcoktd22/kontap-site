@@ -3,14 +3,15 @@ import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { BrandBackdrop } from "../BrandBackdrop";
+import { whatsappHref } from "@/lib/content";
 
 export function CTA() {
   return (
-    <section id="cta" className="relative scroll-mt-24 px-4 py-16 sm:py-20">
+    <section id="cta" className="relative scroll-mt-24 px-4 py-12 sm:py-20">
       <Container className="px-0">
         {/* Luminous Wallet-Pass gradient — bright & optimistic, never dark */}
         <div
-          className="relative isolate overflow-hidden rounded-[2.5rem] px-6 py-20 text-center text-white shadow-[0_40px_110px_-56px_rgba(36,83,255,0.5)] sm:px-12 sm:py-28"
+          className="relative isolate overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:rounded-[2.5rem] text-white shadow-[0_40px_110px_-56px_rgba(36,83,255,0.5)] sm:px-12 sm:py-28"
           style={{
             background:
               "radial-gradient(120% 120% at 15% 0%, #3a7bff 0%, rgba(58,123,255,0) 55%)," +
@@ -28,24 +29,25 @@ export function CTA() {
             </Reveal>
 
             <Reveal index={2}>
-              <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/85">
-                Porta Kontap sul tuo bancone — hardware NFC premium per le
-                attività locali, tutto gestito dalla piattaforma Plus. Spedizioni
-                in tutta Italia e nel mondo.
+              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-white/85 sm:text-lg">
+                Porta la targa Kontap sul tuo bancone: la montiamo e configuriamo
+                noi, senza costi aggiuntivi.
               </p>
             </Reveal>
 
             <Reveal index={3}>
-              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
                 <a
-                  href="#products"
+                  href={whatsappHref("Ciao Kontap, vorrei richiedere la targa recensioni.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex h-[3.25rem] items-center justify-center gap-2 rounded-full bg-white px-7 text-base font-medium text-primary shadow-[0_12px_30px_-10px_rgba(9,17,33,0.4)] transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5"
                 >
-                  Scopri i prodotti
+                  Richiedi la tua targa
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
-                <Button href="#plus" size="lg" variant="invert">
-                  Entra nella waitlist di Plus
+                <Button href="/faq" size="lg" variant="invert">
+                  Leggi le FAQ
                 </Button>
               </div>
             </Reveal>

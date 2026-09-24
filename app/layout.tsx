@@ -12,13 +12,11 @@ export const metadata: Metadata = {
     template: "%s · Kontap",
   },
   description:
-    "Kontap crea hardware NFC premium e la piattaforma Plus — analisi delle recensioni con l'AI, report automatici e statistiche — per le attività locali. Un tap trasforma un'interazione fisica in un'esperienza digitale.",
+    "La targa NFC Kontap porta i tuoi clienti a lasciarti una recensione Google con un solo tap. Con Kontap Plus: analisi AI delle recensioni, report automatici e statistiche. Made in Puglia.",
   keywords: [
     "NFC",
     "targa recensioni Google",
-    "biglietto da visita NFC",
-    "carta Apple Wallet",
-    "prodotti NFC smart",
+    "targa NFC",
     "recensioni Google",
     "Puglia",
     "Kontap",
@@ -30,14 +28,14 @@ export const metadata: Metadata = {
     locale: "it_IT",
     title: "Kontap — Un tap che fa crescere la tua attività",
     description:
-      "Hardware NFC premium e la piattaforma Plus. Un tap collega il fisico e il digitale.",
+      "La targa NFC che trasforma ogni cliente soddisfatto in una recensione Google. Un tap, nessuna app.",
     siteName: "Kontap",
   },
   twitter: {
     card: "summary_large_image",
     title: "Kontap — Un tap che fa crescere la tua attività",
     description:
-      "Hardware NFC premium e la piattaforma Plus. Un tap collega il fisico e il digitale.",
+      "La targa NFC che trasforma ogni cliente soddisfatto in una recensione Google. Un tap, nessuna app.",
   },
 };
 

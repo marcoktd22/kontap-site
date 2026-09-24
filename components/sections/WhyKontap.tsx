@@ -25,14 +25,14 @@ export function WhyKontap() {
           </Reveal>
           <Reveal index={2}>
             <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
-              Kontap è progettato dall’inizio alla fine — prodotti fisici premium
-              e la piattaforma che li fa parlare — così ogni tap è semplice e ogni
+              Kontap è progettato dall’inizio alla fine — la targa e la
+              piattaforma che la fa parlare — così ogni tap è semplice e ogni
               interazione conta.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 md:grid-cols-3">
           {whyFeatures.map((feature, i) => (
             <Reveal
               key={feature.title}
@@ -40,12 +40,12 @@ export function WhyKontap() {
               className={cn(feature.span === "wide" && "md:col-span-2")}
             >
               {/* Floating premium hardware card */}
-              <div className="group relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-[var(--shadow-card)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)] hover:shadow-[0_24px_56px_-34px_rgba(36,83,255,0.2)]">
+              <div className="group relative h-full overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-[var(--shadow-card)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)] hover:shadow-[0_24px_56px_-34px_rgba(36,83,255,0.2)]">
                 <div className="relative flex h-full flex-col">
                   <GradientBadge>
                     <BadgeIcon name={feature.icon} />
                   </GradientBadge>
-                  <h3 className="mt-6 text-xl font-medium text-ink">
+                  <h3 className="mt-5 text-xl font-medium text-ink">
                     {feature.title}
                   </h3>
                   <p className="mt-3 text-pretty text-[0.95rem] leading-relaxed text-muted">

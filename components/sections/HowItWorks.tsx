@@ -17,10 +17,10 @@ export function HowItWorks() {
           description="Nessuna integrazione, nessuna curva di apprendimento. Kontap funziona dal momento in cui esce dalla scatola."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 sm:gap-5 md:grid-cols-3">
           {steps.map((step, i) => (
             <Reveal as="div" key={step.number} index={i} className="h-full">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-white p-8 shadow-[0_2px_4px_rgba(16,24,40,0.04),0_28px_60px_-34px_rgba(36,83,255,0.28)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1.5 hover:shadow-[0_36px_80px_-38px_rgba(36,83,255,0.42)] hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)]">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-white p-6 sm:p-8 shadow-[0_2px_4px_rgba(16,24,40,0.04),0_28px_60px_-34px_rgba(36,83,255,0.28)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1.5 hover:shadow-[0_36px_80px_-38px_rgba(36,83,255,0.42)] hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)]">
                 {/* Accento a gradiente in alto */}
                 <span
                   aria-hidden="true"
@@ -32,7 +32,7 @@ export function HowItWorks() {
                   <span className="text-xl font-semibold">{step.number}</span>
                 </GradientBadge>
 
-                <h3 className="mt-7 text-xl font-semibold text-ink">
+                <h3 className="mt-5 text-xl font-semibold sm:mt-7 text-ink">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-pretty text-[0.95rem] leading-relaxed text-muted">

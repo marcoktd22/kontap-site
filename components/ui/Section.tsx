@@ -17,7 +17,7 @@ export function Section({
       id={id}
       style={style}
       className={cn(
-        "relative scroll-mt-24 py-24 sm:py-32 md:py-40",
+        "relative scroll-mt-24 py-20 sm:py-32 md:py-40",
         className
       )}
     >

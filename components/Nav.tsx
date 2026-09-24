@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Logo } from "./Logo";
 import { Button } from "./ui/Button";
 import { Icon } from "./ui/Icon";
@@ -36,19 +37,19 @@ export function Nav() {
             : "bg-[linear-gradient(120deg,rgba(36,83,255,0.82)_0%,rgba(88,200,255,0.8)_120%)]"
         )}
       >
-        <a href="#top" className="shrink-0" aria-label="Kontap home">
+        <Link href="/" className="shrink-0" aria-label="Kontap home">
           <Logo variant="light" className="h-6 w-auto" />
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
           {nav.links.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="rounded-full px-4 py-2 text-sm text-white/85 transition-colors duration-200 hover:bg-white/15 hover:text-white"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -98,13 +99,13 @@ export function Nav() {
         <ul className="flex flex-col">
           {nav.links.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="block rounded-2xl px-4 py-3 text-base text-secondary transition-colors hover:bg-ink/[0.05] hover:text-ink"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

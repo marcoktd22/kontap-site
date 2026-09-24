@@ -1,11 +1,12 @@
 import { Container } from "./ui/Container";
+import Link from "next/link";
 import { Logo } from "./Logo";
 import { BrandBackdrop } from "./BrandBackdrop";
 import { footer } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#f8fbff] pb-14 pt-20 sm:pt-32">
+    <footer className="relative overflow-hidden bg-[#f8fbff] pb-14 pt-16 sm:pt-28">
       <BrandBackdrop variant="footer" />
       {/* Divisore a gradiente soft */}
       <div
@@ -13,15 +14,14 @@ export function Footer() {
         className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-line-strong),transparent)]"
       />
       <Container className="relative">
-        <div className="grid grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-10 gap-y-12 md:grid-cols-4">
           <div className="col-span-2 md:col-span-2">
-            <a href="#top" className="inline-block" aria-label="Kontap home">
+            <Link href="/" className="inline-block" aria-label="Kontap home">
               <Logo className="h-7 w-auto" />
-            </a>
+            </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondary">
-              Hardware NFC premium e la piattaforma Plus — trasformiamo le
-              interazioni fisiche in esperienze digitali, un tap alla volta. Made
-              in Puglia.
+              La targa NFC che trasforma ogni cliente soddisfatto in una
+              recensione Google, con la piattaforma Plus. Made in Puglia.
             </p>
           </div>
 
@@ -31,12 +31,12 @@ export function Footer() {
               <ul className="mt-4 flex flex-col gap-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-muted transition-colors duration-200 hover:text-secondary"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
