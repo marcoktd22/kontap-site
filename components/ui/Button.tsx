@@ -1,6 +1,6 @@
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "ghost" | "invert";
+type Variant = "primary" | "solid" | "secondary" | "ghost" | "invert";
 type Size = "sm" | "md" | "lg";
 
 const base =
@@ -16,6 +16,10 @@ const variants: Record<Variant, string> = {
     "hover:-translate-y-0.5 hover:brightness-[1.03] " +
     "hover:shadow-[0_14px_34px_-10px_rgba(36,83,255,0.5),inset_0_1px_0_0_rgba(255,255,255,0.32)] " +
     "active:translate-y-0",
+  // Azzurro Kontap pieno (#0b67cc), senza gradiente
+  solid:
+    "bg-[#0b67cc] text-white shadow-[0_10px_24px_-10px_rgba(11,103,204,0.6)] " +
+    "hover:-translate-y-0.5 hover:bg-[#0a5cb8] active:translate-y-0",
   secondary:
     "bg-transparent text-ink ring-hairline " +
     "hover:-translate-y-0.5 hover:bg-surface hover:ring-1 hover:ring-[color:var(--color-line-strong)] " +

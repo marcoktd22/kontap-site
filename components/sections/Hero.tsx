@@ -5,7 +5,6 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { BrandBackdrop } from "../BrandBackdrop";
 import { Plate3D } from "../Plate3D";
-import { whatsappHref } from "@/lib/content";
 
 export function Hero() {
   return (
@@ -37,27 +36,27 @@ export function Hero() {
         </Reveal>
 
         <Reveal index={3}>
-          <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-muted sm:text-xl">
+          <p className="mt-6 max-w-md text-pretty text-base font-normal leading-relaxed text-[#0b67cc] sm:text-xl">
             La targa NFC che porta i tuoi clienti a lasciarti una recensione
             Google con un solo tap. Niente app, niente attese.
           </p>
         </Reveal>
 
         <Reveal index={4}>
-          <div className="mt-9 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
+          <div className="mt-9 flex w-full items-center justify-center gap-3">
             <Button
-              href={whatsappHref("Ciao Kontap, vorrei richiedere la targa recensioni.")}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/prezzi"
               size="lg"
+              variant="solid"
+              className="flex-1 px-5 sm:flex-none sm:px-7"
             >
-              Richiedi la tua targa
+              Prodotti
               <Icon
                 name="arrow"
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               />
             </Button>
-            <Button href="/come-funziona" size="lg" variant="secondary">
+            <Button href="/come-funziona" size="lg" variant="secondary" className="flex-1 px-5 sm:flex-none sm:px-7">
               Come funziona
             </Button>
           </div>

@@ -73,6 +73,7 @@ function Mark({
 }
 
 function Hero() {
+  // solo luce morbida: nessuna filigrana del marchio
   return (
     <>
       <Light
@@ -80,20 +81,9 @@ function Hero() {
         color="rgba(255,255,255,0.9)"
         style={{ background: "radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 58%)" }}
       />
-      {/* huge blurred halo of the mark */}
-      <Mark
-        size="min(112vh, 1060px)"
-        color={CYAN}
-        opacity={0.05}
-        blur={28}
-        className="left-1/2 top-[43%] -translate-x-1/2 -translate-y-1/2"
-      />
-      {/* the icon itself, oversized and soft */}
-      <Mark
-        size="min(80vh, 760px)"
-        color={BLUE}
-        opacity={0.06}
-        className="left-1/2 top-[43%] -translate-x-1/2 -translate-y-1/2 motion-safe:animate-[kontap-float_18s_ease-in-out_infinite]"
+      <Light
+        className="left-1/2 top-[48%] h-[70vh] w-[70vh] max-h-[760px] max-w-[760px] -translate-x-1/2 -translate-y-1/2"
+        color="rgba(13,118,235,0.08)"
       />
     </>
   );
