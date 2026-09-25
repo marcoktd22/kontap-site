@@ -2,7 +2,8 @@ import { Container } from "./ui/Container";
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { BrandBackdrop } from "./BrandBackdrop";
-import { footer } from "@/lib/content";
+import { ContactIcon } from "./ContactIcon";
+import { contacts, footer } from "@/lib/content";
 
 export function Footer() {
   return (
@@ -23,6 +24,32 @@ export function Footer() {
               La targa NFC che trasforma ogni cliente soddisfatto in una
               recensione Google, con la piattaforma Plus. Made in Puglia.
             </p>
+
+            {/* Contatti rapidi: un tocco e sei in chat, in mail o sul profilo */}
+            <ul className="mt-6 flex flex-wrap items-center gap-2.5">
+              {(["instagram", "email", "whatsapp"] as const)
+                .map((id) => contacts.find((c) => c.id === id)!)
+                .map((c) => (
+                  <li key={c.id}>
+                    <a
+                      href={c.href}
+                      {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      aria-label={c.id === "instagram" ? `Instagram ${c.value}` : `${c.label}: ${c.value}`}
+                      className={
+                        c.id === "instagram"
+                          ? "flex h-9 w-9 items-center justify-center rounded-full bg-white text-secondary shadow-[0_1px_2px_rgba(16,24,40,0.05)] ring-hairline transition-all duration-200 hover:-translate-y-0.5 hover:text-primary hover:ring-1 hover:ring-[color:rgba(88,200,255,0.6)]"
+                          : "flex h-9 items-center gap-2 rounded-full bg-white px-3 text-[0.78rem] font-medium text-secondary shadow-[0_1px_2px_rgba(16,24,40,0.05)] ring-hairline transition-all duration-200 hover:-translate-y-0.5 hover:text-primary hover:ring-1 hover:ring-[color:rgba(88,200,255,0.6)]"
+                      }
+                    >
+                      <ContactIcon
+                        id={c.id}
+                        className={c.id === "instagram" ? "h-[18px] w-[18px]" : "h-4 w-4 text-primary"}
+                      />
+                      {c.id !== "instagram" && <span>{c.value}</span>}
+                    </a>
+                  </li>
+                ))}
+            </ul>
           </div>
 
           {footer.columns.map((col) => (
@@ -54,7 +81,7 @@ export function Footer() {
               © {new Date().getFullYear()} Kontap. Tutti i diritti riservati.
             </p>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted/70">
-              kontap.com
+              kontap.it
             </p>
           </div>
         </div>
