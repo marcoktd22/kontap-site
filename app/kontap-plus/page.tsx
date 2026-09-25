@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { Plus } from "@/components/sections/Plus";
 import { PlusDemo } from "@/components/sections/PlusDemo";
 import { PlusFeatures } from "@/components/sections/PlusFeatures";
-import { CTA } from "@/components/sections/CTA";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
@@ -21,7 +20,6 @@ export default function KontapPlusPage() {
         <Plus />
         <PlusDemo />
         <PlusFeatures />
-        <CTA />
       </main>
       <Footer />
       <WhatsAppButton />

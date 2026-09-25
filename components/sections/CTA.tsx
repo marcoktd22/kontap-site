@@ -15,9 +15,9 @@ export function CTA() {
           style={{
             // Blu sfumato Kontap, versione luminosa
             backgroundImage:
-              "radial-gradient(80% 90% at 10% 105%, rgba(64,160,235,0.6), transparent 60%)," +
-              "radial-gradient(70% 70% at 100% 0%, rgba(11,58,140,0.55), transparent 65%)," +
-              "linear-gradient(140deg, #0b67cc 0%, #0a5cc2 40%, #0a4aa8 75%, #0b3a8c 100%)",
+              "radial-gradient(80% 90% at 10% 105%, rgba(90,175,245,0.6), transparent 60%)," +
+              "radial-gradient(70% 70% at 100% 0%, rgba(13,67,161,0.5), transparent 65%)," +
+              "linear-gradient(140deg, #0d76eb 0%, #0c6adf 40%, #0b55c1 75%, #0d43a1 100%)",
           }}
         >
           <BrandBackdrop variant="cta" />

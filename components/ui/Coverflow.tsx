@@ -111,11 +111,16 @@ export function Coverflow({
             </div>
           );
         })}
+
+        {/* Frecce a metà card, sul bordo della card attiva, sopra tutto */}
+        <div className={cn("pointer-events-none relative z-30 [grid-area:1/1]", cardClassName)}>
+          <Arrow dir={-1} dark={dark} onClick={() => go(-1)} className="left-0 -translate-x-1/2" />
+          <Arrow dir={1} dark={dark} onClick={() => go(1)} className="right-0 translate-x-1/2" />
+        </div>
       </div>
 
-      {/* Frecce + indicatori */}
-      <div className="relative z-20 mt-7 flex items-center justify-center gap-5">
-        <Arrow dir={-1} dark={dark} onClick={() => go(-1)} />
+      {/* Indicatori */}
+      <div className="relative z-20 mt-6 flex items-center justify-center">
         <div className="flex items-center gap-1.5" aria-hidden="true">
           {items.map((_, i) => (
             <span
@@ -129,27 +134,40 @@ export function Coverflow({
             />
           ))}
         </div>
-        <Arrow dir={1} dark={dark} onClick={() => go(1)} />
       </div>
     </div>
   );
 }
 
-function Arrow({ dir, dark, onClick }: { dir: 1 | -1; dark: boolean; onClick: () => void }) {
+/** Freccia in vetro 3D, trasparente: galleggia sul bordo della card attiva. */
+function Arrow({
+  dir,
+  dark,
+  onClick,
+  className,
+}: {
+  dir: 1 | -1;
+  dark: boolean;
+  onClick: () => void;
+  className?: string;
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
       aria-label={dir === 1 ? "Successivo" : "Precedente"}
       className={cn(
-        "flex h-11 w-11 items-center justify-center rounded-full transition-all duration-200 hover:-translate-y-0.5 active:scale-95",
+        "pointer-events-auto absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full backdrop-blur-xl transition-[transform,background-color] duration-200 active:scale-90",
         dark
-          ? "bg-white/10 text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/15"
-          : "bg-white text-primary shadow-[0_6px_16px_-8px_rgba(36,83,255,0.45)] ring-hairline"
+          ? "bg-white/15 text-white ring-1 ring-white/40 shadow-[0_14px_30px_-10px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.6),inset_0_-3px_8px_rgba(0,0,0,0.2)] hover:bg-white/25"
+          : "bg-white/45 text-[#0b67cc] ring-1 ring-white/80 shadow-[0_14px_30px_-10px_rgba(11,103,204,0.55),inset_0_1px_1px_rgba(255,255,255,1),inset_0_-3px_8px_rgba(11,103,204,0.18)] hover:bg-white/65",
+        className
       )}
     >
-      <svg viewBox="0 0 24 24" fill="none" className={cn("h-4 w-4", dir === -1 && "rotate-180")} aria-hidden="true">
-        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      {/* riflesso del vetro */}
+      <span aria-hidden="true" className="pointer-events-none absolute inset-x-1.5 top-0.5 h-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0))] opacity-70" />
+      <svg viewBox="0 0 24 24" fill="none" className={cn("relative h-4 w-4", dir === -1 && "rotate-180")} aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </button>
   );

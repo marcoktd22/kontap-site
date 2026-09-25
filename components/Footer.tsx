@@ -18,7 +18,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-x-10 gap-y-12 md:grid-cols-4">
           <div className="col-span-2 md:col-span-2">
             <Link href="/" className="inline-block" aria-label="Kontap home">
-              <Logo className="h-7 w-auto" />
+              <Logo variant="blue" className="h-7 w-auto" />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-secondary">
               La targa NFC che trasforma ogni cliente soddisfatto in una
@@ -36,7 +36,7 @@ export function Footer() {
                       {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       aria-label={`${c.label}: ${c.value}`}
                       title={c.value}
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-secondary shadow-[0_1px_2px_rgba(16,24,40,0.05)] ring-hairline transition-all duration-200 hover:-translate-y-0.5 hover:text-primary hover:ring-1 hover:ring-[color:rgba(88,200,255,0.6)]"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0b67cc] shadow-[0_1px_2px_rgba(16,24,40,0.05)] ring-1 ring-[#0b67cc]/20 transition-all duration-200 hover:-translate-y-0.5 hover:ring-[#0b67cc]/50"
                     >
                       <ContactIcon id={c.id} className="h-[18px] w-[18px]" />
                     </a>

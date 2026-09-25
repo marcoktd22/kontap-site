@@ -33,8 +33,8 @@ export function Nav() {
         className={cn(
           "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-3 py-2 pl-5 ring-hairline-invert backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]",
           scrolled || open
-            ? "bg-[linear-gradient(100deg,rgba(11,103,204,0.97)_0%,rgba(10,92,194,0.97)_40%,rgba(10,74,168,0.97)_75%,rgba(11,58,140,0.97)_100%)] shadow-[0_14px_38px_-14px_rgba(11,103,204,0.6)]"
-            : "bg-[linear-gradient(100deg,rgba(11,103,204,0.9)_0%,rgba(10,92,194,0.9)_40%,rgba(10,74,168,0.9)_75%,rgba(11,58,140,0.9)_100%)]"
+            ? "bg-[linear-gradient(100deg,rgba(13,118,235,0.97)_0%,rgba(12,106,223,0.97)_40%,rgba(11,85,193,0.97)_75%,rgba(13,67,161,0.97)_100%)] shadow-[0_14px_38px_-14px_rgba(11,103,204,0.6)]"
+            : "bg-[linear-gradient(100deg,rgba(13,118,235,0.9)_0%,rgba(12,106,223,0.9)_40%,rgba(11,85,193,0.9)_75%,rgba(13,67,161,0.9)_100%)]"
         )}
       >
         <Link href="/" className="shrink-0" aria-label="Kontap home">
