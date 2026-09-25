@@ -123,7 +123,7 @@ export function Coverflow({
               className={cn(
                 "h-1.5 rounded-full transition-all duration-300",
                 i === active
-                  ? "bg-brand-gradient w-6"
+                  ? cn("w-6", dark ? "bg-white" : "bg-brand-gradient")
                   : cn("w-1.5", dark ? "bg-white/30" : "bg-[color:var(--color-line-strong)]")
               )}
             />
