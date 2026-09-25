@@ -16,9 +16,10 @@ export function GradientBadge({
   return (
     <span
       className={cn(
-        "bg-brand-gradient relative flex h-14 w-14 items-center justify-center rounded-full text-white",
-        "shadow-[0_12px_26px_-10px_rgba(36,83,255,0.6),inset_0_1px_0_0_rgba(255,255,255,0.45)]",
-        className
+        "bg-brand-gradient relative flex items-center justify-center rounded-full text-white",
+        "shadow-[0_12px_26px_-10px_rgba(11,103,204,0.55),inset_0_1px_0_0_rgba(255,255,255,0.45)]",
+        // dimensione di default solo se non ne viene passata una
+        className ?? "h-14 w-14"
       )}
     >
       {/* Top gloss — the illuminated-button highlight */}

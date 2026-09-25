@@ -32,23 +32,23 @@ export function WhyKontap() {
           </Reveal>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-2.5 sm:mt-16 sm:gap-4 md:grid-cols-3">
           {whyFeatures.map((feature, i) => (
             <Reveal
               key={feature.title}
               index={i}
-              className={cn(feature.span === "wide" && "md:col-span-2")}
+              className={cn(feature.span === "wide" && "col-span-2")}
             >
               {/* Floating premium hardware card */}
-              <div className="group relative h-full overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-[var(--shadow-card)] ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)] hover:shadow-[0_24px_56px_-34px_rgba(36,83,255,0.2)]">
+              <div className="group relative h-full overflow-hidden rounded-[1.25rem] bg-white p-4 shadow-[var(--shadow-card)] sm:rounded-3xl sm:p-8 ring-hairline transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)] hover:shadow-[0_24px_56px_-34px_rgba(36,83,255,0.2)]">
                 <div className="relative flex h-full flex-col">
-                  <GradientBadge>
-                    <BadgeIcon name={feature.icon} />
+                  <GradientBadge className="h-10 w-10 sm:h-14 sm:w-14">
+                    <BadgeIcon name={feature.icon} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </GradientBadge>
-                  <h3 className="mt-5 text-xl font-medium text-ink">
+                  <h3 className="mt-3 text-[0.95rem] font-semibold leading-snug text-ink sm:mt-5 sm:text-xl sm:font-medium">
                     {feature.title}
                   </h3>
-                  <p className="mt-3 text-pretty text-[0.95rem] leading-relaxed text-muted">
+                  <p className="mt-1.5 text-pretty text-[0.78rem] leading-snug text-muted sm:mt-3 sm:text-[0.95rem] sm:leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

@@ -1,4 +1,3 @@
-import { cn } from "@/lib/cn";
 import type { Feature } from "@/lib/content";
 
 type Name = Feature["icon"];
@@ -68,7 +67,7 @@ export function BadgeIcon({
   className?: string;
 }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={cn("h-[26px] w-[26px]", className)}>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className ?? "h-[26px] w-[26px]"}>
       {glyphs[name]}
     </svg>
   );

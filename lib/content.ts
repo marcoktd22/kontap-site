@@ -268,19 +268,19 @@ export type Step = {
 
 export const steps: Step[] = [
   {
-    number: "I",
+    number: "1",
     title: "Richiedi la tua targa",
     description:
       "Scrivici e scegli dove metterla: bancone, cassa, tavoli o ingresso. Ogni targa è collegata alla tua pagina recensioni Google.",
   },
   {
-    number: "II",
+    number: "2",
     title: "Setup incluso, a costo zero",
     description:
       "Il settaggio del dispositivo è compreso nel prezzo: veniamo noi nel tuo locale a montarlo e configurarlo, senza costi aggiuntivi.",
   },
   {
-    number: "III",
+    number: "3",
     title: "Tocca, connetti, misura",
     description:
       "Il cliente avvicina il telefono e l'esperienza si apre all'istante — mentre ogni interazione entra in Kontap Plus come statistica.",
