@@ -95,10 +95,11 @@ export function HowItWorks() {
                         className={cn(
                           "relative flex h-11 w-11 items-center justify-center rounded-full text-base font-semibold transition-all duration-500 sm:h-12 sm:w-12",
                           "bg-white text-[#0b67cc]",
-                          done
-                            ? "shadow-[0_0_0_4px_rgba(255,255,255,0.18),0_10px_26px_-6px_rgba(0,0,0,0.45)]"
-                            : "opacity-75 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)]",
-                          current && "scale-110 opacity-100"
+                          current
+                            ? "scale-110 shadow-[0_0_0_5px_rgba(255,255,255,0.22),0_0_30px_rgba(255,255,255,0.45)]"
+                            : done
+                              ? "opacity-55 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)]"
+                              : "opacity-35"
                         )}
                       >
                         {step.number}
@@ -112,7 +113,7 @@ export function HowItWorks() {
             {/* I tre passi affiancati, anche su mobile (card compatte) */}
             <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-5">
               {steps.map((step, i) => (
-                <button key={step.number} type="button" onClick={() => select(i)} className="text-left">
+                <button key={step.number} type="button" onClick={() => select(i)} className={cn("relative text-left", i === active && "z-10")}>
                   <StepCard step={step} active={i === active} />
                 </button>
               ))}
@@ -128,10 +129,12 @@ function StepCard({ step, active }: { step: (typeof steps)[number]; active: bool
   return (
     <div
       className={cn(
-        "relative h-full overflow-hidden rounded-2xl bg-white p-3 transition-all duration-500 sm:rounded-[1.5rem] sm:p-7",
+        "relative h-full overflow-hidden rounded-2xl bg-white p-3 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:rounded-[1.5rem] sm:p-7",
         active
-          ? "shadow-[0_0_0_2px_rgba(255,255,255,0.6),0_24px_56px_-24px_rgba(0,0,0,0.55)]"
-          : "opacity-80 shadow-[0_20px_40px_-26px_rgba(0,0,0,0.5)] hover:opacity-100"
+          ? // passo attivo: pieno, in primo piano, con alone bianco
+            "z-10 scale-[1.04] opacity-100 shadow-[0_0_0_2px_rgba(255,255,255,0.95),0_0_44px_rgba(255,255,255,0.35),0_30px_60px_-22px_rgba(0,0,0,0.6)]"
+          : // altri passi: quasi spenti, non devono attirare l'occhio
+            "scale-[0.94] opacity-[0.18] blur-[1.5px] saturate-50 hover:opacity-40 hover:blur-0"
       )}
     >
       <span
