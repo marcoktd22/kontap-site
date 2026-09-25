@@ -159,7 +159,7 @@ function Arrow({
       className={cn(
         "pointer-events-auto absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full backdrop-blur-xl transition-[transform,background-color] duration-200 active:scale-90",
         dark
-          ? "bg-white/15 text-white ring-1 ring-white/40 shadow-[0_14px_30px_-10px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.6),inset_0_-3px_8px_rgba(0,0,0,0.2)] hover:bg-white/25"
+          ? "bg-[#0b67cc]/80 text-white ring-1 ring-white/45 shadow-[0_14px_30px_-10px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.55),inset_0_-3px_8px_rgba(0,0,0,0.25)] hover:bg-[#0b67cc]/95"
           : "bg-white/45 text-[#0b67cc] ring-1 ring-white/80 shadow-[0_14px_30px_-10px_rgba(11,103,204,0.55),inset_0_1px_1px_rgba(255,255,255,1),inset_0_-3px_8px_rgba(11,103,204,0.18)] hover:bg-white/65",
         className
       )}
