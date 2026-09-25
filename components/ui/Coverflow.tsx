@@ -144,8 +144,7 @@ const CHEVRON = "M13.5 560.1C8.7 557.9 5.6 554.7 3.5 549.8C1.3 544.4 1.3 493.2 3
 
 /**
  * Freccia 3D senza contorni: il glifo del brand con un'estrusione a strati
- * (effetto rilievo) e ombra morbida. Bianca sui fondi scuri, nera su quelli
- * chiari. A riposo "spinge" piano nella sua direzione; al passaggio si
+ * (effetto rilievo blu Kontap) e ombra morbida, bianca su ogni fondo. A riposo "spinge" piano nella sua direzione; al passaggio si
  * inclina in prospettiva e si ingrandisce; al tap si comprime.
  */
 function Arrow({
@@ -186,12 +185,13 @@ function Arrow({
               : "-scale-x-100 group-hover/arrow:[transform:scaleX(-1)_rotateY(-22deg)_scale(1.1)]"
           )}
           style={{
+            // sempre bianca con rilievo blu Kontap (su fondi chiari e scuri)
             filter: dark
               ? "drop-shadow(1px 1px 0 #0b67cc) drop-shadow(1px 1px 0 #0a55b0) drop-shadow(1px 1px 0 #0a4596) drop-shadow(0 10px 14px rgba(0,8,30,0.55))"
-              : "drop-shadow(1px 1px 0 #3b4a63) drop-shadow(1px 1px 0 #6b7a94) drop-shadow(0 10px 14px rgba(11,40,90,0.3))",
+              : "drop-shadow(1px 1px 0 #0b67cc) drop-shadow(1px 1px 0 #0a55b0) drop-shadow(1px 1px 0 #0a4596) drop-shadow(0 10px 14px rgba(11,60,140,0.35))",
           }}
         >
-          <path fill={dark ? "#ffffff" : "#0b0c10"} fillRule="evenodd" d={CHEVRON} />
+          <path fill="#ffffff" fillRule="evenodd" d={CHEVRON} />
         </svg>
       </span>
     </button>
