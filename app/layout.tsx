@@ -3,7 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-const SITE_URL = "https://kontap.com";
+const SITE_URL = "https://kontap.it";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

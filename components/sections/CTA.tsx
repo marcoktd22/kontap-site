@@ -46,8 +46,8 @@ export function CTA() {
                   Richiedi la tua targa
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
-                <Button href="/faq" size="lg" variant="invert">
-                  Leggi le FAQ
+                <Button href="/prezzi" size="lg" variant="invert">
+                  Vedi i prezzi
                 </Button>
               </div>
             </Reveal>

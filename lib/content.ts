@@ -10,7 +10,12 @@ export const site = {
   whatsapp: {
     number: "393510484959",
     message: "Ciao Kontap, vorrei informazioni sulla targa recensioni.",
+    /** Numero leggibile, per mostrarlo nel sito. */
+    display: "+39 351 048 4959",
   },
+  email: "hello@kontap.it",
+  instagram: { handle: "kontap.it", url: "https://www.instagram.com/kontap.it/" },
+  web: { label: "kontap.it", url: "https://kontap.it" },
 } as const;
 
 /** Link wa.me con messaggio precompilato (default: site.whatsapp.message). */
@@ -18,14 +23,184 @@ export function whatsappHref(message: string = site.whatsapp.message) {
   return `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
 
+/** Canali di contatto: un tocco e sei in chat, in mail o sul profilo. */
+export type ContactChannel = {
+  id: "whatsapp" | "email" | "instagram" | "web";
+  label: string;
+  value: string;
+  href: string;
+  external: boolean;
+};
+
+export const contacts: ContactChannel[] = [
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    value: site.whatsapp.display,
+    href: whatsappHref(),
+    external: true,
+  },
+  {
+    id: "email",
+    label: "Email",
+    value: site.email,
+    href: `mailto:${site.email}`,
+    external: false,
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    value: `@${site.instagram.handle}`,
+    href: site.instagram.url,
+    external: true,
+  },
+  {
+    id: "web",
+    label: "Sito",
+    value: site.web.label,
+    href: site.web.url,
+    external: true,
+  },
+];
+
 export const nav = {
   links: [
     { label: "Come funziona", href: "/come-funziona" },
+    { label: "Prezzi", href: "/prezzi" },
     { label: "Kontap+", href: "/#plus" },
     { label: "FAQ", href: "/faq" },
+    { label: "Contatti", href: "/contatti" },
   ],
-  cta: { label: "Inizia ora", href: "/#cta" },
+  cta: { label: "Inizia ora", href: "/prezzi" },
 } as const;
+
+/* ------------------------------------------------------------------ */
+/* Prezzi e servizi                                                    */
+/* ------------------------------------------------------------------ */
+
+export type PlateOffer = {
+  id: string;
+  name: string;
+  description: string;
+  /** prezzo pieno (barrato) e prezzo attuale, IVA inclusa */
+  was: string;
+  price: string;
+  discount: string;
+  /** nota sotto il prezzo, es. prezzo a targa */
+  unitNote?: string;
+  badge?: string;
+  perks: string[];
+  order: string;
+};
+
+export const plateOffers: PlateOffer[] = [
+  {
+    id: "single",
+    name: "Targa Recensioni Google",
+    description: "Una targa NFC da bancone: un tap e il cliente è sulla tua pagina recensioni.",
+    was: "40",
+    price: "29,99",
+    discount: "-25%",
+    perks: [
+      "Chip NFC + QR code",
+      "Riprogrammabile per sempre",
+      "Montaggio e configurazione inclusi",
+    ],
+    order: "Ciao Kontap, vorrei ordinare 1 targa recensioni Google (29,99 €).",
+  },
+  {
+    id: "bundle",
+    name: "Bundle 5 targhe",
+    description: "Una targa per ogni punto di contatto: bancone, cassa, tavoli e ingresso.",
+    was: "200",
+    price: "100",
+    discount: "-50%",
+    unitNote: "Solo 20 € a targa",
+    badge: "Il più scelto",
+    perks: [
+      "5 targhe NFC + QR code",
+      "Riprogrammabili per sempre",
+      "Montaggio e configurazione inclusi",
+    ],
+    order: "Ciao Kontap, vorrei ordinare il Bundle 5 targhe (100 €).",
+  },
+];
+
+/** Voce di un servizio: testo semplice o voce con dettagli. */
+export type ServiceItem = string | { label: string; details: string[] };
+
+export type ServicePlan = {
+  id: "base" | "grow" | "plus";
+  name: string;
+  tagline: string;
+  billing: string;
+  /** frase che introduce la lista */
+  includes: string;
+  items: ServiceItem[];
+  premium?: boolean;
+  cta: string;
+};
+
+export const servicePlans: ServicePlan[] = [
+  {
+    id: "base",
+    name: "Kontap Base",
+    tagline: "Mettiamo in ordine la tua presenza digitale.",
+    billing: "Una tantum",
+    includes: "Comprende:",
+    items: [
+      "Audit iniziale",
+      "Google Business Profile",
+      {
+        label: "Ottimizzazione scheda",
+        details: ["categorie", "servizi", "descrizione", "foto", "informazioni"],
+      },
+      "Strategia iniziale recensioni",
+      "Configurazione Kontap",
+    ],
+    cta: "Ciao Kontap, vorrei informazioni su Kontap Base.",
+  },
+  {
+    id: "grow",
+    name: "Kontap Grow",
+    tagline: "Costruiamo una presenza locale più forte.",
+    billing: "Abbonamento mensile",
+    includes: "Tutto Kontap Base, più:",
+    items: [
+      {
+        label: "Reputation Management",
+        details: ["monitoraggio recensioni", "risposta recensioni"],
+      },
+      "Competitor analysis",
+      "Local SEO",
+      "Google Content",
+      "Monitoraggio performance",
+      "Report mensile",
+    ],
+    cta: "Ciao Kontap, vorrei informazioni su Kontap Grow.",
+  },
+  {
+    id: "plus",
+    name: "Kontap+",
+    tagline: "La tua presenza digitale, analizzata continuamente.",
+    billing: "Premium",
+    includes: "Dashboard Kontap+, più:",
+    items: [
+      "Reputation Analytics",
+      "AI Review Analysis",
+      "Competitor Intelligence",
+      "SEO / Local SEO",
+      "GEO / AEO",
+      "Business Insights",
+      "Report automatici",
+      "Alert",
+      "Strategic Business Review",
+      "Piano d'azione",
+    ],
+    premium: true,
+    cta: "Ciao Kontap, vorrei informazioni su Kontap+.",
+  },
+];
 
 export type Feature = {
   title: string;
@@ -140,8 +315,8 @@ export const footer = {
       title: "Kontap",
       links: [
         { label: "Targa Recensioni Google", href: "/" },
+        { label: "Prezzi e servizi", href: "/prezzi" },
         { label: "Kontap Plus", href: "/#plus" },
-        { label: "Contatti", href: "/#cta" },
       ],
     },
     {
@@ -150,6 +325,7 @@ export const footer = {
         { label: "Come funziona", href: "/come-funziona" },
         { label: "Perché Kontap", href: "/come-funziona#why" },
         { label: "FAQ", href: "/faq" },
+        { label: "Contatti", href: "/contatti" },
       ],
     },
   ],
