@@ -5,7 +5,8 @@ import { useEffect, useRef } from "react";
 /**
  * Targa recensioni Kontap in 3D — fronte e retro reali dal mockup, spessore
  * costruito da strati impilati (bordi arrotondati solidi a qualsiasi angolo).
- * Trascina (o swipe orizzontale su mobile) per ruotarla; tap per girarla.
+ * Ruota solo in orizzontale (360°): swipe/trascina a destra o sinistra,
+ * tap per girarla. I gesti verticali restano allo scroll della pagina.
  * A riposo oscilla appena, così si legge subito come oggetto fisico.
  * Solo CSS 3D: le facce restano immagini native → nitide su Retina.
  */
@@ -31,17 +32,16 @@ export function Plate3D({ className }: { className?: string }) {
     // Stato fisico
     let angle = reduced ? 0 : -200; // entrata: mezzo giro che mostra il retro
     let vel = 0;
-    let tilt = REST_TILT;
-    let tiltVel = 0;
     let target = 0;
     let sway = 0; // ampiezza oscillazione a riposo (0 → 1)
     let dragging = false;
     let coasting = false; // inerzia dopo il rilascio
     let moved = false;
+    let pending = false; // pointer giù, gesto non ancora deciso
+    let pointerId = -1;
     let startX = 0;
     let startY = 0;
     let startAngle = 0;
-    let startTilt = 0;
     let lastX = 0;
     let lastT = 0;
     let idleSince = performance.now() + (reduced ? 0 : 900);
@@ -54,8 +54,7 @@ export function Plate3D({ className }: { className?: string }) {
     const render = (t: number) => {
       const s = reduced ? 0 : sway;
       const a = angle + s * 14 * Math.sin(t / 1400);
-      const x = tilt + s * 3 * Math.sin(t / 1900);
-      plate.style.transform = `rotateX(${x}deg) rotateY(${a}deg)`;
+      plate.style.transform = `rotateX(${REST_TILT}deg) rotateY(${a}deg)`;
 
       // Riflesso che scorre con la rotazione
       const rad = (a * Math.PI) / 180;
@@ -89,10 +88,6 @@ export function Plate3D({ className }: { className?: string }) {
           vel *= Math.pow(0.8, dt);
           angle += vel * dt;
         }
-        tiltVel += (REST_TILT - tilt) * 0.06 * dt;
-        tiltVel *= Math.pow(0.78, dt);
-        tilt += tiltVel * dt;
-
         // Oscillazione a riposo: qualche ciclo, poi si ferma (nitida e
         // niente lavoro in background)
         const still = t - idleSince;
@@ -110,12 +105,10 @@ export function Plate3D({ className }: { className?: string }) {
         t - idleSince > 10000 &&
         sway < 0.002 &&
         Math.abs(target - angle) < 0.05 &&
-        Math.abs(vel) < 0.01 &&
-        Math.abs(tilt - REST_TILT) < 0.02;
+        Math.abs(vel) < 0.01;
       if (settled || reduced && !dragging && Math.abs(target - angle) < 0.05) {
         angle = target;
-        tilt = REST_TILT;
-        vel = tiltVel = sway = 0;
+        vel = sway = 0;
         render(t);
         running = false;
         return;
@@ -131,50 +124,77 @@ export function Plate3D({ className }: { className?: string }) {
     };
 
     const onDown = (e: PointerEvent) => {
-      dragging = true;
-      coasting = false;
+      // non blocca nulla finché il gesto non è chiaramente orizzontale
+      pending = true;
       moved = false;
+      pointerId = e.pointerId;
       startX = lastX = e.clientX;
       startY = e.clientY;
-      startAngle = angle;
-      startTilt = tilt;
       lastT = performance.now();
-      vel = 0;
-      stage.setPointerCapture(e.pointerId);
-      start();
     };
 
     const onMove = (e: PointerEvent) => {
+      if (pending && e.pointerId === pointerId) {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) {
+          pending = false; // gesto verticale: è scroll, lascialo alla pagina
+          return;
+        }
+        if (Math.abs(dx) > 6 && Math.abs(dx) >= Math.abs(dy)) {
+          pending = false;
+          dragging = true;
+          moved = true;
+          coasting = false;
+          startX = lastX = e.clientX;
+          startAngle = angle;
+          vel = 0;
+          try {
+            stage.setPointerCapture(e.pointerId);
+          } catch {}
+          start();
+        }
+        return;
+      }
       if (!dragging) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-      if (Math.abs(dx) + Math.abs(dy) > 4) moved = true;
-      angle = startAngle + dx * 0.65;
-      tilt = Math.max(-28, Math.min(22, startTilt - dy * 0.3));
+      angle = startAngle + (e.clientX - startX) * 0.65;
       const now = performance.now();
       const dtm = Math.max(1, now - lastT);
-      vel = ((e.clientX - lastX) * 0.65 * 16.67) / dtm;
+      vel = Math.max(-40, Math.min(40, ((e.clientX - lastX) * 0.65 * 16.67) / dtm));
       lastX = e.clientX;
       lastT = now;
     };
 
     const onUp = () => {
-      if (!dragging) return;
-      dragging = false;
-      if (!moved) {
-        // tap → gira di 180°
+      if (pending) {
+        // tap senza movimento → gira di 180°
+        pending = false;
+        coasting = false;
         vel = 0;
         target = nearestFace(angle) + 180;
-      } else {
-        coasting = true;
+        idleSince = performance.now();
+        start();
+        return;
       }
+      if (!dragging) return;
+      dragging = false;
+      coasting = moved;
       idleSince = performance.now();
+    };
+
+    const onCancel = () => {
+      pending = false;
+      if (dragging) {
+        dragging = false;
+        coasting = true;
+        idleSince = performance.now();
+      }
     };
 
     stage.addEventListener("pointerdown", onDown);
     stage.addEventListener("pointermove", onMove);
     stage.addEventListener("pointerup", onUp);
-    stage.addEventListener("pointercancel", onUp);
+    stage.addEventListener("pointercancel", onCancel);
 
     render(performance.now());
     start();
@@ -184,7 +204,7 @@ export function Plate3D({ className }: { className?: string }) {
       stage.removeEventListener("pointerdown", onDown);
       stage.removeEventListener("pointermove", onMove);
       stage.removeEventListener("pointerup", onUp);
-      stage.removeEventListener("pointercancel", onUp);
+      stage.removeEventListener("pointercancel", onCancel);
     };
   }, []);
 
