@@ -115,41 +115,64 @@ function GridTech() {
 }
 
 function How() {
+  // Sfondo premium: anelli nel gradiente Kontap, anelli tecnici tratteggiati
+  // che ruotano piano in versi opposti, due punti in orbita e le onde del tap.
+  // Nessuna filigrana del marchio.
+  const C = "left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2";
   return (
     <>
-      <Light
-        className="left-1/2 top-[52%] h-[86vh] w-[86vh] -translate-x-1/2 -translate-y-1/2"
-        color="rgba(88,200,255,0.16)"
-        style={{ background: "radial-gradient(circle, rgba(88,200,255,0.16) 0%, rgba(255,255,255,0) 60%)" }}
+      {/* bagliore centrale nel blu del brand */}
+      <div
+        className={`absolute ${C} h-[80vh] w-[80vh] rounded-full`}
+        style={{ background: "radial-gradient(circle, rgba(13,118,235,0.12) 0%, rgba(11,85,193,0.05) 35%, rgba(255,255,255,0) 65%)" }}
       />
-      {/* static concentric rings — depth, crisp vectors */}
-      <svg
-        className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2"
-        style={{ maxWidth: "none" }}
-        width="1180"
-        height="1180"
-        viewBox="0 0 1180 1180"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="590" cy="590" r="130" stroke="rgba(36,83,255,0.12)" strokeWidth="1.4" />
-        <circle cx="590" cy="590" r="230" stroke="rgba(36,83,255,0.10)" strokeWidth="1.4" />
-        <circle cx="590" cy="590" r="345" stroke="rgba(36,83,255,0.08)" strokeWidth="1.4" />
-        <circle cx="590" cy="590" r="470" stroke="rgba(36,83,255,0.06)" strokeWidth="1.4" />
-        <circle cx="590" cy="590" r="560" stroke="rgba(88,200,255,0.05)" strokeWidth="1.4" />
+
+      {/* anelli statici con tratto a gradiente */}
+      <svg className={`absolute ${C}`} style={{ maxWidth: "none" }} width="1180" height="1180" viewBox="0 0 1180 1180" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="how-ring" x1="0" y1="0" x2="1180" y2="1180" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#0d76eb" />
+            <stop offset="0.55" stopColor="#0b55c1" />
+            <stop offset="1" stopColor="#0d43a1" />
+          </linearGradient>
+        </defs>
+        <circle cx="590" cy="590" r="140" stroke="url(#how-ring)" strokeOpacity="0.22" strokeWidth="1.2" />
+        <circle cx="590" cy="590" r="250" stroke="url(#how-ring)" strokeOpacity="0.16" strokeWidth="1.2" />
+        <circle cx="590" cy="590" r="370" stroke="url(#how-ring)" strokeOpacity="0.11" strokeWidth="1.2" />
+        <circle cx="590" cy="590" r="490" stroke="url(#how-ring)" strokeOpacity="0.07" strokeWidth="1.2" />
       </svg>
-      {/* live ripples — the tap emitting motion */}
+
+      {/* anelli tecnici tratteggiati, rotazione lenta in versi opposti */}
+      <svg className={`absolute ${C} motion-safe:animate-[spin_90s_linear_infinite]`} style={{ maxWidth: "none" }} width="640" height="640" viewBox="0 0 640 640" fill="none" aria-hidden="true">
+        <circle cx="320" cy="320" r="310" stroke="#0d76eb" strokeOpacity="0.28" strokeWidth="1.5" strokeDasharray="2 10" />
+        <path d="M320 10a310 310 0 0 1 219 91" stroke="#0d76eb" strokeOpacity="0.55" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+      <svg className={`absolute ${C} motion-safe:animate-[spin_120s_linear_infinite_reverse]`} style={{ maxWidth: "none" }} width="880" height="880" viewBox="0 0 880 880" fill="none" aria-hidden="true">
+        <circle cx="440" cy="440" r="430" stroke="#0b55c1" strokeOpacity="0.16" strokeWidth="1.2" strokeDasharray="24 14 4 14" />
+        <path d="M10 440a430 430 0 0 1 126-304" stroke="#0b55c1" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+
+      {/* punti luminosi in orbita */}
+      <div className={`absolute ${C} h-[500px] w-[500px] motion-safe:animate-[spin_26s_linear_infinite]`}>
+        <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0d76eb] shadow-[0_0_14px_4px_rgba(13,118,235,0.45)]" />
+      </div>
+      <div className={`absolute ${C} h-[740px] w-[740px] motion-safe:animate-[spin_40s_linear_infinite_reverse]`}>
+        <span className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full bg-[#0b55c1] shadow-[0_0_12px_3px_rgba(11,85,193,0.4)]" />
+      </div>
+
+      {/* onde del tap nel blu Kontap */}
       <div className="absolute left-1/2 top-[52%]">
         {[0, 2, 4].map((delay) => (
           <span
             key={delay}
-            className="absolute left-0 top-0 -ml-[150px] -mt-[150px] h-[300px] w-[300px] rounded-full border-[1.5px] border-[color:rgba(88,200,255,0.4)] motion-safe:animate-[kontap-ripple_6s_ease-out_infinite]"
+            className="absolute left-0 top-0 -ml-[150px] -mt-[150px] h-[300px] w-[300px] rounded-full border-[1.5px] border-[#0d76eb]/35 shadow-[0_0_24px_rgba(13,118,235,0.12)_inset] motion-safe:animate-[kontap-ripple_6s_ease-out_infinite]"
             style={{ animationDelay: `${delay}s` }}
           />
         ))}
       </div>
-      {/* the tap point */}
-      <Mark size={112} color={BLUE} opacity={0.1} className="left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2" />
+
+      {/* nucleo luminoso al centro, al posto della filigrana */}
+      <div className={`absolute ${C} h-40 w-40 rounded-full`} style={{ background: "radial-gradient(circle, rgba(13,118,235,0.18), rgba(13,118,235,0) 70%)" }} />
     </>
   );
 }
