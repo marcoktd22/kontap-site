@@ -7,7 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 export const metadata: Metadata = {
   title: "Prezzi e servizi",
   description:
-    "Targa recensioni Google a 29,99 € IVA inclusa, Bundle 5 targhe a 100 € e i servizi Kontap Base, Kontap Grow e Kontap+.",
+    "Targa recensioni Google da 35 €, 3 targhe a 65 € con spedizione gratuita, Bundle Network su preventivo e i servizi Kontap Base, Kontap Grow e Kontap+.",
 };
 
 export default function PrezziPage() {

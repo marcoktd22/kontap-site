@@ -79,50 +79,63 @@ export const nav = {
 /* ------------------------------------------------------------------ */
 
 export type PlateOffer = {
-  id: string;
+  id: "single" | "trio" | "network";
   name: string;
   description: string;
-  /** prezzo pieno (barrato) e prezzo attuale, IVA inclusa */
-  was: string;
-  price: string;
-  discount: string;
-  /** nota sotto il prezzo, es. prezzo a targa */
-  unitNote?: string;
+  /** prezzo attuale (IVA inclusa) — assente per le offerte su preventivo */
+  price?: string;
+  /** prezzo pieno barrato */
+  was?: string;
+  /** etichetta di risparmio accanto al prezzo */
+  saving?: string;
+  /** etichetta al posto del prezzo (es. "Su preventivo") */
+  priceLabel?: string;
   badge?: string;
   perks: string[];
-  order: string;
+  cta: { label: string; href: string; external: boolean };
 };
 
 export const plateOffers: PlateOffer[] = [
   {
     id: "single",
-    name: "Targa Recensioni Google",
-    description: "Una targa NFC da bancone: un tap e il cliente è sulla tua pagina recensioni.",
+    name: "1 targa",
+    description: "La targa recensioni Google da bancone.",
+    price: "35",
     was: "40",
-    price: "29,99",
-    discount: "-25%",
-    perks: [
-      "Chip NFC + QR code",
-      "Riprogrammabile per sempre",
-      "Montaggio e configurazione inclusi",
-    ],
-    order: "Ciao Kontap, vorrei ordinare 1 targa recensioni Google (29,99 €).",
+    saving: "-5 €",
+    perks: ["Chip NFC + QR code", "Riprogrammabile per sempre"],
+    cta: {
+      label: "Ordina su WhatsApp",
+      href: whatsappHref("Ciao Kontap, vorrei ordinare 1 targa recensioni Google (35 €)."),
+      external: true,
+    },
   },
   {
-    id: "bundle",
-    name: "Bundle 5 targhe",
-    description: "Una targa per ogni punto di contatto: bancone, cassa, tavoli e ingresso.",
-    was: "200",
-    price: "100",
-    discount: "-50%",
-    unitNote: "Solo 20 € a targa",
-    badge: "Il più scelto",
+    id: "trio",
+    name: "3 targhe",
+    description: "Bancone, cassa e tavoli: nessun cliente ti sfugge.",
+    price: "65",
+    was: "105",
+    saving: "-40 €",
+    badge: "Consigliato",
     perks: [
-      "5 targhe NFC + QR code",
-      "Riprogrammabili per sempre",
-      "Montaggio e configurazione inclusi",
+      "Spedizione gratuita",
+      "1 mese di Kontap+ incluso",
+      "+20 € l'una, fino a 10 targhe",
     ],
-    order: "Ciao Kontap, vorrei ordinare il Bundle 5 targhe (100 €).",
+    cta: {
+      label: "Ordina su WhatsApp",
+      href: whatsappHref("Ciao Kontap, vorrei ordinare 3 targhe recensioni Google (65 €)."),
+      external: true,
+    },
+  },
+  {
+    id: "network",
+    name: "Bundle Network",
+    description: "Più di 10 targhe, per catene e attività con più sedi.",
+    priceLabel: "Su preventivo",
+    perks: ["Oltre 10 targhe", "Prezzo su misura"],
+    cta: { label: "Richiedi preventivo", href: "/contatti", external: false },
   },
 ];
 
