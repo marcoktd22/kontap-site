@@ -114,65 +114,64 @@ function GridTech() {
   );
 }
 
+/**
+ * Come funziona — sfondo "abstract geometric gradient": il gradiente Kontap
+ * (cobalto brillante in alto a sinistra → blu medio → navy profondo a destra,
+ * glow ciano in basso a sinistra) con grandi pannelli geometrici traslucidi,
+ * ruotati, sovrapposti e sfocati. Solo CSS, nessuna immagine.
+ */
+const HOW_PANELS: {
+  pos: CSSProperties;
+  rotate: number;
+  blur: number;
+  opacity: number;
+  bg: string;
+  radius: string;
+}[] = [
+  // grande pannello chiaro in alto a sinistra
+  { pos: { left: "-10%", top: "-16%", width: "60%", height: "68%" }, rotate: -14, blur: 34, opacity: 0.15, bg: "linear-gradient(160deg, #6aaaf5, #1f6fe0)", radius: "5%" },
+  // lastra verticale centrale, blu medio più chiaro
+  { pos: { left: "32%", top: "6%", width: "26%", height: "112%" }, rotate: 9, blur: 30, opacity: 0.12, bg: "linear-gradient(180deg, #4d8fec, #0a3f9e)", radius: "3%" },
+  // pannello navy a destra, più scuro
+  { pos: { right: "-12%", top: "-8%", width: "50%", height: "78%" }, rotate: -7, blur: 44, opacity: 0.15, bg: "linear-gradient(200deg, #000418, #030b30)", radius: "5%" },
+  // quadrilatero basso a sinistra, ciano desaturato
+  { pos: { left: "-6%", bottom: "-20%", width: "56%", height: "54%" }, rotate: 12, blur: 40, opacity: 0.13, bg: "linear-gradient(120deg, #2a9ad8, #0b5fb0)", radius: "5%" },
+  // lastra sottile diagonale, chiara
+  { pos: { left: "50%", top: "40%", width: "40%", height: "30%" }, rotate: -20, blur: 30, opacity: 0.1, bg: "linear-gradient(90deg, #8bbaf7, #3f86ea)", radius: "3%" },
+  // pannello scuro in basso a destra
+  { pos: { right: "-4%", bottom: "-14%", width: "44%", height: "48%" }, rotate: 16, blur: 40, opacity: 0.14, bg: "linear-gradient(140deg, #020b30, #000312)", radius: "4%" },
+  // velo desaturato che attraversa il centro
+  { pos: { left: "8%", top: "46%", width: "48%", height: "34%" }, rotate: -6, blur: 50, opacity: 0.07, bg: "linear-gradient(100deg, #9fb8e0, #5b7fc0)", radius: "4%" },
+];
+
 function How() {
-  // Sfondo premium: anelli nel gradiente Kontap, anelli tecnici tratteggiati
-  // che ruotano piano in versi opposti, due punti in orbita e le onde del tap.
-  // Nessuna filigrana del marchio.
-  const C = "left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2";
   return (
     <>
-      {/* bagliore centrale nel blu del brand */}
+      {/* gradiente di base (palette Kontap) */}
       <div
-        className={`absolute ${C} h-[80vh] w-[80vh] rounded-full`}
-        style={{ background: "radial-gradient(circle, rgba(13,118,235,0.12) 0%, rgba(11,85,193,0.05) 35%, rgba(255,255,255,0) 65%)" }}
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(55% 60% at 8% 100%, rgba(2,110,184,0.75), transparent 70%)," +
+            "radial-gradient(60% 55% at 0% 0%, rgba(2,76,186,0.95), transparent 70%)," +
+            "linear-gradient(100deg, #0247b0 0%, #033a92 28%, #032c70 52%, #05194b 76%, #070f33 100%)",
+        }}
       />
-
-      {/* anelli statici con tratto a gradiente */}
-      <svg className={`absolute ${C}`} style={{ maxWidth: "none" }} width="1180" height="1180" viewBox="0 0 1180 1180" fill="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="how-ring" x1="0" y1="0" x2="1180" y2="1180" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stopColor="#0d76eb" />
-            <stop offset="0.55" stopColor="#0b55c1" />
-            <stop offset="1" stopColor="#0d43a1" />
-          </linearGradient>
-        </defs>
-        <circle cx="590" cy="590" r="140" stroke="url(#how-ring)" strokeOpacity="0.22" strokeWidth="1.2" />
-        <circle cx="590" cy="590" r="250" stroke="url(#how-ring)" strokeOpacity="0.16" strokeWidth="1.2" />
-        <circle cx="590" cy="590" r="370" stroke="url(#how-ring)" strokeOpacity="0.11" strokeWidth="1.2" />
-        <circle cx="590" cy="590" r="490" stroke="url(#how-ring)" strokeOpacity="0.07" strokeWidth="1.2" />
-      </svg>
-
-      {/* anelli tecnici tratteggiati, rotazione lenta in versi opposti */}
-      <svg className={`absolute ${C} motion-safe:animate-[spin_90s_linear_infinite]`} style={{ maxWidth: "none" }} width="640" height="640" viewBox="0 0 640 640" fill="none" aria-hidden="true">
-        <circle cx="320" cy="320" r="310" stroke="#0d76eb" strokeOpacity="0.28" strokeWidth="1.5" strokeDasharray="2 10" />
-        <path d="M320 10a310 310 0 0 1 219 91" stroke="#0d76eb" strokeOpacity="0.55" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-      <svg className={`absolute ${C} motion-safe:animate-[spin_120s_linear_infinite_reverse]`} style={{ maxWidth: "none" }} width="880" height="880" viewBox="0 0 880 880" fill="none" aria-hidden="true">
-        <circle cx="440" cy="440" r="430" stroke="#0b55c1" strokeOpacity="0.16" strokeWidth="1.2" strokeDasharray="24 14 4 14" />
-        <path d="M10 440a430 430 0 0 1 126-304" stroke="#0b55c1" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-
-      {/* punti luminosi in orbita */}
-      <div className={`absolute ${C} h-[500px] w-[500px] motion-safe:animate-[spin_26s_linear_infinite]`}>
-        <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0d76eb] shadow-[0_0_14px_4px_rgba(13,118,235,0.45)]" />
-      </div>
-      <div className={`absolute ${C} h-[740px] w-[740px] motion-safe:animate-[spin_40s_linear_infinite_reverse]`}>
-        <span className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full bg-[#0b55c1] shadow-[0_0_12px_3px_rgba(11,85,193,0.4)]" />
-      </div>
-
-      {/* onde del tap nel blu Kontap */}
-      <div className="absolute left-1/2 top-[52%]">
-        {[0, 2, 4].map((delay) => (
-          <span
-            key={delay}
-            className="absolute left-0 top-0 -ml-[150px] -mt-[150px] h-[300px] w-[300px] rounded-full border-[1.5px] border-[#0d76eb]/35 shadow-[0_0_24px_rgba(13,118,235,0.12)_inset] motion-safe:animate-[kontap-ripple_6s_ease-out_infinite]"
-            style={{ animationDelay: `${delay}s` }}
-          />
-        ))}
-      </div>
-
-      {/* nucleo luminoso al centro, al posto della filigrana */}
-      <div className={`absolute ${C} h-40 w-40 rounded-full`} style={{ background: "radial-gradient(circle, rgba(13,118,235,0.18), rgba(13,118,235,0) 70%)" }} />
+      {/* pannelli geometrici traslucidi immersi nel gradiente */}
+      {HOW_PANELS.map((p, i) => (
+        <div
+          key={i}
+          className="absolute"
+          style={{
+            ...p.pos,
+            transform: `rotate(${p.rotate}deg)`,
+            filter: `blur(${p.blur}px)`,
+            opacity: p.opacity,
+            background: p.bg,
+            borderRadius: p.radius,
+          }}
+        />
+      ))}
     </>
   );
 }

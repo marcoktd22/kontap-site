@@ -15,7 +15,7 @@ export default function ComeFunziona() {
   return (
     <>
       <Nav />
-      <main id="main" className="pt-16 sm:pt-12">
+      <main id="main">
         <HowItWorks />
         <WhyKontap />
       </main>
