@@ -68,7 +68,7 @@ export function PlusFeatures() {
                   <p className="mt-1 text-pretty text-[0.78rem] leading-snug text-muted sm:mt-1.5 sm:text-[0.9rem] sm:leading-relaxed">{a.text}</p>
                   <div className="mt-2.5 flex flex-wrap gap-1 sm:mt-3 sm:gap-1.5">
                     {a.items.map((it) => (
-                      <span key={it} className="rounded-full bg-[#0b67cc]/70 px-2 py-0.5 text-[0.65rem] font-medium text-white sm:px-2.5 sm:py-1 sm:text-[0.72rem]">
+                      <span key={it} className="rounded-full bg-[#0b67cc]/60 px-2 py-0.5 text-[0.65rem] font-medium text-white sm:px-2.5 sm:py-1 sm:text-[0.72rem]">
                         {it}
                       </span>
                     ))}
