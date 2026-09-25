@@ -103,12 +103,12 @@
      chiaro in basso a sinistra (texture del brand, versione luminosa). */
   .bg-brand-gradient {
     background-image:
-      radial-gradient(90% 120% at 8% 110%, rgba(64, 160, 235, 0.55), transparent 60%),
-      linear-gradient(135deg, #0b67cc 0%, #0a5cc2 35%, #0a4aa8 70%, #0b3a8c 100%);
+      radial-gradient(90% 120% at 8% 110%, rgba(90, 175, 245, 0.55), transparent 60%),
+      linear-gradient(135deg, #0d76eb 0%, #0c6adf 35%, #0b55c1 70%, #0d43a1 100%);
   }
   /* Variante luminosa, per accenti su fondi già scuri */
   .bg-brand-gradient-bright {
-    background-image: linear-gradient(135deg, #1f74e0 0%, #0249b3 100%);
+    background-image: linear-gradient(135deg, #4189e5 0%, #0254ce 100%);
   }
 
   /* Heading gradient on LIGHT surfaces — ink → soft blue-grey */
@@ -121,7 +121,7 @@
 
   /* Accent heading gradient on LIGHT — brand blue → secondary blue */
   .text-gradient-accent {
-    background: linear-gradient(120deg, #0b67cc 0%, #0a5cc2 45%, #0a4aa8 85%, #0b3a8c 110%);
+    background: linear-gradient(120deg, #0d76eb 0%, #0c6adf 45%, #0b55c1 85%, #0d43a1 110%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -154,8 +154,8 @@
      Depth from light, never from darkness. */
   .bg-light-tech {
     background-image:
-      radial-gradient(70% 55% at 50% 0%, rgba(88, 200, 255, 0.09), transparent 60%),
-      linear-gradient(180deg, #f9fcff 0%, #eef6ff 100%);
+      radial-gradient(70% 55% at 50% 0%, rgba(13, 118, 235, 0.1), transparent 60%),
+      linear-gradient(180deg, #f3f8ff 0%, #dde9fb 100%);
   }
 
   /* Almost-invisible neutral grid (~2%) for light-tech sections */
@@ -165,8 +165,8 @@
     inset: 0;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(16, 24, 40, 0.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(16, 24, 40, 0.028) 1px, transparent 1px);
+      linear-gradient(rgba(11, 103, 204, 0.075) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 103, 204, 0.075) 1px, transparent 1px);
     background-size: 46px 46px;
     -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 85%);
     mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 85%);

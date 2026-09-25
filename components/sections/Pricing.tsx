@@ -20,7 +20,7 @@ import { cn } from "@/lib/cn";
 
 /** Bordo a gradiente Kontap (stesso trucco delle card FAQ). */
 const GRADIENT_BORDER =
-  "border-[1.5px] border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0b67cc,#0a4aa8_70%,#0b3a8c)_border-box]";
+  "border-[1.5px] border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0d76eb,#0b55c1_70%,#0d43a1)_border-box]";
 
 const CARD =
   "relative flex h-full flex-col rounded-[1.5rem] p-5 sm:p-6";

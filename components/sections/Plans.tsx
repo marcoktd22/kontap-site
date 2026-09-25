@@ -6,52 +6,44 @@ import { Icon } from "../ui/Icon";
 import { Coverflow } from "../ui/Coverflow";
 import { CheckBadge } from "../ui/CheckBadge";
 import { PlusLogo } from "../PlusLogo";
-import { PlusHorizon } from "../PlusHorizon";
 import { servicePlans, type ServicePlan } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
-/** Blu notte della sezione: la cupola dell'orizzonte parte da qui. */
-const NIGHT = "#0a1535";
-
 /**
- * "Non vendiamo solo una targhetta" — i tre piani sotto la Hero, su un'isola
- * blu notte che sorge dall'orizzonte di luce. Card in vetro premium in un
- * coverflow 3D in loop.
+ * "Non vendiamo solo una targhetta" — i tre piani sotto la Hero. Sfondo a
+ * quadratini (come le altre sezioni) che scurisce verso l'azzurro #0b67cc;
+ * card in vetro blu Kontap in un coverflow 3D in loop.
  */
 export function Plans() {
   return (
-    <section id="piani" className="relative scroll-mt-24 overflow-x-clip pb-20 pt-28 text-white sm:pb-28 sm:pt-40 lg:pt-48">
-      <PlusHorizon fill={NIGHT} />
-
-      {/* Fondo blu notte con luci del brand */}
+    <section id="piani" className="relative scroll-mt-24 overflow-x-clip pb-20 pt-16 sm:pb-28 sm:pt-24">
+      {/* Fondo: dal chiaro della Hero all'azzurro Kontap, con la griglia a quadratini */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-[62px] overflow-hidden rounded-b-[2.5rem] sm:top-[94px] sm:rounded-b-[3.5rem] lg:top-[118px]"
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem]"
         style={{
           background:
-            "radial-gradient(70% 45% at 50% 0%, rgba(36,83,255,0.45), transparent 70%)," +
-            "radial-gradient(40% 35% at 90% 70%, rgba(88,200,255,0.16), transparent 70%)," +
-            "radial-gradient(40% 35% at 5% 85%, rgba(36,83,255,0.22), transparent 70%)," +
-            `linear-gradient(180deg, ${NIGHT} 0%, #0b1a42 55%, #0d2052 100%)`,
+            "radial-gradient(60% 40% at 50% 100%, rgba(90,175,245,0.45), transparent 70%)," +
+            "linear-gradient(180deg, rgba(252,253,255,0) 0%, #e6effd 22%, #b9d3f5 48%, #5a9be6 74%, #0b67cc 100%)",
         }}
       >
-        {/* griglia tecnica appena accennata */}
-        <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:46px_46px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,#000,transparent)]" />
+        <div className="absolute inset-0 [background-image:linear-gradient(rgba(11,103,204,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(11,103,204,0.09)_1px,transparent_1px)] [background-size:46px_46px] [mask-image:linear-gradient(180deg,transparent,#000_18%,#000)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 [background-image:linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:46px_46px] [mask-image:linear-gradient(180deg,transparent,#000)]" />
       </div>
 
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
           <Reveal>
-            <Eyebrow tone="dark">I piani Kontap</Eyebrow>
+            <Eyebrow>I piani Kontap</Eyebrow>
           </Reveal>
           <Reveal index={1}>
             <h2 className="mt-5 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl">
-              Non vendiamo solo{" "}
-              <span className="text-gradient-invert-accent">una targhetta.</span>
+              <span className="text-gradient">Non vendiamo solo </span>
+              <span className="text-gradient-accent">una targhetta.</span>
             </h2>
           </Reveal>
           <Reveal index={2}>
-            <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-white/70 sm:text-lg">
+            <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-muted sm:text-lg">
               La targa porta i clienti da te. I nostri piani fanno crescere la tua
               attività anche online.
             </p>
@@ -84,16 +76,16 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
       className={cn(
         "h-full rounded-[1.75rem] p-px",
         premium
-          ? "bg-[linear-gradient(140deg,#6cceff,#2453ff_45%,#58c8ff)] shadow-[0_0_0_1px_rgba(88,200,255,0.25),0_30px_90px_-30px_rgba(88,200,255,0.55)]"
-          : "bg-[linear-gradient(160deg,rgba(255,255,255,0.35),rgba(255,255,255,0.06)_45%,rgba(255,255,255,0.14))] shadow-[0_40px_80px_-36px_rgba(0,0,0,0.75)]"
+          ? "bg-[linear-gradient(140deg,#b9e2ff,#0d76eb_45%,#7cc0ff)] shadow-[0_0_0_1px_rgba(124,192,255,0.3),0_30px_80px_-30px_rgba(11,85,193,0.7)]"
+          : "bg-[linear-gradient(160deg,rgba(255,255,255,0.55),rgba(255,255,255,0.12)_45%,rgba(255,255,255,0.3))] shadow-[0_34px_70px_-34px_rgba(11,60,140,0.75)]"
       )}
     >
       <div
-        className="relative flex h-full flex-col overflow-hidden rounded-[calc(1.75rem-1px)] p-6"
+        className="relative flex h-full flex-col overflow-hidden rounded-[calc(1.75rem-1px)] p-6 text-white"
         style={{
           background: premium
-            ? "radial-gradient(120% 70% at 100% 0%, rgba(88,200,255,0.28), transparent 55%), linear-gradient(165deg, #16307a 0%, #0e1f55 55%, #0b1840 100%)"
-            : "linear-gradient(165deg, rgba(40,62,130,0.92) 0%, rgba(18,33,80,0.95) 55%, rgba(12,24,62,0.97) 100%)",
+            ? "radial-gradient(120% 70% at 100% 0%, rgba(150,210,255,0.35), transparent 55%), linear-gradient(165deg, #0b55c1 0%, #0d43a1 55%, #0b3a8c 100%)"
+            : "radial-gradient(100% 60% at 0% 100%, rgba(90,175,245,0.35), transparent 60%), linear-gradient(165deg, #0d76eb 0%, #0c6adf 45%, #0b55c1 100%)",
         }}
       >
         {/* riflesso del materiale */}
@@ -109,7 +101,7 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
         <span
           className={cn(
             "relative self-start whitespace-nowrap rounded-full px-2.5 py-1 text-[0.7rem] font-semibold",
-            premium ? "bg-brand-gradient-bright text-white" : "bg-[#0b67cc] text-white"
+            "bg-white text-[#0b67cc]"
           )}
         >
           {plan.billing}
@@ -131,13 +123,13 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
             const label = typeof item === "string" ? item : item.label;
             return (
               <li key={label} className="flex items-center gap-2.5 text-[0.88rem] text-white/90">
-                <CheckBadge color="#6cceff" className="h-[15px] w-4" />
+                <CheckBadge color="#ffffff" className="h-[15px] w-4" />
                 {label}
               </li>
             );
           })}
           {more > 0 && (
-            <li className="pl-[26px] text-[0.8rem] font-medium text-[#8fdcff]">
+            <li className="pl-[26px] text-[0.8rem] font-medium text-white/85">
               {more === 1 ? "+ 1 altro servizio incluso" : `+ altri ${more} servizi inclusi`}
             </li>
           )}
