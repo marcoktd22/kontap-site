@@ -20,7 +20,7 @@ import { cn } from "@/lib/cn";
 
 /** Bordo a gradiente Kontap (stesso trucco delle card FAQ). */
 const GRADIENT_BORDER =
-  "border-[1.5px] border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0249b3,#052973_65%,#070f33)_border-box]";
+  "border-[1.5px] border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0b67cc,#0a4aa8_70%,#0b3a8c)_border-box]";
 
 const CARD =
   "relative flex h-full flex-col rounded-[1.5rem] p-5 sm:p-6";
@@ -78,7 +78,7 @@ function PlateCard({ offer }: { offer: PlateOffer }) {
       <div className="flex items-center gap-3.5">
         <PlateVisual kind={offer.id} />
         <div className="min-w-0">
-          <h3 className="text-lg font-semibold leading-tight text-ink">{offer.name}</h3>
+          <h3 className="text-lg font-bold leading-tight text-[#0b67cc]">{offer.name}</h3>
           <p className="mt-1 text-[0.8rem] leading-snug text-muted">{offer.description}</p>
         </div>
       </div>
@@ -97,7 +97,7 @@ function PlateCard({ offer }: { offer: PlateOffer }) {
               </span>
             )}
             {offer.saving && (
-              <span className="mb-1 rounded-full bg-primary/10 px-2 py-0.5 text-[0.7rem] font-semibold text-primary">
+              <span className="mb-1 rounded-full bg-[#0b67cc] px-2 py-0.5 text-[0.7rem] font-semibold text-white">
                 {offer.saving}
               </span>
             )}
@@ -220,7 +220,7 @@ function ServiceCard({ plan }: { plan: ServicePlan }) {
       <span
         className={cn(
           "relative self-start whitespace-nowrap rounded-full px-2.5 py-1 text-[0.7rem] font-semibold",
-          premium ? "bg-brand-gradient text-white" : "bg-primary/10 text-primary"
+          premium ? "bg-brand-gradient text-white" : "bg-[#0b67cc] text-white"
         )}
       >
         {plan.billing}
@@ -229,7 +229,7 @@ function ServiceCard({ plan }: { plan: ServicePlan }) {
         {premium ? (
           <PlusLogo className="h-6 text-ink" />
         ) : (
-          <span className="block text-xl font-semibold leading-6 tracking-tight text-ink">{plan.name}</span>
+          <span className="block text-xl font-bold leading-6 tracking-tight text-[#0b67cc]">{plan.name}</span>
         )}
       </h3>
       <p className="relative mt-2 text-pretty text-[0.85rem] leading-snug text-secondary">

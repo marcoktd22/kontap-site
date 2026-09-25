@@ -38,7 +38,7 @@ export function Eyebrow({
           "h-[2px] w-8 rounded-full",
           tone === "dark"
             ? "bg-white/50"
-            : "bg-[linear-gradient(90deg,#0249b3,#052973)]"
+            : "bg-[linear-gradient(90deg,#0b67cc,#0a4aa8)]"
         )}
       />
     </span>

@@ -13,11 +13,11 @@ export function CTA() {
         <div
           className="relative isolate overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:rounded-[2.5rem] text-white shadow-[0_40px_110px_-56px_rgba(36,83,255,0.5)] sm:px-12 sm:py-28"
           style={{
-            // Blu sfumato ufficiale Kontap (texture del brand)
-            backgroundImage: "url(/backgrounds/kontap-blue.webp)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundColor: "#052973",
+            // Blu sfumato Kontap, versione luminosa
+            backgroundImage:
+              "radial-gradient(80% 90% at 10% 105%, rgba(64,160,235,0.6), transparent 60%)," +
+              "radial-gradient(70% 70% at 100% 0%, rgba(11,58,140,0.55), transparent 65%)," +
+              "linear-gradient(140deg, #0b67cc 0%, #0a5cc2 40%, #0a4aa8 75%, #0b3a8c 100%)",
           }}
         >
           <BrandBackdrop variant="cta" />

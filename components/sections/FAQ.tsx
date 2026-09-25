@@ -110,8 +110,8 @@ export function FAQ() {
                       className={cn(
                         "group relative rounded-2xl border transition-all duration-[350ms] ease-[cubic-bezier(0.25,1,0.5,1)]",
                         isOpen
-                          ? "border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0249b3,#052973_65%,#070f33)_border-box] shadow-[0_12px_34px_-14px_rgba(36,83,255,0.32)]"
-                          : "border-[color:var(--color-line)] bg-white/80 shadow-[0_1px_2px_rgba(16,24,40,0.03),0_18px_40px_-30px_rgba(36,83,255,0.22)] backdrop-blur-sm hover:-translate-y-0.5 hover:border-transparent hover:[background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0249b3,#052973_65%,#070f33)_border-box] hover:shadow-[0_16px_38px_-18px_rgba(36,83,255,0.3)]"
+                          ? "border-transparent [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0b67cc,#0a4aa8_70%,#0b3a8c)_border-box] shadow-[0_12px_34px_-14px_rgba(36,83,255,0.32)]"
+                          : "border-[color:var(--color-line)] bg-white/80 shadow-[0_1px_2px_rgba(16,24,40,0.03),0_18px_40px_-30px_rgba(36,83,255,0.22)] backdrop-blur-sm hover:-translate-y-0.5 hover:border-transparent hover:[background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#0b67cc,#0a4aa8_70%,#0b3a8c)_border-box] hover:shadow-[0_16px_38px_-18px_rgba(36,83,255,0.3)]"
                       )}
                     >
                       <h3>

@@ -28,7 +28,8 @@
   --color-deep: #091121;      /* Dark Background */
   --color-deepest: #050811;   /* dark gradient end */
   --color-deep-2: #0e1f45;
-  --color-panel: #0e1a30;     /* dark card surface */
+  --color-panel: #0e1a30;
+  --color-kblue: #0b67cc;     /* azzurro Kontap per etichette e nomi */     /* dark card surface */
 
   /* Borders */
   --color-line: #dce8ff;       /* Border */
@@ -98,12 +99,12 @@
   }
 
   /* Centralised brand gradient — the single source of the blue→celeste ramp */
-  /* Blu sfumato Kontap (nuova identità): blu intenso → blu notte, con un
-     riflesso turchese in basso a sinistra come nella texture ufficiale. */
+  /* Blu sfumato Kontap: azzurro #0b67cc → blu profondo, con un riflesso
+     chiaro in basso a sinistra (texture del brand, versione luminosa). */
   .bg-brand-gradient {
     background-image:
-      radial-gradient(90% 120% at 8% 110%, rgba(2, 107, 179, 0.75), transparent 60%),
-      linear-gradient(135deg, #0249b3 0%, #03398f 38%, #052973 68%, #070f33 100%);
+      radial-gradient(90% 120% at 8% 110%, rgba(64, 160, 235, 0.55), transparent 60%),
+      linear-gradient(135deg, #0b67cc 0%, #0a5cc2 35%, #0a4aa8 70%, #0b3a8c 100%);
   }
   /* Variante luminosa, per accenti su fondi già scuri */
   .bg-brand-gradient-bright {
@@ -120,7 +121,7 @@
 
   /* Accent heading gradient on LIGHT — brand blue → secondary blue */
   .text-gradient-accent {
-    background: linear-gradient(120deg, #0249b3 0%, #033f9d 40%, #052973 80%, #0a1a4f 110%);
+    background: linear-gradient(120deg, #0b67cc 0%, #0a5cc2 45%, #0a4aa8 85%, #0b3a8c 110%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
