@@ -93,7 +93,7 @@ export function Coverflow({
               style={{
                 transform: `translateX(${d * 64}%) translateZ(${-abs * 140}px) rotateY(${-d * 34}deg) scale(${1 - abs * 0.06})`,
                 opacity: abs > 1 ? 0 : 1,
-                filter: isActive ? "none" : "brightness(0.82) saturate(0.9)",
+                filter: isActive ? "none" : dark ? "brightness(0.55) saturate(0.85)" : "brightness(0.82) saturate(0.9)",
                 zIndex: 10 - abs,
               }}
             >
@@ -114,8 +114,8 @@ export function Coverflow({
 
         {/* Frecce a metà card, sul bordo della card attiva, sopra tutto */}
         <div className={cn("pointer-events-none relative z-30 [grid-area:1/1]", cardClassName)}>
-          <Arrow dir={-1} dark={dark} onClick={() => go(-1)} className="left-0 -translate-x-1/2" />
-          <Arrow dir={1} dark={dark} onClick={() => go(1)} className="right-0 translate-x-1/2" />
+          <Arrow dir={-1} dark={dark} onClick={() => go(-1)} className="left-0 -translate-x-full" />
+          <Arrow dir={1} dark={dark} onClick={() => go(1)} className="right-0 translate-x-full" />
         </div>
       </div>
 
@@ -139,7 +139,15 @@ export function Coverflow({
   );
 }
 
-/** Freccia in vetro 3D, trasparente: galleggia sul bordo della card attiva. */
+/** Freccia del brand (chevron + triangolo), vettoriale. */
+const CHEVRON = "M13.5 560.1C8.7 557.9 5.6 554.7 3.5 549.8C1.3 544.4 1.3 493.2 3.5 484.5C5.7 476.0 9.6 468.7 14.6 463.8C17.0 461.4 68.8 422.1 129.7 376.5C190.6 330.9 241.2 292.4 242.2 291.0C246.0 285.8 245.8 276.5 241.7 271.9C240.5 270.5 222.4 256.6 201.5 241.0C69.7 142.5 17.1 102.8 13.8 99.4C9.3 94.6 5.7 87.5 3.6 79.4C2.3 74.5 2.0 67.6 2.0 45.4C2.0 20.5 2.2 17.1 3.9 13.5C7.5 5.5 16.2 0.9 23.8 3.0C25.8 3.5 32.2 7.5 38.0 11.9C48.9 20.1 183.4 120.6 307.1 213.2C346.5 242.6 379.8 268.2 381.2 270.1C385.5 275.8 386.5 280.9 384.6 286.8C383.6 289.6 381.9 293.1 380.8 294.5C379.7 296.0 360.0 311.2 337.1 328.3C314.2 345.4 268.9 379.2 236.5 403.5C204.1 427.8 144.2 472.6 103.5 503.0C62.8 533.5 27.9 559.2 26.0 560.2C21.7 562.5 18.6 562.4 13.5 560.1ZM14.7 359.5C9.7 357.8 6.2 354.5 3.9 349.5C2.2 345.7 2.0 341.6 2.0 281.7C2.0 220.2 2.1 217.8 4.0 214.1C8.3 205.5 17.8 201.2 25.2 204.3C27.2 205.1 47.5 219.8 70.3 236.8C100.1 259.1 112.4 268.9 114.1 271.7C115.9 274.6 116.5 276.9 116.5 281.6C116.5 292.4 117.1 291.9 70.5 326.8C47.4 344.2 26.9 359.0 25.0 359.6C20.6 361.2 19.4 361.2 14.7 359.5Z";
+
+/**
+ * Freccia 3D senza contorni: il glifo del brand con un'estrusione a strati
+ * (effetto rilievo) e ombra morbida. Bianca sui fondi scuri, nera su quelli
+ * chiari. A riposo "spinge" piano nella sua direzione; al passaggio si
+ * inclina in prospettiva e si ingrandisce; al tap si comprime.
+ */
 function Arrow({
   dir,
   dark,
@@ -157,18 +165,35 @@ function Arrow({
       onClick={onClick}
       aria-label={dir === 1 ? "Successivo" : "Precedente"}
       className={cn(
-        "pointer-events-auto absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full backdrop-blur-xl transition-[transform,background-color] duration-200 active:scale-90",
-        dark
-          ? "bg-[#0b67cc]/80 text-white ring-1 ring-white/45 shadow-[0_14px_30px_-10px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.55),inset_0_-3px_8px_rgba(0,0,0,0.25)] hover:bg-[#0b67cc]/95"
-          : "bg-white/45 text-[#0b67cc] ring-1 ring-white/80 shadow-[0_14px_30px_-10px_rgba(11,103,204,0.55),inset_0_1px_1px_rgba(255,255,255,1),inset_0_-3px_8px_rgba(11,103,204,0.18)] hover:bg-white/65",
+        "group/arrow pointer-events-auto absolute top-1/2 -translate-y-1/2 p-1 [perspective:300px] focus-visible:outline-none sm:p-1.5",
         className
       )}
     >
-      {/* riflesso del vetro */}
-      <span aria-hidden="true" className="pointer-events-none absolute inset-x-1.5 top-0.5 h-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0))] opacity-70" />
-      <svg viewBox="0 0 24 24" fill="none" className={cn("relative h-4 w-4", dir === -1 && "rotate-180")} aria-hidden="true">
-        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <span
+        className={cn(
+          "block motion-safe:animate-[kontap-nudge_2.6s_ease-in-out_infinite]",
+          dir === -1 && "[animation-direction:reverse]"
+        )}
+        style={{ ["--nudge" as string]: `${dir * 4}px` }}
+      >
+        <svg
+          viewBox="0 0 388 564"
+          aria-hidden="true"
+          className={cn(
+            "block h-8 w-auto transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/arrow:scale-110 group-active/arrow:scale-90 sm:h-10",
+            dir === 1
+              ? "group-hover/arrow:[transform:rotateY(-22deg)_scale(1.1)]"
+              : "-scale-x-100 group-hover/arrow:[transform:scaleX(-1)_rotateY(-22deg)_scale(1.1)]"
+          )}
+          style={{
+            filter: dark
+              ? "drop-shadow(1px 1px 0 #0b67cc) drop-shadow(1px 1px 0 #0a55b0) drop-shadow(1px 1px 0 #0a4596) drop-shadow(0 10px 14px rgba(0,8,30,0.55))"
+              : "drop-shadow(1px 1px 0 #3b4a63) drop-shadow(1px 1px 0 #6b7a94) drop-shadow(0 10px 14px rgba(11,40,90,0.3))",
+          }}
+        >
+          <path fill={dark ? "#ffffff" : "#0b0c10"} fillRule="evenodd" d={CHEVRON} />
+        </svg>
+      </span>
     </button>
   );
 }

@@ -199,6 +199,11 @@
   }
 }
 
+@keyframes kontap-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(var(--nudge, 4px)); }
+}
+
 @keyframes kontap-scan {
   from { transform: translateX(-100%); }
   to { transform: translateX(1400%); }
