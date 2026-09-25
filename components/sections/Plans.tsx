@@ -10,54 +10,55 @@ import { servicePlans, type ServicePlan } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 /**
- * "Non vendiamo solo una targhetta" — i tre piani sotto la Hero. Sfondo a
- * quadratini (come le altre sezioni) che scurisce verso l'azzurro #0b67cc;
- * card in vetro blu Kontap in un coverflow 3D in loop.
+ * "Non vendiamo solo una targhetta" — i tre piani sotto la Hero, su un'isola
+ * nel blu sfumato chiaro dell'header (con la griglia a quadratini), scritte
+ * bianche e card in vetro chiaro in un coverflow 3D in loop.
  */
 export function Plans() {
   return (
-    <section id="piani" className="relative scroll-mt-24 overflow-x-clip pb-20 pt-16 sm:pb-28 sm:pt-24">
-      {/* Fondo: dal chiaro della Hero all'azzurro Kontap, con la griglia a quadratini */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden rounded-b-[2.5rem] sm:rounded-b-[3.5rem]"
-        style={{
-          background:
-            "radial-gradient(60% 40% at 50% 100%, rgba(90,175,245,0.45), transparent 70%)," +
-            "linear-gradient(180deg, rgba(252,253,255,0) 0%, #e6effd 22%, #b9d3f5 48%, #5a9be6 74%, #0b67cc 100%)",
-        }}
-      >
-        <div className="absolute inset-0 [background-image:linear-gradient(rgba(11,103,204,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(11,103,204,0.09)_1px,transparent_1px)] [background-size:46px_46px] [mask-image:linear-gradient(180deg,transparent,#000_18%,#000)]" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 [background-image:linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:46px_46px] [mask-image:linear-gradient(180deg,transparent,#000)]" />
-      </div>
-
-      <Container className="relative">
-        <div className="flex flex-col items-center text-center">
-          <Reveal>
-            <Eyebrow>I piani Kontap</Eyebrow>
-          </Reveal>
-          <Reveal index={1}>
-            <h2 className="mt-5 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] sm:text-5xl">
-              <span className="text-gradient">Non vendiamo solo </span>
-              <span className="text-gradient-accent">una targhetta.</span>
-            </h2>
-          </Reveal>
-          <Reveal index={2}>
-            <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-muted sm:text-lg">
-              La targa porta i clienti da te. I nostri piani fanno crescere la tua
-              attività anche online.
-            </p>
-          </Reveal>
+    <section id="piani" className="relative scroll-mt-24 overflow-x-clip px-2 py-4 text-white sm:px-4 sm:py-8">
+      <div className="relative overflow-hidden rounded-[2rem] pb-16 pt-14 sm:rounded-[3rem] sm:pb-24 sm:pt-20">
+        {/* Fondo: stesso blu sfumato dell'header + griglia a quadratini */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(70% 45% at 50% 0%, rgba(140,200,255,0.35), transparent 70%)," +
+              "radial-gradient(90% 110% at 5% 105%, rgba(90,175,245,0.55), transparent 60%)," +
+              "linear-gradient(135deg, #0d76eb 0%, #0c6adf 35%, #0b55c1 70%, #0d43a1 100%)",
+          }}
+        >
+          <div className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:46px_46px] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_40%,#000_40%,transparent_95%)]" />
         </div>
 
-        <Reveal index={3} className="mt-10 sm:mt-14">
-          <Coverflow label="Piani Kontap" initial={1} tone="dark">
-            {servicePlans.map((plan) => (
-              <PlanCard key={plan.id} plan={plan} />
-            ))}
-          </Coverflow>
-        </Reveal>
-      </Container>
+        <Container className="relative">
+          <div className="flex flex-col items-center text-center">
+            <Reveal>
+              <Eyebrow tone="dark">I piani Kontap</Eyebrow>
+            </Reveal>
+            <Reveal index={1}>
+              <h2 className="mt-5 max-w-2xl text-balance text-4xl font-semibold leading-[1.05] text-white sm:text-5xl">
+                Non vendiamo solo una targhetta.
+              </h2>
+            </Reveal>
+            <Reveal index={2}>
+              <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-white/80 sm:text-lg">
+                La targa porta i clienti da te. I nostri piani fanno crescere la tua
+                attività anche online.
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal index={3} className="mt-10 sm:mt-14">
+            <Coverflow label="Piani Kontap" initial={1} tone="dark">
+              {servicePlans.map((plan) => (
+                <PlanCard key={plan.id} plan={plan} />
+              ))}
+            </Coverflow>
+          </Reveal>
+        </Container>
+      </div>
     </section>
   );
 }
@@ -76,16 +77,16 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
       className={cn(
         "h-full rounded-[1.75rem] p-px",
         premium
-          ? "bg-[linear-gradient(140deg,#b9e2ff,#0d76eb_45%,#7cc0ff)] shadow-[0_0_0_1px_rgba(124,192,255,0.3),0_30px_80px_-30px_rgba(11,85,193,0.7)]"
-          : "bg-[linear-gradient(160deg,rgba(255,255,255,0.55),rgba(255,255,255,0.12)_45%,rgba(255,255,255,0.3))] shadow-[0_34px_70px_-34px_rgba(11,60,140,0.75)]"
+          ? "bg-[linear-gradient(140deg,#ffffff,rgba(190,225,255,0.6)_45%,#ffffff)] shadow-[0_0_30px_-6px_rgba(190,225,255,0.55),0_34px_70px_-30px_rgba(4,30,90,0.6)]"
+          : "bg-[linear-gradient(160deg,rgba(255,255,255,0.7),rgba(255,255,255,0.15)_45%,rgba(255,255,255,0.4))] shadow-[0_34px_70px_-34px_rgba(4,30,90,0.6)]"
       )}
     >
       <div
         className="relative flex h-full flex-col overflow-hidden rounded-[calc(1.75rem-1px)] p-6 text-white"
         style={{
           background: premium
-            ? "radial-gradient(120% 70% at 100% 0%, rgba(150,210,255,0.35), transparent 55%), linear-gradient(165deg, #0b55c1 0%, #0d43a1 55%, #0b3a8c 100%)"
-            : "radial-gradient(100% 60% at 0% 100%, rgba(90,175,245,0.35), transparent 60%), linear-gradient(165deg, #0d76eb 0%, #0c6adf 45%, #0b55c1 100%)",
+            ? "radial-gradient(120% 70% at 100% 0%, rgba(190,225,255,0.4), transparent 55%), linear-gradient(165deg, #0b5ccc 0%, #0a4aa8 60%, #093f96 100%)"
+            : "radial-gradient(110% 60% at 0% 0%, rgba(255,255,255,0.28), transparent 60%), linear-gradient(165deg, #3d95f2 0%, #1f7ce6 50%, #1569d4 100%)",
         }}
       >
         {/* riflesso del materiale */}
