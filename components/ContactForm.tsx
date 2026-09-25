@@ -62,20 +62,19 @@ export function ContactForm() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] bg-white p-5 shadow-[0_30px_70px_-40px_rgba(36,83,255,0.45)] ring-hairline sm:p-8">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(88,200,255,0.22),transparent_70%)]" />
+    <div className="relative overflow-hidden rounded-[1.75rem] bg-white p-5 shadow-[0_30px_70px_-40px_rgba(14,87,186,0.45)] ring-1 ring-[#0e57ba]/15 sm:p-8">
 
       <div className="relative">
-        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">Modulo contatti</p>
-        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">Compila il form, ti contattiamo noi.</h2>
-        <p className="mt-2 text-[0.9rem] text-muted">Bastano pochi dati: ti richiamiamo o ti scriviamo noi.</p>
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#0e57ba]/70">Modulo contatti</p>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#0e57ba] sm:text-3xl">Compila il form, ti contattiamo noi.</h2>
+        <p className="mt-2 text-[0.9rem] text-[#0e57ba]/70">Bastano pochi dati: ti richiamiamo o ti scriviamo noi.</p>
       </div>
 
       {status === "sent" ? (
-        <div className="relative mt-6 rounded-2xl bg-primary/[0.06] p-5 text-center ring-1 ring-[color:rgba(88,200,255,0.4)]">
-          <p className="text-lg font-semibold text-ink">Richiesta inviata ✓</p>
-          <p className="mt-1 text-sm text-secondary">Grazie! Ti contattiamo al più presto.</p>
-          <button type="button" onClick={() => setStatus("idle")} className="mt-4 text-sm font-medium text-primary">
+        <div className="relative mt-6 rounded-2xl bg-[#0e57ba]/[0.06] p-5 text-center ring-1 ring-[#0e57ba]/20">
+          <p className="text-lg font-semibold text-[#0e57ba]">Richiesta inviata ✓</p>
+          <p className="mt-1 text-sm text-[#0e57ba]/75">Grazie! Ti contattiamo al più presto.</p>
+          <button type="button" onClick={() => setStatus("idle")} className="mt-4 text-sm font-medium text-[#0e57ba]">
             Invia un&apos;altra richiesta
           </button>
         </div>
@@ -94,7 +93,7 @@ export function ContactForm() {
               onChange={(e) => setInterest(e.target.value)}
               className={cn(INPUT, "appearance-none bg-no-repeat pr-10")}
               style={{
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232453ff' stroke-width='2'><path d='m6 9 6 6 6-6'/></svg>")`,
+                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230e57ba' stroke-width='2'><path d='m6 9 6 6 6-6'/></svg>")`,
                 backgroundSize: "18px",
                 backgroundPosition: "right 14px center",
               }}
@@ -115,8 +114,8 @@ export function ContactForm() {
           {/* honeypot anti-spam */}
           <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
-          <label className="col-span-2 flex items-start gap-2.5 text-[0.75rem] leading-snug text-muted">
-            <input type="checkbox" name="consenso" value="sì" required className="mt-0.5 h-4 w-4 shrink-0 accent-[#2453ff]" />
+          <label className="col-span-2 flex items-start gap-2.5 text-[0.75rem] leading-snug text-[#0e57ba]/70">
+            <input type="checkbox" name="consenso" value="sì" required className="mt-0.5 h-4 w-4 shrink-0 accent-[#0e57ba]" />
             Acconsento al trattamento dei miei dati per essere ricontattato da Kontap.
           </label>
 
@@ -124,14 +123,15 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-brand-gradient inline-flex h-12 w-full items-center justify-center gap-2 rounded-full text-[0.95rem] font-medium text-white shadow-[0_12px_28px_-12px_rgba(36,83,255,0.6)] transition-all duration-[250ms] hover:-translate-y-0.5 disabled:opacity-70"
+              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-cover bg-center text-[0.95rem] font-medium text-white shadow-[0_12px_28px_-12px_rgba(5,41,115,0.7)] transition-all duration-[250ms] hover:-translate-y-0.5 disabled:opacity-70"
+              style={{ backgroundImage: "url(/backgrounds/kontap-blue.webp)", backgroundColor: "#052973" }}
             >
               {status === "sending" ? "Invio in corso…" : "Invia richiesta"}
             </button>
             {status === "error" && (
-              <p className="mt-3 text-center text-sm text-secondary" role="alert">
+              <p className="mt-3 text-center text-sm text-[#0e57ba]/80" role="alert">
                 Invio non riuscito. Scrivici a{" "}
-                <a href={`mailto:${site.email}`} className="font-medium text-primary">
+                <a href={`mailto:${site.email}`} className="font-medium text-[#0e57ba] underline">
                   {site.email}
                 </a>
                 .
@@ -144,9 +144,9 @@ export function ContactForm() {
   );
 }
 
-const LABEL = "mb-1 block pl-1 text-[0.7rem] font-semibold text-secondary";
+const LABEL = "mb-1 block pl-1 text-[0.7rem] font-semibold text-[#0e57ba]";
 const INPUT =
-  "block h-11 w-full rounded-xl sm:h-12 sm:rounded-2xl bg-surface px-3.5 text-[0.95rem] text-ink ring-hairline outline-none transition-shadow duration-200 placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-[color:rgba(36,83,255,0.45)]";
+  "block h-11 w-full rounded-xl sm:h-12 sm:rounded-2xl bg-[#f3f7fd] px-3.5 text-[0.95rem] text-[#0e57ba] ring-1 ring-[#0e57ba]/15 outline-none transition-shadow duration-200 placeholder:text-[#0e57ba]/40 focus:bg-white focus:ring-2 focus:ring-[#0e57ba]/50";
 
 function Field({
   label,
@@ -169,7 +169,7 @@ function Field({
     <label className={cn("block min-w-0", className)}>
       <span className={LABEL}>
         {label}
-        {required && <span className="text-primary"> *</span>}
+        {required && <span> *</span>}
       </span>
       <input name={name} type={type} required={required} autoComplete={autoComplete} inputMode={inputMode} className={INPUT} />
     </label>
