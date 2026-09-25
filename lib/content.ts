@@ -23,9 +23,12 @@ export function whatsappHref(message: string = site.whatsapp.message) {
   return `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
 
+/** Indirizzo che riceve le richieste del modulo contatti (via FormSubmit). */
+export const formEndpoint = `https://formsubmit.co/ajax/${site.email}`;
+
 /** Canali di contatto: un tocco e sei in chat, in mail o sul profilo. */
 export type ContactChannel = {
-  id: "whatsapp" | "email" | "instagram" | "web";
+  id: "whatsapp" | "email" | "instagram" | "form";
   label: string;
   value: string;
   href: string;
@@ -44,7 +47,7 @@ export const contacts: ContactChannel[] = [
     id: "email",
     label: "Email",
     value: site.email,
-    href: `mailto:${site.email}`,
+    href: `mailto:${site.email}?subject=${encodeURIComponent("Informazioni Kontap")}`,
     external: false,
   },
   {
@@ -55,11 +58,11 @@ export const contacts: ContactChannel[] = [
     external: true,
   },
   {
-    id: "web",
-    label: "Sito",
-    value: site.web.label,
-    href: site.web.url,
-    external: true,
+    id: "form",
+    label: "Modulo",
+    value: "Ti contattiamo noi",
+    href: "#modulo",
+    external: false,
   },
 ];
 
@@ -67,7 +70,7 @@ export const nav = {
   links: [
     { label: "Come funziona", href: "/come-funziona" },
     { label: "Prezzi", href: "/prezzi" },
-    { label: "Kontap+", href: "/#plus" },
+    { label: "Kontap+", href: "/kontap-plus" },
     { label: "FAQ", href: "/faq" },
     { label: "Contatti", href: "/contatti" },
   ],
@@ -135,7 +138,7 @@ export const plateOffers: PlateOffer[] = [
     description: "Più di 10 targhe, per catene e attività con più sedi.",
     priceLabel: "Su preventivo",
     perks: ["Oltre 10 targhe", "Prezzo su misura"],
-    cta: { label: "Richiedi preventivo", href: "/contatti", external: false },
+    cta: { label: "Richiedi preventivo", href: "/contatti?interesse=network#modulo", external: false },
   },
 ];
 
@@ -329,7 +332,7 @@ export const footer = {
       links: [
         { label: "Targa Recensioni Google", href: "/" },
         { label: "Prezzi e servizi", href: "/prezzi" },
-        { label: "Kontap Plus", href: "/#plus" },
+        { label: "Kontap+", href: "/kontap-plus" },
       ],
     },
     {

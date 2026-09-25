@@ -4,7 +4,7 @@ import { Section } from "../ui/Section";
 import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
-import { Carousel } from "../ui/Carousel";
+import { Coverflow } from "../ui/Coverflow";
 import { CheckBadge } from "../ui/CheckBadge";
 import { ContactIcon } from "../ContactIcon";
 import { PlusLogo } from "../PlusLogo";
@@ -39,7 +39,7 @@ const BTN_PLAIN = "bg-white text-ink ring-hairline hover:ring-1 hover:ring-[colo
 export function PlatePricing() {
   const featured = Math.max(0, plateOffers.findIndex((o) => o.badge));
   return (
-    <Section id="targhe" className="pt-28 sm:pt-44">
+    <Section id="targhe" className="overflow-x-clip pt-28 sm:pt-44">
       <Container>
         <SectionHeader
           eyebrow="Prezzi"
@@ -52,12 +52,12 @@ export function PlatePricing() {
           description="Prezzi IVA inclusa. Scegli quante targhe ti servono."
         />
 
-        <Reveal index={2} className="mx-auto mt-8 max-w-5xl sm:mt-14">
-          <Carousel label="Offerte targhe" initial={featured}>
+        <Reveal index={2} className="mt-6 sm:mt-12">
+          <Coverflow label="Offerte targhe" initial={featured}>
             {plateOffers.map((offer) => (
               <PlateCard key={offer.id} offer={offer} />
             ))}
-          </Carousel>
+          </Coverflow>
         </Reveal>
       </Container>
     </Section>
@@ -193,11 +193,11 @@ export function ServicePricing() {
         />
 
         <Reveal index={2} className="mt-8 sm:mt-14">
-          <Carousel label="Servizi Kontap" initial={1}>
+          <Coverflow label="Servizi Kontap" initial={1}>
             {servicePlans.map((plan) => (
               <ServiceCard key={plan.id} plan={plan} />
             ))}
-          </Carousel>
+          </Coverflow>
         </Reveal>
       </Container>
     </Section>
