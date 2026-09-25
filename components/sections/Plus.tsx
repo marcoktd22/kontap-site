@@ -9,6 +9,7 @@ import { BrandBackdrop, PlusNetwork } from "../BrandBackdrop";
 import { PlusHorizon } from "../PlusHorizon";
 import { ScaleToFit } from "../ScaleToFit";
 import { whatsappHref } from "@/lib/content";
+import { cn } from "@/lib/cn";
 
 /** Servizi Plus, dal più interessante al meno. */
 const services = [
@@ -23,16 +24,29 @@ const PLUS_TOP = "#dfe9ff";
 /** Il fondo parte appena sotto la cupola di PlusHorizon (altezza 64/96/120px). */
 const HORIZON_TOP = "top-[62px] sm:top-[94px] lg:top-[118px]";
 
-export function Plus() {
+/**
+ * Kontap+ — grafico e servizi. Con `horizon` sorge dall'orizzonte di luce
+ * (quando segue la Hero); senza, apre la pagina Kontap+.
+ */
+export function Plus({ horizon = false }: { horizon?: boolean }) {
   return (
-    <section id="plus" className="relative scroll-mt-24 pb-20 pt-28 sm:pb-32 sm:pt-40 md:pb-40 md:pt-48">
+    <section
+      id="plus"
+      className={cn(
+        "relative scroll-mt-24 pb-20 sm:pb-32 md:pb-40",
+        horizon ? "pt-28 sm:pt-40 md:pt-48" : "pt-32 sm:pt-44"
+      )}
+    >
       {/* Transizione premium dalla Hero: orizzonte di luce */}
-      <PlusHorizon fill={PLUS_TOP} />
+      {horizon && <PlusHorizon fill={PLUS_TOP} />}
 
       {/* Fondo della sezione, sotto la cupola */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden ${HORIZON_TOP}`}
+        className={cn(
+          "pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden",
+          horizon ? HORIZON_TOP : "top-0"
+        )}
         style={{
           background: `linear-gradient(180deg, ${PLUS_TOP} 0%, #edf3ff 38%, #f6f9ff 100%)`,
         }}
