@@ -8,7 +8,8 @@ import { contacts } from "@/lib/content";
 import { cn } from "@/lib/cn";
 
 /**
- * Contatti — quattro card identiche, due per riga anche su smartphone:
+ * Contatti — quattro pillole sfumate bianco → blu (direzione alternata),
+ * una per riga e basse su smartphone così si vedono tutte insieme:
  * WhatsApp, email (apre l'app Mail con l'indirizzo già inserito),
  * Instagram e il modulo "ti contattiamo noi".
  */
@@ -28,40 +29,26 @@ export function Contacts() {
             description="Scegli il canale che preferisci: ti rispondiamo il prima possibile."
           />
 
-          <ul className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:mt-14 sm:gap-4">
+          <ul className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-2.5 sm:mt-14 sm:grid-cols-2 sm:gap-4">
             {contacts.map((c, i) => {
-              // alternanza a scacchiera: card blu sfumato ↔ card bianca con testi #0e57ba
-              const blue = i === 0 || i === 3;
+              // pillole sfumate bianco → blu, direzione alternata
+              const reverse = i % 2 === 1;
               return (
                 <Reveal as="li" key={c.id} index={i}>
                   <a
                     href={c.href}
+                    aria-label={`${c.label}: ${c.value}`}
                     {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className={cn(
-                      "group flex h-full flex-col gap-3 rounded-[1.5rem] p-4 transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 sm:flex-row sm:items-center sm:gap-4 sm:p-6",
-                      blue
-                        ? "bg-brand-gradient text-white shadow-[0_24px_50px_-24px_rgba(11,103,204,0.7)]"
-                        : "bg-white text-[#0e57ba] shadow-[var(--shadow-card)] ring-1 ring-[#0e57ba]/15"
+                      "group relative flex h-[52px] items-center justify-center gap-2.5 rounded-full border-[1.5px] border-[#0b67cc] px-6 text-white shadow-[0_14px_30px_-20px_rgba(11,103,204,0.8)] transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-18px_rgba(11,103,204,0.9)] sm:h-16",
+                      reverse
+                        ? "bg-[linear-gradient(90deg,#0b67cc_0%,#6aa0de_32%,#c9d8ea_62%,#f1f3f6_84%,#fafaf8_100%)]"
+                        : "bg-[linear-gradient(90deg,#fafaf8_0%,#f1f3f6_16%,#c9d8ea_38%,#6aa0de_68%,#0b67cc_100%)]"
                     )}
+                    style={{ textShadow: "0 1px 2px rgba(11,103,204,0.55), 0 0 10px rgba(11,103,204,0.35)" }}
                   >
-                    <span className="flex items-start justify-between sm:contents">
-                      <span
-                        className={cn(
-                          "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-white sm:h-12 sm:w-12",
-                          blue ? "bg-white/15 ring-1 ring-white/25" : "bg-brand-gradient shadow-[0_10px_22px_-10px_rgba(5,41,115,0.6)]"
-                        )}
-                      >
-                        <ContactIcon id={c.id} className="h-5 w-5" />
-                      </span>
-                      <Arrow className={cn("sm:hidden", blue ? "text-white" : "text-[#0e57ba]")} />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className={cn("block text-[0.65rem] font-semibold uppercase tracking-[0.16em]", blue ? "text-white/70" : "text-[#0e57ba]/60")}>
-                        {c.label}
-                      </span>
-                      <span className="mt-1 block truncate text-[0.95rem] font-semibold sm:text-lg">{c.value}</span>
-                    </span>
-                    <Arrow className={cn("hidden sm:block", blue ? "text-white" : "text-[#0e57ba]")} />
+                    <ContactIcon id={c.id} className="h-5 w-5 drop-shadow-[0_1px_2px_rgba(11,103,204,0.55)] sm:h-[22px] sm:w-[22px]" />
+                    <span className="truncate text-[1.05rem] font-medium tracking-tight sm:text-lg">{c.value}</span>
                   </a>
                 </Reveal>
               );
@@ -78,13 +65,5 @@ export function Contacts() {
         </Container>
       </Section>
     </>
-  );
-}
-
-function Arrow({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={`h-5 w-5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ${className ?? ""}`}>
-      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
