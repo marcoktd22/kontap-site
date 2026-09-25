@@ -40,7 +40,7 @@ export function WhyKontap() {
               className={cn(feature.span === "wide" && "col-span-2")}
             >
               {/* Floating premium hardware card */}
-              <div className="group relative h-full overflow-hidden rounded-[1.25rem] border-[1.5px] border-[#0b67cc] bg-white p-4 shadow-[var(--shadow-card)] sm:rounded-3xl sm:p-8 transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)] hover:shadow-[0_24px_56px_-34px_rgba(36,83,255,0.2)]">
+              <div className="group relative h-full overflow-hidden rounded-[1.25rem] border-[1.5px] border-[#0b67cc]/45 bg-white p-4 shadow-[var(--shadow-card)] sm:rounded-3xl sm:p-8 transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:ring-1 hover:ring-[color:rgba(88,200,255,0.55)] hover:shadow-[0_24px_56px_-34px_rgba(36,83,255,0.2)]">
                 <div className="relative flex h-full flex-col">
                   <GradientBadge className="h-10 w-10 sm:h-14 sm:w-14">
                     <BadgeIcon name={feature.icon} className="h-5 w-5 sm:h-7 sm:w-7" />
