@@ -16,7 +16,7 @@ export function Footer() {
       />
       <Container className="relative">
         <div className="grid grid-cols-2 gap-x-10 gap-y-12 md:grid-cols-4">
-          <div className="col-span-2 md:col-span-2">
+          <div className="col-span-2 flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
             <Link href="/" className="inline-block" aria-label="Kontap home">
               <Logo variant="blue" className="h-7 w-auto" />
             </Link>
@@ -26,7 +26,7 @@ export function Footer() {
             </p>
 
             {/* Contatti rapidi: un tocco apre Instagram, la mail o la chat */}
-            <ul className="mt-6 flex items-center gap-2.5">
+            <ul className="mt-6 flex items-center justify-center gap-2.5 md:justify-start">
               {(["instagram", "email", "whatsapp"] as const)
                 .map((id) => contacts.find((c) => c.id === id)!)
                 .map((c) => (
