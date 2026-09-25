@@ -22,7 +22,7 @@ export function WhatsAppButton() {
       {/* Pulsing halo */}
       <span
         aria-hidden="true"
-        className="absolute inset-0 -z-10 rounded-full bg-[#0249b3]/40"
+        className="absolute inset-0 -z-10 rounded-full bg-[#0b67cc]/40"
         style={{ animation: "kontap-pulse-ring 2.8s ease-out infinite" }}
       />
       <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="currentColor" aria-hidden="true">

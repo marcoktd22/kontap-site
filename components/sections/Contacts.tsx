@@ -40,10 +40,9 @@ export function Contacts() {
                     className={cn(
                       "group flex h-full flex-col gap-3 rounded-[1.5rem] p-4 transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 sm:flex-row sm:items-center sm:gap-4 sm:p-6",
                       blue
-                        ? "bg-cover bg-center text-white shadow-[0_24px_50px_-24px_rgba(5,41,115,0.75)]"
+                        ? "bg-brand-gradient text-white shadow-[0_24px_50px_-24px_rgba(11,103,204,0.7)]"
                         : "bg-white text-[#0e57ba] shadow-[var(--shadow-card)] ring-1 ring-[#0e57ba]/15"
                     )}
-                    style={blue ? { backgroundImage: "url(/backgrounds/kontap-blue.webp)", backgroundColor: "#052973" } : undefined}
                   >
                     <span className="flex items-start justify-between sm:contents">
                       <span

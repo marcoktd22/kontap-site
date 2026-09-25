@@ -109,7 +109,7 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
         <span
           className={cn(
             "relative self-start whitespace-nowrap rounded-full px-2.5 py-1 text-[0.7rem] font-semibold",
-            premium ? "bg-brand-gradient-bright text-white" : "bg-white/10 text-white/90 ring-1 ring-white/15"
+            premium ? "bg-brand-gradient-bright text-white" : "bg-[#0b67cc] text-white"
           )}
         >
           {plan.billing}
@@ -119,7 +119,7 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
           {premium ? (
             <PlusLogo className="h-7 text-white" />
           ) : (
-            <span className="block text-2xl font-semibold leading-7 tracking-tight">{plan.name}</span>
+            <span className="block text-2xl font-bold leading-7 tracking-tight">{plan.name}</span>
           )}
         </h3>
         <p className="relative mt-2 text-pretty text-[0.9rem] leading-snug text-white/70">
