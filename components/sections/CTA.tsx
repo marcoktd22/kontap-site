@@ -9,14 +9,15 @@ export function CTA() {
   return (
     <section id="cta" className="relative scroll-mt-24 px-4 py-12 sm:py-20">
       <Container className="px-0">
-        {/* Luminous Wallet-Pass gradient — bright & optimistic, never dark */}
+        {/* Blu sfumato Kontap */}
         <div
           className="relative isolate overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:rounded-[2.5rem] text-white shadow-[0_40px_110px_-56px_rgba(36,83,255,0.5)] sm:px-12 sm:py-28"
           style={{
-            background:
-              "radial-gradient(120% 120% at 15% 0%, #3a7bff 0%, rgba(58,123,255,0) 55%)," +
-              "radial-gradient(120% 120% at 100% 100%, #58c8ff 0%, rgba(88,200,255,0) 55%)," +
-              "linear-gradient(150deg, #1f47d6 0%, #2453ff 42%, #3d8bff 76%, #58c8ff 100%)",
+            // Blu sfumato ufficiale Kontap (texture del brand)
+            backgroundImage: "url(/backgrounds/kontap-blue.webp)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundColor: "#052973",
           }}
         >
           <BrandBackdrop variant="cta" />

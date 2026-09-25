@@ -183,7 +183,7 @@ export function PlusDemo() {
                   className="flex h-9 items-center justify-between rounded-full bg-white/[0.06] pl-3 pr-1 ring-1 ring-white/10"
                 >
                   <span className="text-[0.72rem] font-semibold text-white/80">Risposte AI</span>
-                  <span className={cn("relative h-7 w-12 rounded-full transition-colors duration-300", ai ? "bg-brand-gradient" : "bg-white/15")}>
+                  <span className={cn("relative h-7 w-12 rounded-full transition-colors duration-300", ai ? "bg-brand-gradient-bright" : "bg-white/15")}>
                     <span className={cn("absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all duration-300", ai ? "left-6" : "left-1")} />
                   </span>
                 </button>
@@ -209,7 +209,7 @@ export function PlusDemo() {
                             <AnimatedNumber value={Math.round(d.taps * c.share)} format={(v) => fmt(v)} className="font-semibold tabular-nums" />
                           </div>
                           <div className="mt-1 h-1 overflow-hidden rounded-full bg-white/10">
-                            <div className="bg-brand-gradient h-full rounded-full transition-[width] duration-700" style={{ width: `${c.share * 100 / 0.62}%` }} />
+                            <div className="bg-brand-gradient-bright h-full rounded-full transition-[width] duration-700" style={{ width: `${c.share * 100 / 0.62}%` }} />
                           </div>
                         </li>
                       ))}
@@ -334,7 +334,7 @@ function Segmented({ value, onChange }: { value: Period; onChange: (p: Period) =
           aria-pressed={value === p}
           className={cn(
             "flex-1 rounded-full text-[0.72rem] font-semibold transition-all duration-300",
-            value === p ? "bg-brand-gradient text-white shadow-[0_6px_16px_-6px_rgba(36,83,255,0.8)]" : "text-white/60 hover:text-white"
+            value === p ? "bg-brand-gradient-bright text-white shadow-[0_6px_16px_-6px_rgba(36,83,255,0.8)]" : "text-white/60 hover:text-white"
           )}
         >
           {p} giorni
