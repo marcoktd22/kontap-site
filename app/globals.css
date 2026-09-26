@@ -204,12 +204,6 @@
   50% { transform: translateX(var(--nudge, 4px)); }
 }
 
-/* riflesso che attraversa le pillole di vetro */
-@keyframes kontap-glint {
-  0%, 62% { transform: translateX(-160%) skewX(-20deg); }
-  100% { transform: translateX(460%) skewX(-20deg); }
-}
-
 @keyframes kontap-scan {
   from { transform: translateX(-100%); }
   to { transform: translateX(1400%); }
