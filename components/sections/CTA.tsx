@@ -42,10 +42,10 @@ export function CTA() {
                   href={whatsappHref("Ciao Kontap, vorrei richiedere la targa recensioni.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex h-[3.25rem] items-center justify-center gap-2 rounded-full bg-white px-7 text-base font-medium text-primary shadow-[0_12px_30px_-10px_rgba(9,17,33,0.4)] transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5"
+                  className="group inline-flex h-[3.25rem] items-center justify-center gap-2 rounded-full bg-white px-7 text-base font-semibold text-[#0b5fc8] shadow-[0_12px_30px_-10px_rgba(9,17,33,0.4)] transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5"
                 >
-                  Richiedi la tua targa
-                  <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <span className="text-gradient-accent">Richiedi la tua targa</span>
+                  <Icon name="arrow" className="h-4 w-4 text-[#0b55c1] transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
                 <Button href="/prezzi" size="lg" variant="invert">
                   Vedi i prezzi

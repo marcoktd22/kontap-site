@@ -62,7 +62,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-[1.75rem] bg-white p-5 shadow-[0_30px_70px_-40px_rgba(36,83,255,0.45)] ring-hairline sm:p-8">
+    <div className="relative overflow-hidden rounded-[1.75rem] bg-white p-5 shadow-[0_30px_70px_-40px_rgba(11,103,204,0.45)] ring-hairline sm:p-8">
       <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(88,200,255,0.22),transparent_70%)]" />
 
       <div className="relative">
@@ -94,7 +94,7 @@ export function ContactForm() {
               onChange={(e) => setInterest(e.target.value)}
               className={cn(INPUT, "appearance-none bg-no-repeat pr-10")}
               style={{
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232453ff' stroke-width='2'><path d='m6 9 6 6 6-6'/></svg>")`,
+                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b67cc' stroke-width='2'><path d='m6 9 6 6 6-6'/></svg>")`,
                 backgroundSize: "18px",
                 backgroundPosition: "right 14px center",
               }}
@@ -116,7 +116,7 @@ export function ContactForm() {
           <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
           <label className="col-span-2 flex items-start gap-2.5 text-[0.75rem] leading-snug text-muted">
-            <input type="checkbox" name="consenso" value="sì" required className="mt-0.5 h-4 w-4 shrink-0 accent-[#2453ff]" />
+            <input type="checkbox" name="consenso" value="sì" required className="mt-0.5 h-4 w-4 shrink-0 accent-[#0b67cc]" />
             Acconsento al trattamento dei miei dati per essere ricontattato da Kontap.
           </label>
 
@@ -124,7 +124,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-brand-gradient inline-flex h-12 w-full items-center justify-center gap-2 rounded-full text-[0.95rem] font-medium text-white shadow-[0_12px_28px_-12px_rgba(36,83,255,0.6)] transition-all duration-[250ms] hover:-translate-y-0.5 disabled:opacity-70"
+              className="bg-brand-gradient inline-flex h-12 w-full items-center justify-center gap-2 rounded-full text-[0.95rem] font-medium text-white shadow-[0_12px_28px_-12px_rgba(11,103,204,0.6)] transition-all duration-[250ms] hover:-translate-y-0.5 disabled:opacity-70"
             >
               {status === "sending" ? "Invio in corso…" : "Invia richiesta"}
             </button>
@@ -146,7 +146,7 @@ export function ContactForm() {
 
 const LABEL = "mb-1 block pl-1 text-[0.7rem] font-semibold text-secondary";
 const INPUT =
-  "block h-11 w-full rounded-xl sm:h-12 sm:rounded-2xl bg-surface px-3.5 text-[0.95rem] text-ink ring-hairline outline-none transition-shadow duration-200 placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-[color:rgba(36,83,255,0.45)]";
+  "block h-11 w-full rounded-xl sm:h-12 sm:rounded-2xl bg-surface px-3.5 text-[0.95rem] text-ink ring-hairline outline-none transition-shadow duration-200 placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-[color:rgba(11,103,204,0.45)]";
 
 function Field({
   label,
