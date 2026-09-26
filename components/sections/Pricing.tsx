@@ -30,7 +30,9 @@ const CARD_FEATURED = cn(GRADIENT_BORDER, "shadow-[0_24px_60px_-30px_rgba(36,83,
 const BTN =
   "group inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-medium transition-all duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5";
 const BTN_PRIMARY = "bg-brand-gradient text-white shadow-[0_12px_28px_-12px_rgba(36,83,255,0.6)]";
-const BTN_PLAIN = "bg-white text-ink ring-hairline hover:ring-1 hover:ring-[color:rgba(88,200,255,0.6)]";
+/** Bottone blu Kontap con bordino più chiaro (tutte le card non premium). */
+const BTN_PLAIN =
+  "border-[1.5px] border-[#6aa8ee] bg-[#0b67cc] text-white shadow-[0_12px_26px_-14px_rgba(11,103,204,0.75)] hover:bg-[#0a5cb8]";
 
 /* ------------------------------------------------------------------ */
 /* Targhe                                                              */
@@ -193,7 +195,7 @@ export function ServicePricing() {
         />
 
         <Reveal index={2} className="mt-8 sm:mt-14">
-          <Coverflow label="Servizi Kontap" initial={1}>
+          <Coverflow label="Servizi Kontap" initial={0}>
             {servicePlans.map((plan) => (
               <ServiceCard key={plan.id} plan={plan} />
             ))}
@@ -210,13 +212,6 @@ function ServiceCard({ plan }: { plan: ServicePlan }) {
   const twoCols = plan.items.length > 6;
   return (
     <div className={cn(CARD, "overflow-hidden", premium ? CARD_FEATURED : CARD_PLAIN)}>
-      {premium && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(88,200,255,0.3),transparent_70%)]"
-        />
-      )}
-
       <span
         className={cn(
           "relative self-start whitespace-nowrap rounded-full px-2.5 py-1 text-[0.7rem] font-semibold",

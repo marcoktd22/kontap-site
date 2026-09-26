@@ -40,7 +40,7 @@ export function Plans() {
           </div>
 
           <Reveal index={3} className="mt-10 sm:mt-14">
-            <Coverflow label="Piani Kontap" initial={1} tone="dark">
+            <Coverflow label="Piani Kontap" initial={0} tone="dark">
               {servicePlans.map((plan) => (
                 <PlanCard key={plan.id} plan={plan} />
               ))}
@@ -143,7 +143,7 @@ function PlanCard({ plan }: { plan: ServicePlan }) {
             "group inline-flex h-11 w-full items-center justify-center gap-2 rounded-full text-sm font-medium transition-all duration-[250ms] hover:-translate-y-0.5",
             premium
               ? "bg-brand-gradient text-white shadow-[0_12px_28px_-12px_rgba(11,103,204,0.7)]"
-              : "bg-white text-[#0b67cc] ring-1 ring-[#0b67cc]/40 hover:ring-[#0b67cc]"
+              : "border-[1.5px] border-[#6aa8ee] bg-[#0b67cc] text-white shadow-[0_12px_26px_-14px_rgba(11,103,204,0.75)] hover:bg-[#0a5cb8]"
           )}
         >
           {premium ? "Scopri Kontap+" : "Vedi i dettagli"}
