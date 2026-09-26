@@ -6,7 +6,7 @@
  * Palette is locked: two blues, a gradient, and a neutral text ramp.
  * ------------------------------------------------------------------ */
 @theme {
-  --color-primary: #2453ff;
+  --color-primary: #0b67cc;
   --color-hover: #3a63ff;
 
   /* White Tech surfaces */
@@ -20,7 +20,7 @@
   --color-muted: #667085;     /* Text Secondary (body) */
 
   /* Blues */
-  --color-accent: #2453ff;
+  --color-accent: #0b67cc;
   --color-celeste: #58c8ff;   /* Secondary Blue */
   --color-brightblue: #58c8ff;
 

@@ -131,7 +131,7 @@ function PlateCard({ offer }: { offer: PlateOffer }) {
             rel="noopener noreferrer"
             className={cn(BTN, featured ? BTN_PRIMARY : BTN_PLAIN)}
           >
-            <ContactIcon id="whatsapp" className={cn("h-4 w-4", featured ? "text-white" : "text-primary")} />
+            <ContactIcon id="whatsapp" className="h-4 w-4 text-white" />
             {offer.cta.label}
           </a>
         ) : (
