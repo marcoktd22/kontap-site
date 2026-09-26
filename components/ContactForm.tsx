@@ -63,8 +63,6 @@ export function ContactForm() {
 
   return (
     <div className="relative overflow-hidden rounded-[1.75rem] bg-white p-5 shadow-[0_30px_70px_-40px_rgba(11,103,204,0.45)] ring-hairline sm:p-8">
-      <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(88,200,255,0.22),transparent_70%)]" />
-
       <div className="relative">
         <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">Modulo contatti</p>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">Compila il form, ti contattiamo noi.</h2>

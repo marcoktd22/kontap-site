@@ -138,16 +138,19 @@ export function Hero() {
           <ul className="mx-auto mt-5 grid max-w-3xl grid-cols-3 gap-x-2 gap-y-5 sm:grid-cols-6 sm:gap-x-4">
             {SECTORS.map((sector) => (
               <li key={sector.label} className="flex flex-col items-center gap-2">
-                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0b67cc]/[0.08] text-[#0b67cc] ring-1 ring-[#0b67cc]/15 sm:h-12 sm:w-12">
+                <span
+                  className="flex h-11 w-11 items-center justify-center rounded-2xl text-white shadow-[0_10px_20px_-10px_rgba(11,103,204,0.55),inset_0_1px_0_rgba(255,255,255,0.45)] ring-1 ring-inset ring-white/30 sm:h-12 sm:w-12"
+                  style={{ background: "linear-gradient(160deg, #8fc6f8 0%, #62aaf1 50%, #4494e8 100%)" }}
+                >
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth={1.8}
+                    strokeWidth={2}
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-[22px] w-[22px]"
+                    className="h-[22px] w-[22px] drop-shadow-[0_1px_1px_rgba(11,85,193,0.25)]"
                   >
                     {sector.icon}
                   </svg>
