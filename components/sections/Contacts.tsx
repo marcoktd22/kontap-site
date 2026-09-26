@@ -7,9 +7,9 @@ import { ContactForm } from "../ContactForm";
 import { contacts } from "@/lib/content";
 
 /**
- * Contatti — quattro pillole di vetro lucido nel gradiente Kontap dentro un
- * pannello smerigliato; una per riga e basse su smartphone così si vedono
- * tutte insieme:
+ * Contatti — quattro caselle di vetro chiaro (bianco → azzurro) con bordo
+ * blu, nome del canale, recapito e una sfera lucida con l'icona; due per
+ * riga su smartphone, quattro in fila su desktop:
  * WhatsApp, email (apre l'app Mail con l'indirizzo già inserito),
  * Instagram e il modulo "ti contattiamo noi".
  */
@@ -30,34 +30,37 @@ export function Contacts() {
           />
 
           <div className="relative mx-auto mt-8 max-w-3xl sm:mt-14">
-            {/* luci blu dietro al vetro */}
+            {/* luci azzurre morbide dietro alle caselle */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-              <div className="absolute -left-6 top-0 h-2/3 w-1/2 rounded-full bg-[#0d76eb]/25 blur-3xl" />
-              <div className="absolute -right-6 bottom-0 h-2/3 w-1/2 rounded-full bg-[#0b55c1]/25 blur-3xl" />
+              <div className="absolute -left-8 top-2 h-3/4 w-1/2 rounded-full bg-[#58a8f5]/20 blur-3xl" />
+              <div className="absolute -right-8 bottom-0 h-3/4 w-1/2 rounded-full bg-[#0d76eb]/15 blur-3xl" />
             </div>
 
-            {/* pannello di vetro smerigliato */}
-            <ul className="relative grid grid-cols-1 gap-2 rounded-[2rem] bg-white/45 p-2 shadow-[0_30px_60px_-34px_rgba(11,85,193,0.55),inset_0_1px_0_rgba(255,255,255,0.9)] ring-1 ring-white/70 backdrop-blur-xl sm:grid-cols-2 sm:gap-3 sm:rounded-[2.5rem] sm:p-3">
+            <ul className="relative grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
               {contacts.map((c, i) => (
                 <Reveal as="li" key={c.id} index={i}>
                   <a
                     href={c.href}
                     aria-label={`${c.label}: ${c.value}`}
                     {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="bg-brand-gradient group relative flex h-[54px] items-center justify-center gap-3 overflow-hidden rounded-full px-6 text-white shadow-[0_14px_28px_-14px_rgba(11,85,193,0.85),inset_0_1px_0_rgba(255,255,255,0.45),inset_0_-10px_18px_rgba(4,24,80,0.28)] ring-1 ring-inset ring-white/25 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_36px_-14px_rgba(11,85,193,0.95),inset_0_1px_0_rgba(255,255,255,0.55),inset_0_-10px_18px_rgba(4,24,80,0.28)] active:scale-[0.98] sm:h-16"
+                    className="group relative flex h-full flex-col items-center overflow-hidden rounded-[1.75rem] border-[1.5px] border-[#0b67cc]/45 px-3 pb-4 pt-4 text-center shadow-[0_22px_44px_-26px_rgba(11,85,193,0.55),inset_0_1px_0_#fff,inset_0_-14px_26px_rgba(11,103,204,0.07)] backdrop-blur-md transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:border-[#0b67cc]/70 hover:shadow-[0_28px_50px_-24px_rgba(11,85,193,0.65),inset_0_1px_0_#fff,inset_0_-14px_26px_rgba(11,103,204,0.09)] sm:rounded-[2rem] sm:pb-5 sm:pt-5"
+                    style={{
+                      background:
+                        "radial-gradient(90% 60% at 50% 100%, rgba(88,168,245,0.28), transparent 70%), linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(243,248,255,0.95) 45%, rgba(221,235,253,0.92) 100%)",
+                    }}
                   >
-                    {/* riflesso lucido sulla metà superiore */}
-                    <span aria-hidden="true" className="pointer-events-none absolute inset-x-[5%] top-[2px] h-[48%] rounded-full bg-gradient-to-b from-white/20 via-white/[0.06] to-white/0 blur-[0.5px]" />
-                    {/* bagliore che attraversa il vetro */}
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white/0 via-white/25 to-white/0 motion-safe:[animation:kontap-glint_5.5s_cubic-bezier(0.4,0,0.2,1)_infinite]"
-                      style={{ animationDelay: `${i * 0.35}s` }}
-                    />
-                    <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-inset ring-white/35 backdrop-blur-sm sm:h-9 sm:w-9">
-                      <ContactIcon id={c.id} className="h-[17px] w-[17px] sm:h-[18px] sm:w-[18px]" />
+                    {/* riflesso vetro in alto */}
+                    <span aria-hidden="true" className="pointer-events-none absolute inset-x-3 top-0 h-1/3 rounded-b-[50%] bg-gradient-to-b from-white to-white/0 opacity-80" />
+
+                    <span className="relative block text-[1rem] font-semibold leading-tight tracking-tight text-[#0b67cc] sm:text-[1.05rem]">{c.label}</span>
+                    <span className="relative mt-0.5 block max-w-full truncate text-[0.72rem] font-medium text-[#0b67cc]/60 sm:text-[0.78rem]">{c.value}</span>
+
+                    {/* sfera lucida con l'icona */}
+                    <span className="relative mt-3 flex h-12 w-12 items-center justify-center rounded-full text-white shadow-[0_10px_22px_-6px_rgba(11,103,204,0.6),0_0_0_6px_rgba(88,168,245,0.12),inset_0_2px_3px_rgba(255,255,255,0.55),inset_0_-4px_8px_rgba(4,40,120,0.35)] transition-transform duration-300 group-hover:scale-105 sm:mt-4 sm:h-14 sm:w-14"
+                      style={{ background: "radial-gradient(circle at 35% 28%, #7cc0ff 0%, #2f8cf0 32%, #0b67cc 62%, #0b4fb0 100%)" }}
+                    >
+                      <ContactIcon id={c.id} className="h-[21px] w-[21px] drop-shadow-[0_1px_1px_rgba(4,40,120,0.35)] sm:h-6 sm:w-6" />
                     </span>
-                    <span className="relative truncate text-[1rem] font-semibold tracking-tight sm:text-[1.05rem]">{c.value}</span>
                   </a>
                 </Reveal>
               ))}
