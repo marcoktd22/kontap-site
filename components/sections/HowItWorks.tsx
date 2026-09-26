@@ -94,12 +94,13 @@ export function HowItWorks() {
                       <span
                         className={cn(
                           "relative flex h-11 w-11 items-center justify-center rounded-full text-base font-semibold transition-all duration-500 sm:h-12 sm:w-12",
-                          "bg-white text-[#0b67cc]",
+                          // nodi già raggiunti restano accesi, quelli successivi spenti
+                          done && "bg-white text-[#0b67cc]",
                           current
                             ? "scale-110 shadow-[0_0_0_5px_rgba(255,255,255,0.22),0_0_30px_rgba(255,255,255,0.45)]"
                             : done
-                              ? "opacity-55 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.4)]"
-                              : "opacity-35"
+                              ? "shadow-[0_0_0_3px_rgba(255,255,255,0.18),0_0_18px_rgba(255,255,255,0.35)]"
+                              : "bg-[#9db8e0] text-[#0b67cc]/70"
                         )}
                       >
                         {step.number}
