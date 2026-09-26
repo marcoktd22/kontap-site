@@ -6,7 +6,6 @@ import { Reveal } from "../ui/Reveal";
 import { Icon } from "../ui/Icon";
 import { Coverflow } from "../ui/Coverflow";
 import { CheckBadge } from "../ui/CheckBadge";
-import { ContactIcon } from "../ContactIcon";
 import { PlusLogo } from "../PlusLogo";
 import { BrandBackdrop } from "../BrandBackdrop";
 import {
@@ -39,7 +38,6 @@ const BTN_PLAIN =
 /* ------------------------------------------------------------------ */
 
 export function PlatePricing() {
-  const featured = Math.max(0, plateOffers.findIndex((o) => o.badge));
   return (
     <Section id="targhe" className="overflow-x-clip pt-28 sm:pt-44">
       <Container>
@@ -55,7 +53,7 @@ export function PlatePricing() {
         />
 
         <Reveal index={2} className="mt-6 sm:mt-12">
-          <Coverflow label="Offerte targhe" initial={featured}>
+          <Coverflow label="Offerte targhe" initial={0}>
             {plateOffers.map((offer) => (
               <PlateCard key={offer.id} offer={offer} />
             ))}
@@ -90,11 +88,14 @@ function PlateCard({ offer }: { offer: PlateOffer }) {
         {offer.price ? (
           <>
             <span className="text-[2.5rem] font-semibold leading-none tracking-tight text-ink">
-              {offer.price}
-              <span className="ml-0.5 text-xl">€</span>
+              {offer.price.split(",")[0]}
+              <span className="text-xl">
+                {offer.price.includes(",") && `,${offer.price.split(",")[1]}`}
+                <span className="ml-0.5">€</span>
+              </span>
             </span>
             {offer.was && (
-              <span className="pb-0.5 text-base text-muted line-through decoration-[1.5px]">
+              <span className="pb-0.5 text-base text-muted line-through decoration-[#0b67cc] decoration-2">
                 {offer.was} €
               </span>
             )}
@@ -131,8 +132,8 @@ function PlateCard({ offer }: { offer: PlateOffer }) {
             rel="noopener noreferrer"
             className={cn(BTN, featured ? BTN_PRIMARY : BTN_PLAIN)}
           >
-            <ContactIcon id="whatsapp" className="h-4 w-4 text-white" />
             {offer.cta.label}
+            <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         ) : (
           <Link href={offer.cta.href} className={cn(BTN, BTN_PLAIN)}>
