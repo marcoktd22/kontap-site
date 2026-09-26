@@ -14,7 +14,7 @@ export default function FaqPage() {
   return (
     <>
       <Nav />
-      <main id="main" className="pt-[88px] sm:pt-24">
+      <main id="main">
         <FAQ />
       </main>
       <Footer />
