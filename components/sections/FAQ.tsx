@@ -11,22 +11,13 @@ const TICKER_CLASS =
   "whitespace-nowrap text-[13px] font-bold uppercase leading-none tracking-[0.2em] text-white";
 
 /**
- * Infinite ticker — a subtle premium branding band framing the FAQ: Kontap
+ * Infinite ticker — a subtle premium branding band closing the FAQ: Kontap
  * gradient background with white text. One long, varied brand sequence (never
  * the same short phrase repeated) that loops only after a long distance. Two
- * identical copies translated by -50% = seamless loop with no visible reset;
- * `reverse` flips the direction so the top and bottom bars scroll in opposite
- * directions. Slow (~44s) — noticed once, not a marquee.
+ * identical copies translated by -50% = seamless loop with no visible reset.
+ * Slow (~44s) — noticed once, not a marquee.
  */
-function Ticker({
-  text,
-  reps,
-  reverse,
-}: {
-  text: string;
-  reps: number;
-  reverse?: boolean;
-}) {
+function Ticker({ text, reps }: { text: string; reps: number }) {
   const line = text.repeat(reps);
   return (
     <div
@@ -38,7 +29,6 @@ function Ticker({
           className="flex w-max flex-none will-change-transform"
           style={{
             animation: "kontap-marquee 44s linear infinite",
-            animationDirection: reverse ? "reverse" : "normal",
           }}
         >
           <span className={TICKER_CLASS}>{line}</span>
@@ -66,14 +56,7 @@ export function FAQ() {
 
   return (
     <section id="faq" className="relative scroll-mt-24">
-      {/* Barra superiore — scorre da sinistra a destra */}
-      <Ticker
-        text="NFC TECHNOLOGY • TOUCH THE FUTURE • PREMIUM HARDWARE • SMART INTERACTIONS • "
-        reps={4}
-        reverse
-      />
-
-      <div className="bg-light-tech grid-faint relative overflow-hidden py-16 sm:py-32 md:py-40">
+      <div className="bg-light-tech grid-faint relative overflow-hidden pb-16 pt-[152px] sm:pb-32 sm:pt-52 md:pb-40 md:pt-60">
         <Container className="relative">
           <div className="grid grid-cols-1 gap-x-20 gap-y-14 lg:grid-cols-[0.82fr_1.18fr]">
             {/* Colonna sinistra — protagonista */}
